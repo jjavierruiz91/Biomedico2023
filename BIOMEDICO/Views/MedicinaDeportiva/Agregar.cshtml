@@ -1,0 +1,330 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script defer src="~/Scripts/APP/MedicinaDeportiva/MedicinaDeportiva.js"></script>
+
+
+<h1><strong>Ficha Deportiva - Medicina Deportiva </strong></h1>
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
+
+    <form id="FormFisioterapia" name="FormFisioterapia">
+
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Número Identificación</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Cedula" name="Cedula" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4" style="right:inherit">
+
+                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Buscar</button>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Nombre</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerNombre" name="PrimerNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Nombre</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoNombre" name="SegundoNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Apellido</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerApellido" name="PrimerApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Apellido</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoApellido" name="SegundoApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Género</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Genero" name="Genero" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Edad</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Edad" onkeypress="return soloNumeros(event)" name="Edad" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Deporte</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="email" class="form-control" id="Deporte" name="Deporte" />
+            </div>
+
+        </div>
+
+    </form>
+</div>
+<br />
+
+
+<h1><strong>Antecedentes Deportivos</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+<div class="row m-0">
+
+    <form id="FormAntecedentesDeportivos" name="FormAntecedentesDeportivos">
+
+        <div class="row m-0">
+
+            @*<div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong></strong> </label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CodMedicina" name="CodMedicina" />
+        </div>*@
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Código</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CodMedicina" name="CodMedicina">
+                    <option value="">Seleccionar</option>
+                    <option value="2102">2102</option>
+
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Fecha Consulta</strong> </label>
+                <input type="date" style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FechaConsulta" name="FechaConsulta" />
+            </div>
+            @*<div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Motivo Consulta</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="MotivoConsulta" name="MotivoConsulta" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Enfermedad Actual</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="EnfermedadActual" name="EnfermedadActual" />
+            </div>*@
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Patológicos</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Patologicos" name="Patologicos" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Quirúrgicos</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Quirurgicos" name="Quirurgicos" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Farmacológicos</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Farmacologicos" name="Farmacologicos" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Familiares</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Familiares" name="Familiares" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Traumatológicos</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Traumatologicos" name="Traumatologicos" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Lesiones Deportivas</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="LesionesDeportivas" name="LesionesDeportivas" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Alérgicos</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Alergicos" name="Alergicos" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Otros</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PruebaCovid19" name="PruebaCovid19" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Anexos</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="file" class="form-control" id="AnexosMedicinaDeportiva" name="AnexosMedicinaDeportiva" />
+                <img align="right" id="ImagenMedicinaDeport" height="450" width="450" @*style="border-radius:50%;*@ border-color:#000000" />
+                </div>
+            
+        </div>
+
+        <br />
+    </form>
+</div>
+
+<h1><strong>Motivo consulta</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+<div class="col-xs-12 col-sm-12 col-md-12">
+
+    <form id="FormAntecedentesDeportivos" name="FormAntecedentesDeportivos">
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                @*<label><strong>Motivo Consulta</strong> </label>*@
+                @*<input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="MotivoConsulta" name="MotivoConsulta" />*@
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="10" cols="50" class="form-control" id="MotivoConsulta"></textarea>
+            </div>
+        </div>
+
+        <br />
+    </form>
+</div>
+
+<h1><strong>Enfermedad Actual</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+<div class="col-xs-12 col-sm-12 col-md-12">
+
+    <form id="FormAntecedentesDeportivos" name="FormAntecedentesDeportivos">
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+         
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                @*<label><strong>Enfermedad Actual</strong></label>*@
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="10" cols="50" class="form-control" id="EnfermedadActual"></textarea>
+
+                @*<input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="EnfermedadActual" name="" />*@
+            </div>
+            
+
+
+        </div>
+
+        <br />
+    </form>
+</div>
+
+<h2><strong>Examen Físico</strong></h2>
+<hr width=100% align="right" size=200 color="black">
+<div class="row m-0">
+
+    <form id="FormExamenFisico" name="FormExamenFisico">
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Frecuencia Cardíaca</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FrecuenciaCardiaca" name="FrecuenciaCardiaca" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Tensión Arterial</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TensionArterial" name="TensionArterial" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Peso (Kg)</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Peso" name="Peso" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Talla</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Talla" name="Talla" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Indice Masa Corporal</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="IndiceMasaCorporal" name="IndiceMasaCorporal" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Tanner</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Tanner" name="Tanner" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Porcentaje Grasos</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Grasos" name="Grasos" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Muscular</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Muscular" name="Muscular" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Postura</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Postura" name="Postura" />
+            </div>
+
+            @*<div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Podoscopia</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Podoscopia" name="Podoscopia" />
+                </div>
+
+
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>TestWells</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestWells" name="TestWells" />
+                </div>
+
+
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Dismetría</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Dismetria" name="Dismetria" />
+                </div>*@
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <label><strong>Examen Específico</strong></label>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="10" cols="50" class="form-control" id="ExamenEspecifico"></textarea>
+
+
+            </div>
+
+            @*<div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Conducta</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Conducta" name="Conducta" />
+                </div>*@
+
+
+
+
+        </div>
+
+
+
+    </form>
+</div>
+
+
+    <h1><strong>Diagnostico</strong></h1>
+
+    <hr width=100% align="right" size=200 color="black">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+        <form id="FormAntecedentesDeportivos" name="FormAntecedentesDeportivos">
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    @*<label><strong>Enfermedad Actual</strong></label>*@
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="10" cols="50" class="form-control" id="Diagnostico"></textarea>
+
+                    @*<input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="EnfermedadActual" name="" />*@
+                </div>
+                
+
+
+            </div>
+
+            <br />
+        </form>
+    </div>
+
+    <h1><strong>Conducta</strong></h1>
+    <hr width=100% align="right" size=200 color="black">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+        <form id="FormAntecedentesDeportivos" name="FormAntecedentesDeportivos">
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    @*<label><strong>Enfermedad Actual</strong></label>*@
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="10" cols="50" class="form-control" id="Conducta"></textarea>
+
+                    @*<input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="EnfermedadActual" name="" />*@
+                </div>
+
+
+
+
+            </div>
+            <br />
+            @*<div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Firma Medico</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FirmaMedico" name="FirmaMedico" />
+            </div>*@
+            <br />
+        </form>
+    </div>
+    <br />
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveMedicina">Guardar</button>
+    </div>
+
+
+
+
+

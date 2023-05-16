@@ -1,0 +1,2457 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script defer src="~/Scripts/APP/EncuestaDeportista/EncuestaDeportistas.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Step by step form wizard  - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <script src="~/Scripts/validation/validate.min.js"></script>
+    <script src="~/Scripts/validation/localization/messages_es.js"></script>
+    <style type="text/css">
+
+        /* Latest compiled and minified CSS included as External Resource*/
+        /* Optional theme */
+        body {
+            margin-top: 30px;
+        }
+
+        .stepwizard-step p {
+            margin-top: 0px;
+            color: #666;
+        }
+
+        .stepwizard-row {
+            display: table-row;
+        }
+
+        .stepwizard {
+            display: table;
+            width: 100%;
+            position: relative;
+        }
+
+        .stepwizard-step button[disabled] {
+            /*opacity: 1 !important;
+        filter: alpha(opacity=100) !important;*/
+        }
+
+        .stepwizard .btn.disabled, .stepwizard .btn[disabled], .stepwizard fieldset[disabled] .btn {
+            opacity: 1 !important;
+            color: #bbb;
+        }
+
+        .stepwizard-row:before {
+            top: 14px;
+            bottom: 0;
+            position: absolute;
+            content: " ";
+            width: 100%;
+            height: 1px;
+            background-color: #ccc;
+            z-index: 0;
+        }
+
+        .stepwizard-step {
+            display: table-cell;
+            text-align: center;
+            position: relative;
+        }
+
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 12px;
+            line-height: 1.428571429;
+            border-radius: 15px;
+        }
+
+        .select-css {
+            display: block;
+            font-size: 16px;
+            font-family: 'Arial', sans-serif;
+            font-weight: 400;
+            color: #444;
+            line-height: 1.3;
+            padding: .4em 1.4em .3em .8em;
+            width: 600px;
+            max-width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            border: 1px solid #aaa;
+            box-shadow: 0 1px 0 1px rgba(0,0,0,.03);
+            border-radius: .3em;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #fff;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(to bottom, #ffffff 0%,#f7f7f7 100%);
+            background-repeat: no-repeat, repeat;
+            background-position: right .7em top 50%, 0 0;
+            background-size: .65em auto, 100%;
+        }
+
+            .select-css::-ms-expand {
+                display: none;
+            }
+
+            .select-css:hover {
+                border-color: #006068;
+            }
+
+            .select-css:focus {
+                border-color: #006068;
+                box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+                box-shadow: 0 0 0 3px -moz-mac-focusring;
+                color: #222;
+                outline: none;
+            }
+
+            .select-css option {
+                font-weight: normal;
+            }
+
+        body {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        #draw-canvas {
+            border: 2px dotted #CCCCCC;
+            border-radius: 5px;
+            cursor: crosshair;
+        }
+
+        #draw-dataUrl {
+            width: 100%;
+        }
+
+        h3 {
+            margin: 10px 15px;
+        }
+
+        header {
+            background: #273B47;
+            height: 10%;
+            width: 100%;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        section {
+            flex: 1;
+        }
+
+        h1 {
+            margin: 10px 15px;
+        }
+
+        header {
+            color: white;
+            font-weight: 500;
+            padding-left: 15px;
+        }
+
+
+        .button {
+            background: #3071a9;
+            box-shadow: inset 0 -3px 0 rgba(0,0,0,.3);
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+        }
+
+            .button:active {
+                transform: scale(0.9);
+            }
+
+        .contenedor {
+            width: 100% margin: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .instrucciones {
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        label {
+            margin: 0 15px;
+        }
+
+        footer {
+            background: #273B47;
+            color: white;
+            height: 10%;
+            width: 100%;
+            margin-top: 10px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        input[type=range] {
+            -webkit-appearance: none;
+            margin: 18px 0;
+        }
+
+            input[type=range]:focus {
+                outline: none;
+            }
+
+            input[type=range]::-webkit-slider-runnable-track {
+                width: 100%;
+                height: 8.4px;
+                cursor: pointer;
+                animate: 0.2s;
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+                background: #3071a9;
+                border-radius: 1.3px;
+                border: 0.2px solid #010101;
+            }
+
+            input[type=range]::-webkit-slider-thumb {
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+                border: 1px solid #000000;
+                height: 36px;
+                width: 16px;
+                border-radius: 3px;
+                background: #ffffff;
+                cursor: pointer;
+                -webkit-appearance: none;
+                margin-top: -14px;
+            }
+
+            input[type=range]:focus::-webkit-slider-runnable-track {
+                background: #367ebd;
+            }
+
+            input[type=range]::-moz-range-track {
+                width: 100%;
+                height: 8.4px;
+                cursor: pointer;
+                animate: 0.2s;
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+                background: #3071a9;
+                border-radius: 1.3px;
+                border: 0.2px solid #010101;
+            }
+
+            input[type=range]::-moz-range-thumb {
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+                border: 1px solid #000000;
+                height: 36px;
+                width: 16px;
+                border-radius: 3px;
+                background: #ffffff;
+                cursor: pointer;
+            }
+
+            input[type=range]::-ms-track {
+                width: 100%;
+                height: 8.4px;
+                cursor: pointer;
+                animate: 0.2s;
+                background: transparent;
+                border-color: transparent;
+                border-width: 16px 0;
+                color: transparent;
+            }
+
+            input[type=range]::-ms-fill-lower {
+                background: #2a6495;
+                border: 0.2px solid #010101;
+                border-radius: 2.6px;
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+            }
+
+            input[type=range]::-ms-fill-upper {
+                background: #3071a9;
+                border: 0.2px solid #010101;
+                border-radius: 2.6px;
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+            }
+
+            input[type=range]::-ms-thumb {
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+                border: 1px solid #000000;
+                height: 36px;
+                width: 16px;
+                border-radius: 3px;
+                background: #ffffff;
+                cursor: pointer;
+            }
+
+            input[type=range]:focus::-ms-fill-lower {
+                background: #3071a9;
+            }
+
+            input[type=range]:focus::-ms-fill-upper {
+                background: #367ebd;
+            }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="stepwizard">
+            <div class="stepwizard-row setup-panel">
+                <div class="stepwizard-step col-xs-3">
+                    <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                    <p><small></small></p>
+                </div>
+                <div class="stepwizard-step col-xs-3">
+                    <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                    <p><small></small></p>
+                </div>
+                <div class="stepwizard-step col-xs-3">
+                    <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                    <p><small></small></p>
+                </div>
+                <div class="stepwizard-step col-xs-3">
+                    <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                    <p><small></small></p>
+                </div>
+                <div class="stepwizard-step col-xs-3">
+                    <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">5</a>
+                    <p><small></small></p>
+                </div>
+                <div class="stepwizard-step col-xs-3">
+                    <a href="#step-6" type="button" class="btn btn-default btn-circle" disabled="disabled">6</a>
+                    <p><small></small></p>
+                </div>
+                @*<div class="stepwizard-step col-xs-3">
+                    <a href="#step-7" type="button" class="btn btn-default btn-circle" disabled="disabled">7</a>
+                    <p><small></small></p>
+                </div>
+                <div class="stepwizard-step col-xs-3">
+                    <a href="#step-8" type="button" class="btn btn-default btn-circle" disabled="disabled">8</a>
+                    <p><small></small></p>
+                </div>*@
+            </div>
+        </div>
+        <h1 align="center" style="color: #006068;"><strong>INSTRUMENTO PARA LA CARACTERIZACIÓN DE LOS DEPORTISTAS DEL DEPARTAMENTO DEL CESAR</strong> </h1>
+        <h3 class="panel-title"><strong>DATOS GENERALES DEL DEPORTISTA </strong></h3>
+        <form role="form" id="FormEncuestaTrabajadores" name="FormEncuestaTrabajadores">
+            <div class="panel panel-primary setup-content" id="step-1">
+                <div class="panel-heading">
+                </div>
+                <div class="row m-0">
+
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label> <strong> 1. ¿ Fecha de aplicación de la encuesta ?  </strong>  </label>
+                        <input type="date" class="form-control select-css" id="FechaDepor" name="FechaDepor" required />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 2. ¿ Numero Identificacion? </strong></label>
+                        <input  type="number" class="form-control" id="IdentificacionDeportista" name="IdentificacionDeportista" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 3. ¿ Primer nombre ?  </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="PrimerNombreDepor" name="PrimerNombreDepor" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>4. ¿ Segundo nombre ?   </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="SegundonombreDepor" name="SegundonombreDepor" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>5. ¿ Primer apellido ?  </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="PrimerApellidoDepor" name="PrimerApellidoDepor" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>6. ¿ Segundo apellido  ?  </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="SegundoApellidoDepor" name="SegundoApellidoDepor" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>7. ¿ Edad  ? </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="EdadDepor" name="EdadDepor" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>8. ¿ Direccion ?  </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="DireccionDepor" name="DireccionDepor" />
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>9. ¿ Barrio  ?  </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="BarrioDepor" name="BarrioDepor" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>10. ¿ Donde Nacistes  ?  </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="DondeNacistesDepor" name="DondeNacistesDepor" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>11. ¿ De donde eres ?  </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="NacionalidadDepor" name="NacionalidadDepor" />
+                    </div>
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>12. ¿ En qué hospital, o clínica naciste  ?  </strong>  </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="HospitalNacisteDepor" name="HospitalNacisteDepor" />
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>12. ¿ Disciplina Deportiva ?  </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="DisciplinaDeportivaDepor" name="DisciplinaDeportivaDepor" />
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>13. ¿ Hace cuanto practicas el deporte ?   </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="PracticaDeporteDepor" name="PracticaDeporteDepor" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>14. ¿ Categoria  ?  </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="CategoriaDepor" name="CategoriaDepor" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>15. ¿ Telefono  ?  </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="TelefonoDepor" name="TelefonoDepor" />
+                    </div>
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 16. ¿Tienes Telefono  ? </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TienesTelefono" name="TienesTelefono">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>17. ¿ Cada cuanto lo usas ? </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="CadaCuantoTelefono" name="CadaCuantoTelefono" />
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>16. ¿Tienes Redes Sociales ?  </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TienesRedesSociales" name="TienesRedesSociales">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <!--<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>19. ¿ Cuales Redes Sociales ?</strong></label>
+                        <br />
+                        <label class="checkbox-inline">
+                            <input style="border: #367ebd; border-width: 1px; border-style: solid;" type="checkbox" id="CualesRedes" value="Instagram">Instagram
+                        </label>
+                        <label class="checkbox-inline">
+                            <input style="border: #367ebd; border-width: 1px; border-style: solid;" type="checkbox" id="CualesRedes2" value="Facebook">Facebook
+                        </label>
+                        <label class="checkbox-inline">
+                            <input style="border: #367ebd; border-width: 1px; border-style: solid;" type="checkbox" id="CualesRedes3" value="Twitter">Twitter
+                        </label>
+                        <label class="checkbox-inline">
+                            <input style="border: #367ebd; border-width: 1px; border-style: solid;" type="checkbox" id="CualesRedes4" value="Tiktok">Tiktok
+                        </label>
+                        <label class="checkbox-inline">
+                            <input style="border: #367ebd; border-width: 1px; border-style: solid;" type="checkbox" id="CualesRedes5" value="WhatsApp">WhatsApp
+                        </label>-->
+                        @*<input  style="border: #367ebd; border-width: 1px; border-style: solid;" class="form-control" id="EntrenamientoActual" name="EntrenamientoActual" />*@
+                    <!--</div>-->
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>21. ¿ Como te encontramos en facebook ?  </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="Facebook" name="Facebook" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>22. ¿ Como te encontramos en Instagram  ?  </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="Instagram" name="Instagram" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 23. ¿ Como te encontramos en Twitter ?  </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="Twitter" name="Twitter" />
+                    </div>*@
+                </div>
+                <button class="btn btn-primary nextBtn pull-right" type="button" style="right:auto">SIGUIENTE</button>
+               
+            </div>
+
+            <div class="panel panel-primary setup-content" id="step-2">
+                <div class="panel-heading">
+                    @*<h3 class="panel-title"><strong>DATOS GENERALES DEL DEPORTISTA </strong></h3>*@
+                </div>
+                <div class="row m-0">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>17. ¿ Con cuantas personas vives  ?  </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="CuantasPersonas" name="CuantasPersonas" />
+                    </div>
+
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>21. ¿Eres amigable o timido   ? </strong> </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ConocidosAmigos" name="ConocidosAmigos">
+                            <option value="">Seleccionar</option>
+                            <option value="Amigable">Amigable</option>
+                            <option value="Timido">Timido</option>
+                        </select>
+                    </div>*@
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>26. ¿ Cuantos en total ?   </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="CuantosTotalAmigos" name="CuantosTotalAmigos" />
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>18. ¿ Cuantos menores de edad hay en tu casa  ?  </strong> </label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="MenoresCasa" name="MenoresCasa" />
+                    </div>
+                   
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>19. ¿Te agrada tu entrenador ?   </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="AgradaEntrenador" name="AgradaEntrenador">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>24. ¿ Cuantas personas mayores de edad viven en tu casa   ?  </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="MayoresCasa" name="MayoresCasa" />
+                    </div>*@
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>20. ¿ Has sufrido maltrato verbal o físico de tu entrenador ?   </strong> </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="MaltratoVerbalEntrenador" name="MaltratoVerbalEntrenador">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 21. ¿ Cuantos hermanos tienes  ?  </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="HermanosTienes" name="HermanosTienes" />
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 22. ¿Cuantas horas entrenas ?  </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CuantasHorasEntrenas" name="CuantasHorasEntrenas">
+                            <option value="">Seleccionar</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4 </option>
+                            <option value="5 o mas ">5 o mas </option>
+
+
+
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 23. ¿ Te gustan las instalaciones donde practicas? </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="InstalacionesEntrenas" name="InstalacionesEntrenas">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 33. ¿ Que no te gusta ?  </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="NoteGustaInstlaciones" name="NoteGustaInstlaciones">
+                            <option value="">Seleccionar</option>
+                            <option value="Falta de Luz">Falta de Luz</option>
+                            <option value="Falta Ventilación">Falta Ventilación</option>
+                            <option value="Queda muy lejos">Queda muy lejos</option>
+                            <option value="No hay suficientes maquinas">No hay suficientes maquinas </option>
+                            <option value="Otras">Otras </option>
+
+
+
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>24. ¿ Además del deporte que prácticas, que otro deporte te gusta ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="OtrosDeportes" name="OtrosDeportes">
+
+                            <option value="">Seleccionar</option>
+
+                            <option value="Futbol">Fútbol</option>
+                            <option value="Futbol de Salon">Fútbol de Salón</option>
+                            <option value="Ajedrez">Ajedrez</option>
+                            <option value="Atletismo">Atletismo</option>
+                            <option value="Baloncesto">Baloncesto</option>
+                            <option value="Beisbol">Beisbol</option>
+                            <option value="Billar">Billar</option>
+                            <option value="Boxeo">Boxeo</option>
+                            <option value="Bolos">Bolos</option>
+                            <option value="Ciclismo">Ciclismo</option>
+                            <option value="Ciclismo Mtb">Ciclismo Mtb</option>
+                            <option value="Judo">Judo</option>
+                            <option value="Gimnasia">Gimnasia</option>
+                            <option value="Levantamiento de Pesas">Levantamiento de Pesas</option>
+                            <option value="Motociclismo">Motociclismo</option>
+                            <option value="Natación">Natación</option>
+                            <option value="Patinaje">Patinaje</option>
+                            <option value="Rugby">Rugby</option>
+                            <option value="Taekwondo">Taekwondo</option>
+                            <option value="Tenis">Tenis</option>
+                            <option value="Tiro con Arco">Tiro con Arco</option>
+                            <option value="Tenis de Mesa">Tenis de Mesa</option>
+                            <option value="Tenis de Campo">Tenis de Campo</option>
+                            <option value="Tejo">Tejo</option>
+                            <option value="Levicesar">Levicesar</option>
+                            <option value="Voleybol Playa">Voleybol Playa</option>
+                            <option value="Voleybol Piso">Voleybol Piso</option>
+                            <option value="Lidificer Discapacidad Fisica">Lidificer- Discapacidad Fisica</option>
+                            <option value="Lisorce">Lisorce</option>
+                            <option value="Levantamiento de Potencia">Levantamiento de Potencia</option>
+                            <option value="Motociclismo">Liga Motociclismo</option>
+                            <option value="Arqueros del Cesar">Liga de Arqueros del Cesar</option>
+                            <option value="Rugby">Liga de Rugby del Cesar</option>
+                            <option value="Baile Deportivo">Liga de Baile Deportivo del Cesar</option>
+                            <option value="Balonmano">Liga de Balonmano Tamalameque</option>
+                            <option value="Canotaje">liga de Catonaje del Cesar Chimichagua</option>
+                            <option value="Fisicolculturismo">Liga de Fisicolculturismo y Fitness del Cesar</option>
+                            <option value="Bowling">Liga de Bowling del Cesar</option>
+                            <option value="Otro">Otro</option>
+
+
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 25. ¿Que te gusta hacer en tus ratos libres ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="OtrosGustosDeportistas" name="OtrosGustosDeportistas">
+                            <option value="">Seleccionar</option>
+                            <option value="Dormir">Dormir</option>
+                            <option value="Leer">Leer</option>
+                            <option value="Tocar algun instrumento">Tocar algun instrumento</option>
+                            <option value="Estudiar">Estudiar</option>
+                            <option value="Cocinar">Cocinar</option>
+                            <option value="Bailar">Bailar</option>
+                            <option value=">Investigar cultura general">Investigar cultura general</option>
+                            <option value="Salir con mis amigos">Salir con mis amigos</option>
+                            <option value="Ir al parque">Ir al parque </option>
+                            <option value="Ver series">Ver series </option>
+                            <option value="Ver Peliculas">Ver Peliculas </option>
+                            <option value="Otras">Otras </option>
+
+
+
+                        </select>
+                    </div>
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 31. ¿Cuantas veces tomas agua al dia	?  </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="AguaDiaria" name="AguaDiaria">
+                            <option value="">Seleccionar</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4 </option>
+                            <option value="5 o mas">5 o mas </option>
+
+
+
+                        </select>
+                    </div>*@
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 38. ¿Cuantas horas entrenas ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="HorasEntrenamiento" name="HorasEntrenamiento">
+                            <option value="">Seleccionar</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4 </option>
+                            <option value="5 o mas">5 o mas </option>
+
+
+
+                        </select>
+                    </div>*@
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>32. ¿ te gusta estar frente al público cuando estas en campeonatos ?</strong> </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TegustaPublico" name="TegustaPublico">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 38. ¿ Porque no te gusta estar frente al público cuando estas en campeonatos ? </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="NotegustaHablarPublico" name="NotegustaHablarPublico">
+                            <option value="">Seleccionar</option>
+                            <option value="Miedo">Miedo</option>
+                            <option value="Presión">Presión</option>
+                            <option value="Angustia">Angustia</option>
+                            <option value="Desconcentración">Desconcentración</option>
+
+                        </select>
+                    </div>*@
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>41. ¿ Vives con tus padres ? </strong> </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="VivesPadres" name="VivesPadres">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 26. ¿ Con quien vives ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ConquienVives" name="ConquienVives">
+                            <option value="">Seleccionar</option>
+                            <option value="Padres">Padres</option>
+                            <option value="Padre">Padre</option>
+                            <option value="Madre">Madre</option>
+                            <option value="Abuelos">Abuelos</option>
+                            <option value="Tios">Tios</option>
+                            <option value="Primos">Primos</option>
+                            <option value="Amigos">Amigos</option>
+                            <option value="Solo o Sola">Solo o Sola</option>
+
+
+
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>27. ¿ Vives en pensión ? </strong> </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="VivesPension" name="VivesPension">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>28. ¿ Cuanto Pagas pensión ? </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CuantoPagas" name="CuantoPagas">
+                            <option value="">Seleccionar</option>
+                            <option value="300">300</option>
+                            <option value="350">350</option>
+                            <option value="400">400</option>
+                            <option value="450">450</option>
+                            <option value="500">500</option>
+                            <option value="550">550</option>
+                            <option value="600">600</option>
+                            <option value="650">650</option>
+                            <option value="700">700</option>
+                            <option value="750">750</option>
+
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <button class="btn btn-primary nextBtn pull-right" type="button" style="right:auto">SIGUIENTE</button>
+
+            </div>
+
+
+            @*************************************************************************************************************@
+            <div class="panel panel-primary setup-content" id="step-3">
+                <div class="panel-heading">
+
+                </div>
+                <div class="row m-0">
+
+
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>36 ¿ Vive tu mamá?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ViveMadre" name="ViveMadre">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>37. ¿ ¿Vive tu papá?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="VivePapa" name="VivePapa">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>29. ¿Como se llama tu mamá </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="NombreMadreDepor" name="NombreMadreDepor" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 30. ¿Como se llama tu papá? </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="NombrePadreDepor" name="NombrePadreDepor" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 31. ¿En que trabaja papá? </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="TrabajoPadreDepor" name="TrabajoPadreDepor" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 32. ¿En que trabaja mamá? </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="TrabajoMadreDepor" name="TrabajoMadreDepor" />
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>33. ¿Tienes problemas con tu papá?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ProblemasPadre" name="ProblemasPadre">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>34. ¿Tienes problemas con tu mamá?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ProblemasMadre" name="ProblemasMadre">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>35. ¿De quien dependes económicamente?    </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="DependeEconomicamente" name="DependeEconomicamente">
+                            <option value="">Seleccionar</option>
+                            <option value="Padres">Padres </option>
+                            <option value="Familiar Cercano">Familiar Cercano</option>
+                            <option value="Independiente">Independiente</option>
+                            <option value="No Registra">No Registra</option>
+                        </select>
+                    </div>
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 51. ¿Cuanto gana la persona?   </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="GuantoGana" name="GuantoGana">
+                            <option value="">Seleccionar</option>
+                            <option value="Menos de salario minimo">Menos de salario minimo </option>
+                            <option value="Un salario minimo">Un salario minimo </option>
+                            <option value="Dos salarios minimos">Dos salarios minimos</option>
+                            <option value="Tres salarios minimos">Tres salarios minimos</option>
+                            <option value="Cuatro salarios minimos o mas">Cuatro salarios minimos o mas</option>
+                            <option value="No Registra">No Registra</option>
+
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>36. ¿Fue o eres victima del conflicto armado?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="VictimaConflicto" name="VictimaConflicto">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                 
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>37. ¿ a que tipo de etnia perteneces?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoEtnia" name="TipoEtnia">
+                            <option value="">Seleccionar</option>
+                            <option value="Mayoritarios">Mayoritarios</option>
+                            <option value="Raizales">Raizales</option>
+                            <option value="Indigena">Indigena</option>
+                            <option value="Mestizos">Mestizos</option>
+                            <option value="ROM-Gitanos">ROM-Gitanos</option>
+                            <option value="Campesinos">Campesinos</option>
+                            <option value="Afrodescendientes">Afrodescendientes</option>
+                            <option value="Palenqueros">Palenqueros</option>
+                            <option value="Ninguno">Ninguno</option>
+
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>38. ¿ Género ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="GeneroDepor" name="GeneroDepor">
+                            <option value="">Seleccionar</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>39. ¿ Nivel Estudio ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="NivelEstudio" name="NivelEstudio">
+                            <option value="">Seleccionar</option>
+                            <option value="Primaria">Primaria</option>
+                            <option value="Bachiller">Bachiller</option>
+                            <option value="Técnico">Técnico</option>
+                            <option value="Profesional">Profesional</option>
+                            <option value="Especialista">Especialista</option>
+                            <option value="Post-grado">Post-grado</option>
+                            <option value="Ninguno">Ninguno</option>
+
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 40. ¿Estrato al que perteneces ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="EstadoEconomico" name="EstadoEconomico">
+                            <option value="">Seleccionar</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 41. ¿Cual comuna perteneces ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ComunaDepor" name="ComunaDepor">
+                            <option value="">Seleccionar</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4 </option>
+                            <option value="5">5 </option>
+                            <option value="6">6 </option>
+                            <option value="No reside en valledupar">No reside en valledupar</option>
+
+                        </select>
+                    </div>
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 58. ¿En que trabaja la persona con quien vives? </strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="TrabajaPersonaVives" name="TrabajaPersonaVives" />
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>59. ¿Cuanto gana la persona con la que vives?  </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CuantoGanaPersona" name="CuantoGanaPersona">
+                            <option value="">Seleccionar</option>
+                            <option value="Menos de salario minimo">Menos de salario minimo </option>
+                            <option value="Un salario minimo">Un salario minimo </option>
+                            <option value="Dos salarios minimos">Dos salarios minimos</option>
+                            <option value="Tres salarios minimos">Tres salarios minimos</option>
+                            <option value="Cuatro salarios minimos o mas">Cuatro salarios minimos o mas</option>
+                            <option value="No Registra">No Registra</option>
+
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>42. ¿Tienes problemas con las personas que viven contigo en tu casa?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="Problemaspersonasvives" name="Problemaspersonasvives">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>43. ¿Tienes problemas con algún miembro de la familia?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ProblemasMiembroFamilia" name="ProblemasMiembroFamilia">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>52. ¿Tienes un familiar con discapacidad?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="FamiliarDiscapacidad" name="FamiliarDiscapacidad">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>53. ¿Hay personas a tu alrededor agresivas?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="PersonasAgresivas" name="PersonasAgresivas">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>54. ¿Tienes familiares ancianos viviendo contigo?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="FamiliaresAncianos" name="FamiliaresAncianos">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>65. ¿Tienes familiares en estado de gestación que vivan contigo?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="FamiliaresGestacion" name="FamiliaresGestacion">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>55. ¿Algún miembro de tu familia practica algún deporte?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="FamiliaresDeportistas" name="FamiliaresDeportistas">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>44. ¿Tienes discapacidad?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TienesDiscapacidad" name="TienesDiscapacidad">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>45. ¿Tienes ayuda técnica?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TienesAyudaTecnica" name="TienesAyudaTecnica">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>58. ¿Has sufrido de bullyign por tu discapacidad?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="Bullying" name="Bullying">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>
+                            <strong>59. ¿Cuál es tu orientación sexual?    </strong>
+                        </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="OrientacionSexual" name="OrientacionSexual">
+                            <option value="">Seleccionar</option>
+                            <option value="Heterosexual">Heterosexual</option>
+                            <option value="Bisexual">Bisexual</option>
+                            <option value="Homosexual">Homosexual</option>
+                            <option value="Transexual">Transexual</option>
+                            <option value="Otro">Otro</option>
+                            <option value="No Registra">No Registra</option>
+
+
+                        </select>
+                    </div>*@
+
+
+
+                </div>
+                <button class="btn btn-primary nextBtn pull-right" type="button" style="right:auto">SIGUIENTE</button>
+
+            </div>
+
+
+            @*************************************************************************************************************@
+            <div class="panel panel-primary setup-content" id="step-4">
+                <div class="panel-heading">
+                </div>
+                <div class="row m-0">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                       
+                            <label><strong>46. ¿Estado Civil?</strong> </label>
+
+                            <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="BullyingOrientacionSexual" name="BullyingOrientacionSexual">
+                                <option value="">Seleccionar</option>
+                                <option value="Soltero(a)">Soltero(a)</option>
+                                <option value="Casado(a)">Casado(a)</option>
+                                <option value="Union Libre">Union Libre</option>
+                                <option value="Separado(a)">Separado(a)</option>
+                                <option value="Divorciado(a)">Divorciado(a)</option>
+                                <option value="Viudo(a)">Viudo(a)</option>
+                            </select>
+                        </div>
+
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>72. ¿Te han hecho bullying por tu orientación sexual?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="BullyingOrientacionSexual" name="BullyingOrientacionSexual">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>73. ¿Te ha dado depresión por eso?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="HasTenidoDepresion" name="HasTenidoDepresion">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>61. ¿Te gusta salir a fiestas?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="SalidasFiestas" name="SalidasFiestas">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>62. ¿Bebes alcohol?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="BebesAlcohol" name="BebesAlcohol">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>47. ¿Alguna vez probaste sustancias psicoactivas ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="SustanciasPsicoactivas" name="SustanciasPsicoactivas">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>
+                            <strong>48. ¿Tienes algún familiar que viva contigo que consuma sustancias Psicoactivas ?</strong>
+                        </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="FamiliaresPsicoactivas" name="FamiliaresPsicoactivas">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>49. ¿Sufres de depresión?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="SufresDepresion" name="SufresDepresion">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>66. ¿Tienes la vacuna del Covid 19?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TienesVacunaCovid19" name="TienesVacunaCovid19">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>50. ¿Trabajas actualmente ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="EpisodiosTrastornales" name="EpisodiosTrastornales">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>78. ¿Cual trastorno?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CualesEpisodios" name="CualesEpisodios">
+                            <option value="">Seleccionar</option>
+                            <option value="Ansiedad">Ansiedad</option>
+                            <option value="Abusos">Abusos</option>
+                            <option value="Episodios paranormales">Episodios paranormales</option>
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>51. ¿Va al psicologo?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="VaPsicologo" name="VaPsicologo">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>52. ¿Estudias?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="Estudias" name="Estudias">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>53. ¿Donde Estudias?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CualEstudio" name="CualEstudio">
+                            <option value="">Seleccionar</option>
+                            <option value="Universidad">Universidad</option>
+                            <option value="Colegio">Colegio</option>
+                            <option value="Instituto">Instituto</option>
+                        </select>
+                    </div>
+                  
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong> 54. ¿Cual semestre?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="Semestre" name="Semestre">
+                            <option value="">Seleccionar</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>72. ¿Nivel de escolaridad?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="Grado" name="Grado">
+                            <option value="">Seleccionar</option>
+                            <option value="Primaria">Primaria</option>
+                            <option value="Bachiller">Bachiller</option>
+                            <option value="Técnico">Técnico</option>
+                            <option value="Profesional">Profesional</option>
+                            <option value="Especialista">Especialista</option>
+                            <option value="Post-grado">Post-grado</option>
+                            <option value="Ninguno">Ninguno</option>
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>55. ¿Cual grado?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CualGrado" name="CualGrado">
+                            <option value="">Seleccionar</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>56. ¿Que estudias?</strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" class="form-control" id="QueEstudias" name="QueEstudias" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>57. ¿Que te gustaria estudiar?</strong></label>
+                        <input style="border: #3071a9; border-width: 1px; border-style: solid;" style="border: #367ebd; border-width: 1px; border-style: solid;" class="form-control" id="QueteGustariaEstudiar" name="QueteGustariaEstudiar" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>58. ¿Cuantas comidas te comes al dia? </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ComidasDiarias" name="ComidasDiarias">
+                            <option value="">Seleccionar</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4 </option>
+                            <option value="5 o mas">5 o mas </option>
+
+
+
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>59. ¿Cuantas horas duermes al dia?   </strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="DuermesDiario" name="DuermesDiario">
+                            <option value="">Seleccionar</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10 o mas">10 o mas </option>
+
+
+
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>60. ¿Te gustan las verduras?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="Verduras" name="Verduras">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>61. ¿Te gustan las frutas?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="Frutas" name="Frutas">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+
+                </div>
+                <button class="btn btn-primary nextBtn pull-right" type="button" style="right:auto">SIGUIENTE</button>
+
+            </div>
+            @******************************************************************************************************************@
+            <div class="panel panel-primary setup-content" id="step-5">
+                <div class="panel-heading">
+                    @*<h3 class="panel-title"><strong>SEGURIDAD SOCIAL</strong></h3>*@
+                </div>
+                <div class="row m-0">
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>93. ¿Sabes cocinar?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="Cocina" name="Cocina">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>80. ¿Tienes mejor amigo o amiga ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="MejorAmigos" name="MejorAmigos">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>62. ¿Sufres de alguna alergia?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="SufresAlergias" name="SufresAlergias">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>63. ¿Sufres de alguna enfermedad?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="SufresEnfermedad" name="SufresEnfermedad">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>64. ¿Cual enfermedad?</strong></label>
+                        <input style="border: #367ebd; border-width: 1px; border-style: solid;" class="form-control" id="CualesEpisodios" name="CualesEpisodios" />
+
+                        
+                    </div>
+                    
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>95. ¿Estas en tratamiento para tu enfermedad?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TratamientoEnfermedad" name="TratamientoEnfermedad">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>65. ¿En que te transportas a los entrenos ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TransporteEntrenos" name="TransporteEntrenos">
+                            <option value="">Seleccionar</option>
+                            <option value="Moto">Moto</option>
+                            <option value="Carro">Carro</option>
+                            <option value="Bicicleta">Bicicleta</option>
+                            <option value="Camina">Camina</option>
+                        </select>
+                    </div>
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>99. ¿Cuanto tiempo demora en llegar al sitio de entrenamiento?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TiempoSitioEntreno" name="TiempoSitioEntreno">
+                            <option value="">Seleccionar</option>
+                            <option value="10 Minutos">10 Minutos</option>
+                            <option value="20 Minutos">20 Minutos</option>
+                            <option value="30 Minutos o mas">30 Minutos o mas</option>
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>66. ¿Cuantas veces te movilizas de tu casa al lugar de entrenamiento diario?</strong></label>
+                        <select style="border:#367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CuantasVecesMovilizacion" name="CuantasVecesMovilizacion">
+                            <option value="">Seleccionar</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>99. ¿Hay parques cerca de tu casa para entrenar ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ParquesEntrenar" name="ParquesEntrenar">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>67. ¿Tienes tenis adecuados para el entrenamiento ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="Acueducto" name="Acueducto">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>68 ¿Tienes uniforme adecuado para tu deporte?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="UniformeAdecuado" name="UniformeAdecuado">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>87. ¿Usas trasporte publico ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TrasportePublico" name="TrasportePublico">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>104. ¿vecinos amigables tienes ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="VecinosAmigables" name="VecinosAmigables">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                            <option value="NO LOS CONOZCO">NO LOS CONOZCO</option>
+                        </select>
+                    </div>*@
+                    @*<div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>88. ¿tienes algún problema con tus vecinos?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ProblemasVecinos" name="ProblemasVecinos">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>*@
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>69. ¿Vive en casa propia ?</strong></label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CasaPropia" name="CasaPropia">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary nextBtn pull-right" type="button" style="right:auto">SIGUIENTE</button>
+
+            </div>
+            @*************************************************************************************************************@
+        <div class="panel panel-primary setup-content" id="step-6">
+            <div class="panel-heading">
+                @*<h3 class="panel-title"><strong>ESTILOS Y CONDICIONES DE VIDA</strong></h3>*@
+            </div>
+            <div class="row m-0">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>70. ¿Paga arriendo  ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="PagasArriedno" name="PagasArriedno">
+                        <option value="">Seleccionar</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong> 71. Cuanto Pagas arriendo</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CuantoArriendo" name="CuantoArriendo">
+                        <option value="">Seleccionar</option>
+                        <option value="250">250</option>
+                        <option value="300">300</option>
+                        <option value="350">350</option>
+                        <option value="400">400</option>
+                        <option value="450">450</option>
+                        <option value="500">500</option>
+                        <option value="550">550</option>
+                        <option value="600">600</option>
+                        <option value="650">650</option>
+                        <option value="700">700</option>
+                        <option value="750">750</option>
+
+
+                    </select>
+                </div>
+
+
+                <!--<div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>92. Que servicios tienes en tu casa</strong></label>
+                    <br />
+                    <label class="checkbox-inline">
+                        <input style="border: #367ebd; border-width: 1px; border-style: solid;" type="checkbox" id="ServiciosCasa" value="Agua">Agua
+                    </label>
+                    <label class="checkbox-inline">
+                        <input style="border: #367ebd; border-width: 1px; border-style: solid;" type="checkbox" id="ServiciosCasa2" value="Luz">Luz
+                    </label>
+                    <label class="checkbox-inline">
+                        <input style="border: #367ebd; border-width: 1px; border-style: solid;" type="checkbox" id="ServiciosCasa3" value="Gas">Gas
+                    </label>
+                    <label class="checkbox-inline">
+                        <input style="border: #367ebd; border-width: 1px; border-style: solid;" type="checkbox" id="ServiciosCasa4" value="Internet">Internet
+                    </label>
+                    <label class="checkbox-inline">
+                        <input style="border: #367ebd; border-width: 1px; border-style: solid;" type="checkbox" id="ServiciosCasa5" value="Telivision">Telivision
+                    </label>-->
+                    @*<input  style="border: #367ebd; border-width: 1px; border-style: solid;" class="form-control" id="EntrenamientoActual" name="EntrenamientoActual" />*@
+                <!--</div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>93. ¿Cuantos cuartos tiene tu casa  ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CuantosCuartos" name="CuantosCuartos">
+                        <option value="">Seleccionar</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                    </select>
+                </div>-->
+                @*<div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>111. ¿Cuantos baños tiene tu casa?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CuantosBaños" name="CuantosBaños">
+                        <option value="">Seleccionar</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                    </select>
+                </div>*@
+                @*<div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>94. ¿Tienes computadora   ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TienesComputadora" name="TienesComputadora">
+                        <option value="">Seleccionar</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>*@
+                @*<div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>113. ¿Tienes aire    ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TienesAire" name="TienesAire">
+                        <option value="">Seleccionar</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>*@
+                @*<div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>113. ¿Cuantos aire    ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CuantosAires" name="CuantosAires">
+                        <option value="">Seleccionar</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>*@
+                @*<div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>95. ¿Compartes cuanto    ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CompartesCuarto" name="CompartesCuarto">
+                        <option value="">Seleccionar</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>*@
+                <!--<div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>96. ¿Cuantas personas ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CuantosCompartescuarto" name="CuantosCompartescuarto">
+                        <option value="">Seleccionar</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>97. ¿Tienes cama   ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TienesCama" name="TienesCama">
+                        <option value="">Seleccionar</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>-->
+                @*<div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>117. ¿Tienes nevera   ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TienesNeveraCasa" name="TienesNeveraCasa">
+                        <option value="">Seleccionar</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>*@
+                <!--<div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>98. ¿Tienes mascota   ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TienesMascota" name="TienesMascota">
+                        <option value="">Seleccionar</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>-->
+                <!--<div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>119. ¿Cual mascota?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoMascota" name="TipoMascota">
+                        <option value="">Seleccionar</option>
+                        <option value="Perro">Perro</option>
+                        <option value="Gato">Gato</option>
+                        <option value="Conejo">Conejo</option>
+                        <option value="Pajaros">Pajaros</option>
+                        <option value="Entre otros">Entre otros</option>
+                    </select>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>120. ¿Te gusta la música    ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TeGustaMusica" name="TeGustaMusica">
+                        <option value="">Seleccionar</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>-->
+                @*<div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>121. ¿Sabes bailar?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="SabesBailar" name="SabesBailar">
+                        <option value="">Seleccionar</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>*@
+                <!--<div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>121. ¿Te dedicas tiempo a ti mismo    ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="DedicasTiempo" name="DedicasTiempo">
+                        <option value="">Seleccionar</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>122. ¿Eres feliz   ?</strong></label>
+                    <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="EresFeliz" name="EresFeliz">
+                        <option value="">Seleccionar</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>-->
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveEncuestaDeportistas">Guardar</button>
+            </div>
+        </div>
+            @*************************************************************************************************************@
+            <!--<div class="panel panel-primary setup-content" id="step-7">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>CONDICIONES DE SALUD</strong></h3>
+                </div>
+                <div class="row m-0">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>59. ¿La salud del encuestado es?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="EstadoSalud" name="EstadoSalud">
+                            <option value="">Seleccionar</option>
+                            <option value="EXCELENTE">EXCELENTE</option>
+                            <option value="MUY MALA">MUY BUENA</option>
+                            <option value="BUENA">BUENA</option>
+                            <option value="REGULAR">REGULAR</option>
+                            <option value="MALA">MALA</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>60. ¿En los últimos 30 días estuvo bien de su salud física? (dolor de cabeza, cansancio u otros síntomas) </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="SaludFisica" name="SaludFisica">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>61. ¿En los últimos 30 días estuvo bien de su salud mental? (tristeza,  depresión, acelerado, problemas familiares, otros) </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="SaludMental" name="SaludMental">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>62. En los últimos 6 meses, ¿ha asistido a consulta con psicólogo o psiquiatra? </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="SaludPsicologica" name="SaludPsicologica">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>63. ¿En los últimos 30 días, ¿durante cuántos días su mala salud física o mental le impidió realizar sus actividades normales?</label>
+                        <input class="form-control" id="ActividadNormalFisica" name="ActividadNormalFisica" />
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>64. ¿Dónde ocurrió la causa  que le impidió realizar sus actividades normales?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CausaActividadFisica" name="CausaActividadFisica">
+                            <option value="">Seleccionar</option>
+                            <option value="TRABAJO">TRABAJO</option>
+                            <option value="HOGAR">HOGAR</option>
+                            <option value="OTRAS">OTRAS</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>65. ¿Cuántos accidentes ha sufrido en los últimos 12 meses? </label>
+                        <input class="form-control" id="AccidenteLaborar" name="AccidenteLaborar" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>66. ¿Un accidente de origen común fue lo que le impidió al encuestado realizar las actividades normales?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="AccidenteOrigen" name="AccidenteOrigen">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>67. ¿Un accidente de trabajo fue lo que le impidió al encuestado realizar las actividades normales?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="AccidneteTrabajoActividad" name="AccidneteTrabajoActividad">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>68. ¿Una enfermedad de origen común fue lo que le impidió al encuestado realizar las actividades normales?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="EnfermedadOrigen" name="EnfermedadOrigen">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>69. ¿Una enfermedad de origen ocupacional fue lo que le  impidió al encuestado realizar las actividades normales?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="EnfermedadOrigenOcupacional" name="EnfermedadOrigenOcupacional">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>70. ¿Lesiones ocurridas al encuestado en el accidente más grave relacionado con la ocupación u oficio durante los últimos 12 meses (Elija Opcion)?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="LesionesOcurridad" name="LesionesOcurridad">
+                            <option value="">Seleccionar</option>
+                            <option value="FRACTURA">FRACTURA</option>
+                            <option value="LUXACIÓN">LUXACIÓN</option>
+                            <option value="TORCEDURA, ESGUINCE, DESGARRO MUSCULAR, HERNIA O LACERACIÓN">TORCEDURA, ESGUINCE, DESGARRO MUSCULAR, HERNIA O LACERACIÓN</option>
+                            <option value="TRAUMA INTERNO">TRAUMA INTERNO</option>
+                            <option value="AMPUTACIÓN">AMPUTACIÓN</option>
+                            <option value="HERIDA">HERIDA</option>
+                            <option value="TRAUMA SUPERFICIAL">TRAUMA SUPERFICIAL</option>
+                            <option value="GOLPE, CONTUSIÓN O APLASTAMIENTO">GOLPE, CONTUSIÓN O APLASTAMIENTO</option>
+                            <option value="QUEMADURA">QUEMADURA</option>
+                            <option value="ENVENENAMIENTO O INTOXICACIÓN AGUDA O ALERGIA">ENVENENAMIENTO O INTOXICACIÓN AGUDA O ALERGIA</option>
+                            <option value="EFECTO DEL TIEMPO, DEL CLIMA U OTRO RELACION CON EL">EFECTO DEL TIEMPO, DEL CLIMA U OTRO RELACION CON EL</option>
+                            <option value="ASFICIA">ASFICIA</option>
+                            <option value="EFECTO DE LA ELECTRICIDAD">EFECTO DE LA ELECTRICIDAD</option>
+                            <option value="EFECTO NOCIVO DE LA RADIACIÓN">EFECTO NOCIVO DE LA RADIACIÓN</option>
+                            <option value="LESIONES MULTIPLES">LESIONES MULTIPLES</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>71. ¿Partes del cuerpo del encuestado afectadas en el accidente relacionado con su oficio u ocupación  (Elija Opcion)?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ParteCuerpoLesion" name="ParteCuerpoLesion">
+                            <option value="">Seleccionar</option>
+                            <option value="CABEZA Y CUELLO">CABEZA Y CUELLO</option>
+                            <option value="TRONCO INCLUYE ESPALDA, COLUMNA VERTEBRAL, MÉDULA ESPINAL Y PELVIS">TRONCO INCLUYE ESPALDA, COLUMNA VERTEBRAL, MÉDULA ESPINAL Y PELVIS</option>
+                            <option value="TORAX">TORAX</option>
+                            <option value="ABDOMEN">ABDOMEN</option>
+                            <option value="MIEMBROS SUPERIORES">MIEMBROS SUPERIORES</option>
+                            <option value="MANOS">MANOS</option>
+                            <option value=">MIENMBROS INFERIORES">MIENMBROS INFERIORES</option>
+                            <option value="PIES">PIES</option>
+                            <option value="UBICACIONES MULTIPLES">UBICACIONES MULTIPLES</option>
+                            <option value="LESIONES GENERALES U OTRAS">LESIONES GENERALES U OTRAS</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>72. ¿Agente que le ocasionó al encuestado el accidente relacionado con su oficio u ocupación (Elija Opcion)?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="AgenteAccidente" name="AgenteAccidente">
+                            <option value="">Seleccionar</option>
+                            <option value="MAQUINAS Y/O EQUIPOS">MAQUINAS Y/O EQUIPOS</option>
+                            <option value="MEDIOS DE TRANSPORTE">MEDIOS DE TRANSPORTE</option>
+                            <option value="APARATOS INCLUYE HERRAMIENTAS, IMPLEMENTOS O UTENSILIOS">APARATOS INCLUYE HERRAMIENTAS, IMPLEMENTOS O UTENSILIOS</option>
+                            <option value="MATERIALES O SUSTANCIAS INCLUYE LAS RADIACIONES">MATERIALES O SUSTANCIAS INCLUYE LAS RADIACIONES</option>
+                            <option value="AMBIENTE DE TRABAJO INCLUYE SUPERFICIES DE TRANSITO Y TRABAJO">AMBIENTE DE TRABAJO INCLUYE SUPERFICIES DE TRANSITO Y TRABAJO</option>
+                            <option value="OTROS AGENTES NO CLASIFICADOS INCLUYE ANIMALES VIVOS O PRODUCTOS ANIMALES">OTROS AGENTES NO CLASIFICADOS INCLUYE ANIMALES VIVOS O PRODUCTOS ANIMALES</option>
+                            <option value="AGENTES NO CLASIFICADOS">AGENTES NO CLASIFICADOS</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>73. ¿Mecanismo que le ocasionó al encuestado el accidente relacionado con su oficio u ocupación (Elija Opcion)?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="MecanismoAccidente" name="MecanismoAccidente">
+                            <option value="">Seleccionar</option>
+                            <option value="CAIDA DE PERSONAS">CAIDA DE PERSONAS</option>
+                            <option value="CAIDA DE OBJETOS">CAIDA DE OBJETOS</option>
+                            <option value="PISADAS, CHOQUES O GOLPES">PISADAS, CHOQUES O GOLPES</option>
+                            <option value="ATRAPAMIENTO">ATRAPAMIENTO</option>
+                            <option value="SOBREESFUERZO, ESFUERZO EXCESIVO O FALSO MOVIMIENTO">SOBREESFUERZO, ESFUERZO EXCESIVO O FALSO MOVIMIENTO</option>
+                            <option value="EXPOSICIÓN O CONTACTO CON TEMPERATURA EXTREMA">EXPOSICIÓN O CONTACTO CON TEMPERATURA EXTREMA</option>
+                            <option value="EXPOSICIÓN O CONTACTO CON LA ELECTRICIDAD">EXPOSICIÓN O CONTACTO CON LA ELECTRICIDAD</option>
+                            <option value="EXPOSICIÓN O CONTACTO CON SUSTANCIAS NOVIVAS O RADIACIONES O SALPICADURAS">EXPOSICIÓN O CONTACTO CON SUSTANCIAS NOVIVAS O RADIACIONES O SALPICADURAS</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>74. ¿Usted informó del accidente relacionado con su oficio u ocupación? </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="InformoAccidente" name="InformoAccidente">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>75. ¿Causa por la que el encuestado no informó el accidente relacionado con el trabajo (Elija Opcion)?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="NoInformoAccidente" name="NoInformoAccidente">
+                            <option value="">Seleccionar</option>
+                            <option value="DESCONOCIMIENTO">DESCONOCIMIENTO</option>
+                            <option value="FALTA DE TIEMPO">FALTA DE TIEMPO</option>
+                            <option value="POCA IMPORTANCIA">POCA IMPORTANCIA</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>76. ¿Actor al cual el encuestado informó del accidente ocurrido durante la realización de su oficio u ocupación (Elija Opcion)?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ActorInformoAccidente" name="ActorInformoAccidente">
+                            <option value="">Seleccionar</option>
+                            <option value="FAMILIA">FAMILIA</option>
+                            <option value="CONOCIDO">CONOCIDO</option>
+                            <option value="DROGUERIA">DROGUERIA</option>
+                            <option value="HOSPITAL">HOSPITAL</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>77. ¿Días en que el encuestado dejó de realizar el oficio o la ocupación por causa del accidente?</label>
+                        <input class="form-control" id="IncapacidadAccidente" name="IncapacidadAccidente" />
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>78. ¿Actor que asumió los costos del accidente  relacionado con el oficio u la ocupación del encuestado?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CostosAccidente" name="CostosAccidente">
+                            <option value="">Seleccionar</option>
+                            <option value="GRUPO ORGANIZADO DE TRABAJADORES INFORMALES">GRUPO ORGANIZADO DE TRABAJADORES INFORMALES</option>
+                            <option value="EL TRABAJADOR O LA FAMILIA">EL TRABAJADOR O LA FAMILIA</option>
+                            <option value="EMPRESA PRESTADORA DE SERVICIOS DE SALUD">EMPRESA PRESTADORA DE SERVICIOS DE SALUD</option>
+                            <option value="OTRA">OTRA</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>
+                            79. ¿Indicador de diagnóstico o trámite de reconocimiento de alguna enfermedad relacionada con el oficio u ocupación del encuestado?
+                        </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TramiteEnfermedad" name="TramiteEnfermedad">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>80. ¿Enfermedad diagnosticada?</label>
+                        <input class="form-control" id="EnfermedadDiagnosticada" name="EnfermedadDiagnosticada" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>
+                            81. ¿El accidente o enfermedad relacionados con su oficio u ocupación le  causó alguna condición de discapacidad?
+                        </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CausaDiscapacidad" name="CausaDiscapacidad">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>
+                            82. ¿Qué tipo de discapacidad le ha causado?
+                        </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoDiscapacidad" name="TipoDiscapacidad">
+                            <option value="">Seleccionar</option>
+                            <option value="SENSORIAL">SENSORIAL</option>
+                            <option value="MOTRIZ">MOTRIZ</option>
+                            <option value="MENTAL">MENTAL</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary nextBtn pull-right" type="button" style="right:auto">SIGUIENTE</button>
+
+            </div>-->
+
+            @*************************************************************************************************************@
+            <!--<div class="panel panel-primary setup-content" id="step-8">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>CONDICIONES DE TRABAJO</strong></h3>
+                </div>
+                <div class="row m-0">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>83. ¿El encuestado considera seguro el lugar donde desarrolla el oficio u ocupación, es? </label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CondicionTrabajo" name="CondicionTrabajo">
+                            <option value="">Seleccionar</option>
+                            <option value="MUY SEGURO">MUY SEGURO</option>
+                            <option value="SEGURO">SEGURO</option>
+                            <option value="POCO SEGURO">POCO SEGURO</option>
+                            <option value="MUY INSEGURO">MUY INSEGURO</option>
+                            <option value="SILVICULTURA">NO REGISTRA</option>
+
+                        </select>
+                    </div>
+                    <h2> <strong>Identifique los peligros a que está expuesto en la realización</strong>  </h2>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>84. ¿Peligros físicos a los cuales se expone el encuestado al realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="PeligrosFisico" name="PeligrosFisico">
+                            <option value="">Seleccionar</option>
+                            <option value="RUIDO">RUIDO</option>
+                            <option value="ILUMINACIÓN">ILUMINACIÓN</option>
+                            <option value="VIBRACIÓN">VIBRACIÓN</option>
+                            <option value="TEMPERATURAS EXTREMAS">TEMPERATURAS EXTREMAS</option>
+                            <option value="PRESIÓN ATMOSFERICA">PRESIÓN ATMOSFERICA</option>
+                            <option value="RADIACIONES IONIZANTES">RADIACIONES IONIZANTES</option>
+                            <option value="RADIACIONES NO IONIZANTES">RADIACIONES NO IONIZANTES</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>85. ¿Peligros psicosociales a los cuales se expone el encuestado al realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="PeligrosPsicosocial" name="PeligrosPsicosocial">
+                            <option value="">Seleccionar</option>
+                            <option value="GESTIÓN ORGANIZACIONAL">GESTIÓN ORGANIZACIONAL</option>
+                            <option value="CARACTERISTICAS DE LA ORGANIZACION DEL TRABAJO">CARACTERISTICAS DE LA ORGANIZACION DEL TRABAJO</option>
+                            <option value="CARACTERISTICAS DEL GRUPO SOCIAL DE TRABAJO">CARACTERISTICAS DEL GRUPO SOCIAL DE TRABAJO</option>
+                            <option value="CONDICIONES DE LA TAREA">CONDICIONES DE LA TAREA</option>
+                            <option value="INTERFASES PERSONA-TAREA">INTERFASES PERSONA-TAREA</option>
+                            <option value="JORNADA DE TRABAJO">JORNADA DE TRABAJO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>86. ¿Peligros biológicos a los cuales se expone el encuestado al realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="Peligrosbiologico" name="Peligrosbiologico">
+                            <option value="">Seleccionar</option>
+                            <option value="VIRUS">VIRUS</option>
+                            <option value="BACTERIAS">BACTERIAS</option>
+                            <option value="HONGOS">HONGOS</option>
+                            <option value="RICKETSIAS">RICKETSIAS</option>
+                            <option value="PARASITOS">PARASITOS</option>
+                            <option value="PICADURAS">PICADURAS</option>
+                            <option value="MORDEDURAS">MORDEDURAS</option>
+                            <option value="FLUIDOS O EXCREMENTOS">FLUIDOS O EXCREMENTOS</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>87. ¿Condiciones de seguridad a los cuales se expone el encuestado al realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CondicionesSeguridad" name="CondicionesSeguridad">
+                            <option value="">Seleccionar</option>
+                            <option value="MECANICO">MECANICO</option>
+                            <option value="ELECTRICO">ELECTRICO</option>
+                            <option value="LOCATIVO">LOCATIVO</option>
+                            <option value="TECNOLOGICO">TECNOLOGICO</option>
+                            <option value="ACCIDENTES DE TRANSITO">ACCIDENTES DE TRANSITO</option>
+                            <option value="PUBLICOS">PUBLICOS</option>
+                            <option value="TRABAJO EN ALTURAS">TRABAJO EN ALTURAS</option>
+                            <option value="ESPACIOS CONFINADOS">ESPACIOS CONFINADOS</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>88. ¿Peligros biomecánicos a los cuales se expone el encuestado al realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="PeligrosBiomecanicos" name="PeligrosBiomecanicos">
+                            <option value="">Seleccionar</option>
+                            <option value="POSTURA">POSTURA</option>
+                            <option value="ESFUERZO">ESFUERZO</option>
+                            <option value="MOVIMIENTO REPETITIVO">MOVIMIENTO REPETITIVO</option>
+                            <option value="MANIPULACIÓN MANUAL DE CARGAS">MANIPULACIÓN MANUAL DE CARGAS</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>89. ¿Peligros químicos a los cuales se expone el encuestado al realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="PeligrosQuimicos" name="PeligrosQuimicos">
+                            <option value="">Seleccionar</option>
+                            <option value="POLVOS">POLVOS</option>
+                            <option value="FIBRAS">FIBRAS</option>
+                            <option value="LIQUIDOS">LIQUIDOS</option>
+                            <option value="GASES Y VAPORES">GASES Y VAPORES</option>
+                            <option value="HUMOS">HUMOS</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>90. ¿Fenómenos naturales a los cuales se expone el encuestado al realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="FenomenosNatural" name="FenomenosNatural">
+                            <option value="">Seleccionar</option>
+                            <option value="SISMO">SISMO</option>
+                            <option value="TERREMOTO">TERREMOTO</option>
+                            <option value="VENDAVAL">VENDAVAL</option>
+                            <option value="INUNDACIÓN">INUNDACIÓN</option>
+                            <option value="DERRUMBE">DERRUMBE</option>
+                            <option value="PRECIPITACIONES">PRECIPITACIONES</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>91. ¿Uso de elementos de protección personal para  realizar el oficio u ocupación habitual?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ElementosProteccion" name="ElementosProteccion">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>92. ¿Uso de elementos de protección para la cabeza al realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ProteccionCabeza" name="ProteccionCabeza">
+                            <option value="">Seleccionar</option>
+                            <option value="CASCOS PARA USOS ESPECIALES">CASCOS PARA USOS ESPECIALES</option>
+                            <option value="CUBRECABEZAS LIGEROS DE PROTECCION DEL CUERO CABELLUDO">CUBRECABEZAS LIGEROS DE PROTECCION DEL CUERO CABELLUDO</option>
+                            <option value="PRENDAS DE PROTECCIÓN PARA LA CABEZA">PRENDAS DE PROTECCIÓN PARA LA CABEZA</option>
+                            <option value="SOMBRERO">SOMBRERO</option>
+                            <option value="GORRO O CACHUCHA">GORRO O CACHUCHA</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>93. ¿Uso de elementos de protección ocular para realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ProteccionOcular" name="ProteccionOcular">
+                            <option value="">Seleccionar</option>
+                            <option value="SISMO">SISMO</option>
+                            <option value="GAFAS DE MONTURA UNIVERSAL CON O SIN PROTECCIONES LATERALES">GAFAS DE MONTURA UNIVERSAL CON O SIN PROTECCIONES LATERALES</option>
+                            <option value="VENDAVAL">GAFAS DE MONTURA INTEGRAL</option>
+                            <option value="GAFAS DE PROTECCIÓN CONTRA LOS RAYOS X, RAYOS LASER, RAYOS ULTRAVIOLETAS, INFRARROJOS Y VISIBLES">GAFAS DE PROTECCIÓN CONTRA LOS RAYOS X, RAYOS LASER, RAYOS ULTRAVIOLETAS, INFRARROJOS Y VISIBLES</option>
+                            <option value="PANTALLA FACIAL">PANTALLA FACIAL</option>
+                            <option value="PANTALLA DE SOLDADURA DE MANO">PANTALLA DE SOLDADURA DE MANO</option>
+                            <option value="PANTALLA DE SOLDADURA DE CABEZA">PANTALLA DE SOLDADURA DE CABEZA</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>94. ¿Uso de elementos de protección auditiva para realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ProteccionAuditiva" name="ProteccionAuditiva">
+                            <option value="">Seleccionar</option>
+                            <option value="OREJERAS">OREJERAS</option>
+                            <option value="TAPONES PARA LOS OIDOS DE USO MULTIPLE O DESECHABLE">TAPONES PARA LOS OIDOS DE USO MULTIPLE O DESECHABLE</option>
+                            <option value="PROTECTORES AURICULARES">PROTECTORES AURICULARES</option>
+                            <option value="CASCOS ANTIRRUIDO">CASCOS ANTIRRUIDO</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>95. ¿Uso de elementos de protección respiratoria para realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ProteccionRespiratoria" name="ProteccionRespiratoria">
+                            <option value="">Seleccionar</option>
+                            <option value="TAPABOCAS">TAPABOCAS</option>
+                            <option value="MASCARAS PARA GASES">MASCARAS PARA GASES</option>
+                            <option value="MASCARAS PARA VAPORES">MASCARAS PARA VAPORES</option>
+                            <option value="MASCARILLAS AUTOFILTRANTES">MASCARILLAS AUTOFILTRANTES</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>96. ¿Uso de elementos de protección de extremidades superiores para realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ExtremidadesSuperiores" name="ExtremidadesSuperiores">
+                            <option value="">Seleccionar</option>
+                            <option value="GUANTES DE LATEX">GUANTES DE LATEX</option>
+                            <option value="GUANTES DE NITRILO">GUANTES DE NITRILO</option>
+                            <option value="GUANTES DE NEOPRENO">GUANTES DE NEOPRENO</option>
+                            <option value="GUANTES DE MALLA">GUANTES DE MALLA</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>97. ¿Uso de elementos de protección de extremidades inferiores para realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="ExtremidadesInferiores" name="ExtremidadesInferiores">
+                            <option value="">Seleccionar</option>
+                            <option value="CALZADO DE SEGURIDAD">CALZADO DE SEGURIDAD</option>
+                            <option value="CALZADO DE TRABAJO">CALZADO DE TRABAJO</option>
+                            <option value="CALZADO DE DIELECTRICO">CALZADO DE DIELECTRICO</option>
+                            <option value="CALZADO DE ANTIESTATICO">CALZADO DE ANTIESTATICO</option>
+                            <option value="BOTAS DE CAUCHO">BOTAS DE CAUCHO</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>98. ¿Uso de otros elementos  de protección personal para realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="OtrosElementos" name="OtrosElementos">
+                            <option value="">Seleccionar</option>
+                            <option value="ESLINGA">ESLINGA</option>
+                            <option value="CINTURON DE SEGURIDAD">CINTURON DE SEGURIDAD</option>
+                            <option value="ARNES">ARNES</option>
+                            <option value="CASCO CON BARBUQUEJO">CASCO CON BARBUQUEJO</option>
+                            <option value="LINEA DE VIDA">LINEA DE VIDA</option>
+                            <option value="MOSQUETONES">MOSQUETONES</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>99. ¿Uso de ropa de trabajo para realizar el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="RopaTrabajo" name="RopaTrabajo">
+                            <option value="">Seleccionar</option>
+                            <option value="CONTRA PRODUCTOS QUIMICOS LIQUIDOS">CONTRA PRODUCTOS QUIMICOS LIQUIDOS</option>
+                            <option value="ALTA VISIBILIDAD">ALTA VISIBILIDAD</option>
+                            <option value="CONTRA EL FRIO">CONTRA EL FRIO</option>
+                            <option value="PROPIEDADES ELECTROESTATICAS">PROPIEDADES ELECTROESTATICAS</option>
+                            <option value="CONTRA CALOR Y LLAMAS">CONTRA CALOR Y LLAMAS</option>
+                            <option value="SONDEO Y TECNICAS CONEXAS">SONDEO Y TECNICAS CONEXAS</option>
+                            <option value="CONTRA RIESGOS DE QUEDAR ATRAPADOS POR LAS PIEZAS DE MAQUINAS EN MOVIMIENTO">CONTRA RIESGOS DE QUEDAR ATRAPADOS POR LAS PIEZAS DE MAQUINAS EN MOVIMIENTO</option>
+                            <option value="DELANTAL PLASTICO">DELANTAL PLASTICO</option>
+                            <option value="NINGUNO">NINGUNO</option>
+                            <option value="NO REGISTRA">NO REGISTRA</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>100. ¿Identificación de posibles  emergencias que se pueden presentar en el lugar donde el encuestado desarrolla el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="EmergenciaEncuestado" name="EmergenciaEncuestado">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>101. ¿Conocimiento para actuar en caso de presentarse una emergencia en el lugar donde desarrolla el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="CasoEmergencia" name="CasoEmergencia">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>102. ¿Disposición de extintor para atender una  emergencia en el lugar donde desarrolla el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="Extintores" name="Extintores">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>103. ¿Disposición de botiquín de primeros auxilios para atender una  emergencia en el lugar donde desarrolla el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="Botiquin" name="Botiquin">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>104. ¿Disposición de ruta de evacuación para atender una  emergencia en el lugar donde desarrolla el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="RutaEvacuacion" name="RutaEvacuacion">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>105. ¿Disposición de salidas de emergencia para atender una  emergencia en el lugar donde desarrolla el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="SalidaEmergencia" name="SalidaEmergencia">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>106. ¿Conocimiento del lugar a donde dirigirse en caso de emergencia?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="LugarCasoEmergencia" name="LugarCasoEmergencia">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>107. ¿Disposición de agua potable en  el lugar donde desarrolla el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="AguaPotable" name="AguaPotable">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>108. ¿Disposición de un sistema de recolección de residuos en  el lugar donde desarrolla el oficio u ocupación?</label>
+                        <select style="border: #367ebd; border-width: 1px; border-style: solid;" class="select2 form-control" id="RecoleccionResiduos" name="RecoleccionResiduos">
+                            <option value="">Seleccionar</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>109. ¿Hora de terminación?</label>
+                        <input type="time" class="form-control select-css" id="HoraTerminacion" name="HoraTerminacion" />
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>110. Nombre del Encuestado:</label>
+                        <input class="form-control" id="NombreEncuestado" name="NombreEncuestado" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label>Numero de Identificacion Encuestado</label>
+                        <input type="number" class="form-control" id="CedulaEncuestado" name="CedulaEncuestado" />
+                    </div>
+                    <img class="d-none" id="Firma" src="" alt="Tu Imagen aparecera Aqui!" />
+
+                    <div class="row" id="container-firma">
+                        <div class="col-md-12">
+                            <canvas id="draw-canvas" width="1200" height="200">
+                                No tienes un buen navegador.
+                            </canvas>
+                        </div>
+                    </div>
+                    <div class="row" id="container-firma-actions">
+                        <div class="col-md-12">
+                            <input type="button" class="button" id="draw-submitBtn" value="Crear Imagen" />
+                            <input type="button" class="button" id="draw-clearBtn" value="Borrar Imagen" />
+
+                            <label>Color</label>
+                            <input type="color" id="color">
+                            <label>Tamaño Puntero</label>
+                            <input type="range" id="puntero" min="1" default="1" max="5" width="100" />
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <br />
+                    <div class="row" id="container-url-firma">
+                        <div class="col-md-12">
+                            <textarea id="draw-dataUrl" class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="contenedor" id="container-imagen-firmada">
+                        <div class="col-md-12">
+                            <img id="draw-image" src="" alt="Tu Imagen aparecera Aqui!" />
+
+
+                        </div>
+
+                    </div>
+                   
+
+                </div>
+
+            </div>-->
+
+
+
+
+        </form>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var navListItems = $('div.setup-panel div a'),
+                allWells = $('.setup-content'),
+                allNextBtn = $('.nextBtn');
+
+            allWells.hide();
+
+            navListItems.click(function (e) {
+                e.preventDefault();
+                var $target = $($(this).attr('href')),
+                    $item = $(this);
+
+                if (!$item.hasClass('disabled')) {
+                    navListItems.removeClass('btn-success').addClass('btn-default');
+                    $item.addClass('btn-success');
+                    allWells.hide();
+                    $target.show();
+                    $target.find('input:eq(0)').focus();
+                }
+            });
+
+            allNextBtn.click(function () {
+                var curStep = $(this).closest(".setup-content"),
+                    curStepBtn = curStep.attr("id"),
+                    nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                    curInputs = curStep.find("input[type='text'],input[type='url']"),
+                    isValid = true;
+
+                $(".form-group").removeClass("has-error");
+                for (var i = 0; i < curInputs.length; i++) {
+                    if (!curInputs[i].validity.valid) {
+                        isValid = false;
+                        $(curInputs[i]).closest(".form-group").addClass("has-error");
+                    }
+                }
+
+                if (isValid) nextStepWizard.removeAttr('disabled').trigger('click');
+            });
+
+            $('div.setup-panel div a.btn-success').trigger('click');
+        });
+        //(function () { // Comenzamos una funcion auto-ejecutable
+
+        //    // Obtenenemos un intervalo regular(Tiempo) en la pamtalla
+        //    window.requestAnimFrame = (function (callback) {
+        //        return window.requestAnimationFrame ||
+        //            window.webkitRequestAnimationFrame ||
+        //            window.mozRequestAnimationFrame ||
+        //            window.oRequestAnimationFrame ||
+        //            window.msRequestAnimaitonFrame ||
+        //            function (callback) {
+        //                window.setTimeout(callback, 1000 / 60);
+        //                // Retrasa la ejecucion de la funcion para mejorar la experiencia
+        //            };
+        //    })();
+
+        //    // Traemos el canvas mediante el id del elemento html
+        //    var canvas = document.getElementById("draw-canvas");
+        //    var ctx = canvas.getContext("2d");
+
+
+        //    // Mandamos llamar a los Elemetos interactivos de la Interfaz HTML
+        //    var drawText = document.getElementById("draw-dataUrl");
+        //    var drawImage = document.getElementById("draw-image");
+        //    var clearBtn = document.getElementById("draw-clearBtn");
+        //    var submitBtn = document.getElementById("draw-submitBtn");
+        //    clearBtn.addEventListener("click", function (e) {
+        //        // Definimos que pasa cuando el boton draw-clearBtn es pulsado
+        //        clearCanvas();
+        //        drawImage.setAttribute("src", "");
+        //    }, false);
+        //    // Definimos que pasa cuando el boton draw-submitBtn es pulsado
+        //    submitBtn.addEventListener("click", function (e) {
+        //        var dataUrl = canvas.toDataURL();
+        //        drawText.innerHTML = dataUrl;
+        //        drawImage.setAttribute("src", dataUrl);
+        //    }, false);
+
+        //    // Activamos MouseEvent para nuestra pagina
+        //    var drawing = false;
+        //    var mousePos = { x: 0, y: 0 };
+        //    var lastPos = mousePos;
+        //    canvas.addEventListener("mousedown", function (e) {
+        //        /*
+        //          Mas alla de solo llamar a una funcion, usamos function (e){...}
+        //          para mas versatilidad cuando ocurre un evento
+        //        */
+        //        var tint = document.getElementById("color");
+        //        var punta = document.getElementById("puntero");
+        //        console.log(e);
+        //        drawing = true;
+        //        lastPos = getMousePos(canvas, e);
+        //    }, false);
+        //    canvas.addEventListener("mouseup", function (e) {
+        //        drawing = false;
+        //    }, false);
+        //    canvas.addEventListener("mousemove", function (e) {
+        //        mousePos = getMousePos(canvas, e);
+        //    }, false);
+
+        //    // Activamos touchEvent para nuestra pagina
+        //    canvas.addEventListener("touchstart", function (e) {
+        //        mousePos = getTouchPos(canvas, e);
+        //        console.log(mousePos);
+        //        e.preventDefault(); // Prevent scrolling when touching the canvas
+        //        var touch = e.touches[0];
+        //        var mouseEvent = new MouseEvent("mousedown", {
+        //            clientX: touch.clientX,
+        //            clientY: touch.clientY
+        //        });
+        //        canvas.dispatchEvent(mouseEvent);
+        //    }, false);
+        //    canvas.addEventListener("touchend", function (e) {
+        //        e.preventDefault(); // Prevent scrolling when touching the canvas
+        //        var mouseEvent = new MouseEvent("mouseup", {});
+        //        canvas.dispatchEvent(mouseEvent);
+        //    }, false);
+        //    canvas.addEventListener("touchleave", function (e) {
+        //        // Realiza el mismo proceso que touchend en caso de que el dedo se deslice fuera del canvas
+        //        e.preventDefault(); // Prevent scrolling when touching the canvas
+        //        var mouseEvent = new MouseEvent("mouseup", {});
+        //        canvas.dispatchEvent(mouseEvent);
+        //    }, false);
+        //    canvas.addEventListener("touchmove", function (e) {
+        //        e.preventDefault(); // Prevent scrolling when touching the canvas
+        //        var touch = e.touches[0];
+        //        var mouseEvent = new MouseEvent("mousemove", {
+        //            clientX: touch.clientX,
+        //            clientY: touch.clientY
+        //        });
+        //        canvas.dispatchEvent(mouseEvent);
+        //    }, false);
+
+        //    // Get the position of the mouse relative to the canvas
+        //    function getMousePos(canvasDom, mouseEvent) {
+        //        var rect = canvasDom.getBoundingClientRect();
+        //        /*
+        //          Devuelve el tamaño de un elemento y su posición relativa respecto
+        //          a la ventana de visualización (viewport).
+        //        */
+        //        return {
+        //            x: mouseEvent.clientX - rect.left,
+        //            y: mouseEvent.clientY - rect.top
+        //        };
+        //    }
+
+        //    // Get the position of a touch relative to the canvas
+        //    function getTouchPos(canvasDom, touchEvent) {
+        //        var rect = canvasDom.getBoundingClientRect();
+        //        console.log(touchEvent);
+        //        /*
+        //          Devuelve el tamaño de un elemento y su posición relativa respecto
+        //          a la ventana de visualización (viewport).
+        //        */
+        //        return {
+        //            x: touchEvent.touches[0].clientX - rect.left, // Popiedad de todo evento Touch
+        //            y: touchEvent.touches[0].clientY - rect.top
+        //        };
+        //    }
+
+        //    // Draw to the canvas
+        //    function renderCanvas() {
+        //        if (drawing) {
+        //            var tint = document.getElementById("color");
+        //            var punta = document.getElementById("puntero");
+        //            ctx.strokeStyle = tint.value;
+        //            ctx.beginPath();
+        //            ctx.moveTo(lastPos.x, lastPos.y);
+        //            ctx.lineTo(mousePos.x, mousePos.y);
+        //            console.log(punta.value);
+        //            ctx.lineWidth = punta.value;
+        //            ctx.stroke();
+        //            ctx.closePath();
+        //            lastPos = mousePos;
+        //        }
+        //    }
+
+        //    function clearCanvas() {
+        //        canvas.width = canvas.width;
+        //    }
+
+        //    // Allow for animation
+        //    (function drawLoop() {
+        //        requestAnimFrame(drawLoop);
+        //        renderCanvas();
+        //    })();
+
+        //})();
+
+
+        //$(document).ready(function(){
+
+        //    $('#AfiliacionActualEncuestado1').change(function () {
+        //        selected_value = $("input[name='AfiliacionActualEncuestado1']:checked").val();
+        //        swal(" ¡No se puede realizar la encuesta! ");
+        //    });
+        //    $('#AfiliacionActualEncuestado').change(function () {
+        //        selected_value = $("input[name='AfiliacionActualEncuestado']:checked").val();
+        //        swal(" ¡Proceda a realizar la encuesta!");
+        //    });
+
+        //            });
+
+
+    </script>
+</body>
+</html>
+
+

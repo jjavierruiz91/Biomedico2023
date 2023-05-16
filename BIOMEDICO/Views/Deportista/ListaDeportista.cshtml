@@ -1,0 +1,439 @@
+﻿
+@{
+    ViewBag.Title = "ListaDeportista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Scripts/APP/Deportista/LIstaDeportista.js"></script>
+<h2>Listado Deportista</h2>
+
+<div class="table-responsive row col-xl-12 ">
+    <table class="table" id="datatable-Deportista">
+        <thead>
+            <tr class="ColorTabla">
+                <th>TIPO IDENTIFICACIÓN</th>
+                <th>NUMERO IDENTIFICACIÓN</th>
+                <th>PRIMER NOMBRE</th>
+                <th>SEGUNDO NOMBRE</th>
+                <th>PRIMER APELLIDO</th>
+                <th>SEGUNDO APELLIDO</th>
+                <th> FECHA NACIMIENTO </th>
+                <th>PAIS NACIMIENTO  </th>
+                <th> DEPARTAMENTO NACIMIENTO </th>
+                <th> MUNICIPIO NACIMIENTO </th>
+                <th> EDAD </th>
+                <th> GRUPO ETAREO </th>
+                <th> GENERO </th>
+                <th> CONDICION POBLACION </th>
+                <th>TIPO DE POBLACIÓN</th>
+                <th>TELEFONO  </th>
+                <th> NIVEL ESTUDIO </th>
+                <th>PAIS RESIDENCIA  </th>
+                <th>DEPARTAMENTO RESIDENCIA  </th>
+                <th> MUNICIPIO RESIDENCIA </th>
+                <th>BARRIO RESIDENCIA </th>
+                <th> DIRECCION RESIDENCIA</th>
+                <th>TIPO ETNIA </th>
+                <th>ZONA INFLUENCIA </th>
+                <th>DEPORTE  </th>
+                <th>NOMBRE GRUPO </th>
+                <th>PESO </th>
+                <th>ESTATURA </th>
+                <th>TALLA CAMISA </th>
+                <th>TALLA PANTALON </th>
+                <th>TALLA CALZADO </th>
+                <th>TALLA SUDADERA </th>
+                <th>NOMBRE PADRE </th>
+                <th> APELLIDO PADRE</th>
+                <th>CELULAR PADRE </th>
+                <th>DIRECCION PADRE </th>
+                <th>BARRIO PADRE </th>
+                <th>CORREO DEPORTISTA  </th>
+
+
+                <th> GRUPO SANGUINEO </th>
+                <th> EPS </th>
+
+
+
+
+
+
+
+
+
+
+                <th>NOMBRE MONITOR </th>
+
+                <th>ESTADO CIVIL  </th>
+                <th>NOMBRE MADRE  </th>
+                <th>APELLIDO MADRE  </th>
+                <th> TIPO DOCUMENTO MADRE </th>
+                <th>NUMERO DOCUMENTO MADRE  </th>
+                <th> DIRECCION </th>
+                <th> BARRIO </th>
+                <th>CELULAR </th>
+                <th>OCUPACION MADRE </th>
+
+                <th>TIPO DOCUMENTO PADRE </th>
+                <th>NUMERO DOCUMENTO PADRE </th>
+
+                <th>OCUPACION PADRE </th>
+                <th>OCUPACION DEPORTISTA </th>
+                <th>NIVEL EDUCATIVO </th>
+                <th>INSTITUCIÓN </th>
+                <th>TELEFONO INSTITUCIÓN </th>
+                <th>DIRECTOR GRADO </th>
+
+                <th>NUMERO HIJOS </th>
+
+                <th>ANTECENTES</th>
+                <th>FAMILIARES </th>
+                <th>PERSONALES </th>
+                <th>FARMACOLOGICOS </th>
+                <th>GINECOLOGICO </th>
+                <th>SUEÑO </th>
+                <th> PIEL</th>
+                <th>APETITO </th>
+                <th>FRACTURA </th>
+                <th>ASPECTO FISICO </th>
+                <th>PIE </th>
+                <th>TIEMPO RECUPERACIÓN</th>
+                <th>BIOQUIMICO</th>
+                <th>HIDRATACIÓN</th>
+                <th>HORARIO ACTIVIDAD</th>
+                <th> DESAYUNO</th>
+                <th>MEDIA MAÑANA </th>
+                <th>ALMUERZO </th>
+                <th>MEDIA TARDE </th>
+                <th>CENA </th>
+                <th> ALERGICO</th>
+                <th>SUPLEMENTACIÓN </th>
+                <th>ALIMENTO NO DESEADOS </th>
+                <th>EDAD </th>
+                <th> PESO</th>
+                <th>TALLA </th>
+                <th>PORCENTAJE IMC </th>
+                <th>ESCAPULAR </th>
+                <th> TRICEPS</th>
+                <th>BICEPS </th>
+                <th> ABDOMEN</th>
+                <th>MUSLO </th>
+                <th>PIERNA </th>
+                <th>BRAZOS </th>
+                <th>ANTEBRAZO </th>
+                <th>MUÑECA </th>
+                <th>PECHO </th>
+                <th>CINTURA </th>
+                <th>CADERA </th>
+                <th>MUSLO SUPERIOR</th>
+                <th>MUSLO MEDIO </th>
+                <th>PIERNA PERIMETRO </th>
+                <th>TOBILLO PERIMETRO</th>
+
+                <th> HUMERO</th>
+                <th>MUÑECA HUMERO </th>
+                <th>FERMOR HUMERO </th>
+                <th>PORCENTAJE IMC </th>
+                <th>PORCENTAJE GRASA</th>
+                <th>MUSCULOS </th>
+                <th>HUESOS </th>
+                <th>RESIDUALES </th>
+                <th>PESOS GRASOS </th>
+                <th>PESOS MUSCULOS </th>
+                <th>PESO RESIDUALES </th>
+                <th> DIAGNOSTICO</th>
+                <th>PROXIMA CITA </th>
+                @*<th>FIRMA DOCTOR </th>*@
+
+
+
+                <th>CODIGO FISIOTERAPIA</th>
+                <th>REPORTA LESIÓN FISIOTERAPIA</th>
+                <th>ANTECEDENTES LESIÓN FISIOTERAPIA</th>
+                <th>CUAL LESIÓN FISIOTERAPIA</th>
+                <th>LESIÓN ACTUAL FISIOTERAPIA   </th>
+                <th>NUMERO RE LESIONES </th>
+                <th> TRATAMIENTO </th>
+                <th> HUESO  </th>
+                <th>LIGAMENTO     </th>
+                <th> TENDON    </th>
+                <th> MUSCULO  </th>
+                <th>CABEZA </th>
+                <th>COLUMNA</th>
+                <th> HOMBRO </th>
+                <th> CODO   </th>
+                <th>MUÑECA   </th>
+                <th>  CADERA  </th>
+                <th> RODILLA </th>
+                <th> CUELLO PIE LESIÓN </th>
+
+                <th> MMSS REAL DER   </th>
+                <th>MMSS REAL IZQ  </th>
+                <th> APARENTE MMSS DER   </th>
+                <th>APARENTE MMSS IZQ  </th>
+                <th>REAL MMII DER  </th>
+                <th> REAL MMII IZQ   </th>
+                <th>APARENTE MMII DER  </th>
+                <th> APARENTE MMII IZQ </th>
+                <th>OBSERVACIONES POSTURA </th>
+                <th> BALANCEO OJOS ABIERTOS 2 </th>
+                <th>BALANCEO OJOS ABIERTOS 1  </th>
+                <th>BALANCEO OJOS ABIERTOS 0    </th>
+                <th>BALANCEO OJOS ABIERTOS OBSERVACIONES  </th>
+                <th>BALANCEO OJOS CERRADOS 2  </th>
+                <th> BALANCEO OJOS CERRADOS 1   </th>
+                <th>BALANCEO OJOS CERRADOS 0  </th>
+                <th>BALANCEO OJOS CERRADOS OBSERVACIONES    </th>
+                <th>FLEXIBILIDAD FISIOTERAPIA    </th>
+
+                <th> SENTADILLA 3   </th>
+                <th>SENTADILLA 2    </th>
+                <th> SENTADILLA 1   </th>
+                <th>SENTADILLA 0    </th>
+                <th>PASOS VALLA 3    </th>
+                <th>PASOS VALLE 2    </th>
+                <th>PASOS VALLE 1    </th>
+                <th> PASOS VALLE 0   </th>
+                <th>TIJERA LINEA 3    </th>
+                <th>TIJERA LINEA 2    </th>
+                <th> TIJERA LINEA 1   </th>
+                <th>  TIJERA LINEA 0  </th>
+                <th> HOMBRO ACTIVIDAD 3   </th>
+                <th> HOMBRO ACTIVIDAD 2   </th>
+                <th> HOMBRO ACTIVIDAD 1   </th>
+                <th> HOMBRO ACTIVIDAD 0   </th>
+                <th> PIERNA 3   </th>
+                <th>PIERNA 2    </th>
+                <th>PIERNA 1    </th>
+                <th>PIERNA 0    </th>
+                <th> PULGARES 3   </th>
+                <th>PULGARES 2    </th>
+                <th> PULGARES 1   </th>
+                <th>PULGARES 0    </th>
+                <th> TRONCO 3   </th>
+                <th> TRONCO 2   </th>
+                <th> TRONCO 1   </th>
+                <th>  TRONCO 0  </th>
+                <th>PLANCHAS 3     </th>
+                <th>  PLANCHAS 2  </th>
+                <th>PLANCHAS 1    </th>
+                <th> PLANCHAS 0   </th>
+                <th> SUMATORIA 3   </th>
+                <th> SUMATORIA 2   </th>
+                <th> SUMATORIA 1   </th>
+                <th> SUMATORIA 0   </th>
+                <th>FLEXORES TRONCO    </th>
+                <th>FLEXORES PLANCHA</th>
+                <th>  FLEXORES COLUMNA  </th>
+                <th> FLEXORES RECTA   </th>
+                <th>OBSERVACIONES    </th>
+                @*<th>  PLAN TRATA  </th>*@
+                @*<th>  FECHA TRATAMIENTO  </th>
+        <th>  EVOLUCIÓN  </th>
+        <th>  FIRMA DOCTOR  </th>*@
+                <th>LESIÓN EVALUACIÓN  </th>
+                <th>  CUAL LESIÓN EVALUACIÓN</th>
+                <th> MMSS SIMETRIA </th>
+                <th>MMSS ASIMETRIA  </th>
+                <th> MMII SIMETRIA </th>
+                <th> MMII ASIMETRIA </th>
+                <th>DESCRIPCIÓN ASIMETRIA  </th>
+                <th>DESCRIPCIÓN SIMETRIA  </th>
+                <th>POSTURA EVALUACIÓN   </th>
+                <th> TROTE PUESTO </th>
+                <th>GENERO FISIOTERAPIA  </th>
+                <th>SUPERIOS TEST  </th>
+                <th> EXCELENTE TEST </th>
+                <th>BUENO TEST  </th>
+                <th> PROMEDIO TEST </th>
+                <th>DEFICIENTE TEST  </th>
+                <th> POBRE TEST </th>
+                <th>MUY POBRE TEST  </th>
+                <th> SENTADILLA CALI </th>
+                <th> TIJERA CALI </th>
+                <th> HOMBRO CALI </th>
+                <th>PIERNA CALI  </th>
+                <th>TRONCO CALI  </th>
+                <th>ESTABILIDAD CALI  </th>
+                <th>TOTAL CALI  </th>
+                <th>SENTADILLA OBS  </th>
+                <th>TIJERA OBS  </th>
+                <th>HOMBRO OBS  </th>
+                <th>PIERNA OBS  </th>
+                <th> TRONCO OBS </th>
+                <th>ESTABILIDAD OBS  </th>
+                <th>TOTAL OBS  </th>
+                <th> RESISTENCIA F </th>
+                <th>RESISTENCIA M  </th>
+                <th>PUENTE F  </th>
+                <th>PUENTE M  </th>
+                <th>EXTENSORES F  </th>
+                <th>EXTENSORES M  </th>
+                <th>PUENTE DF  </th>
+                <th>PUENTE DM  </th>
+                <th>PUENTE IF  </th>
+                <th>PUENTE IM  </th>
+                <th> EXCELENTE EVALUACIÓN </th>
+                <th> MUY BUENO EVALUACIÓN </th>
+                <th>BUENO EVALUACIÓN  </th>
+                <th>REGULAR EVALUACIÓN  </th>
+                <th>MALO REGULACIÓN  </th>
+                <th> CALIFICACIÓN OBS </th>
+                <th>RECOMENDACIONES OBS  </th>
+
+
+
+
+
+
+
+
+                <th>ESTADO CIVIL</th>
+                <th>NIVEL EDUCATIVO</th>
+                <th> YO SOY </th>
+                <th> NUMERO HERMANOS </th>
+                <th> VIVO CON </th>
+                <th>ACTUALMENTE  </th>
+                <th>RELIGION </th>
+                <th>DEPENDENCIA ECONOMICA  </th>
+                <th> NOMBRE PADRE</th>
+                <th>EDAD PADRE  </th>
+                <th> RELACIÓN PADRE</th>
+                <th> NOMBRE MADRE</th>
+                <th>EDAD MADRE </th>
+                <th> RELACIÓN MADRE</th>
+                <th>RELACIÓN HERMANOS </th>
+                <th>SUSTANCIAS PSICOACTIVAS  </th>
+                <th>ENFERMEDADES MENTALES  </th>
+                <th>ENFERMEDADES CORONARIAS  </th>
+                <th>OBESIDAD  </th>
+                <th>CANCER  </th>
+                <th> HIPERTENSIÓN </th>
+                <th>ENFERMEDADES ALERGICAS  </th>
+
+
+                <th> SUSTANCIAS PSICOACTIVAS   </th>
+                <th>  ENFERMEDADES MENTALES  </th>
+                <th> DIABETES   </th>
+                <th> ENFERMEDADES CORONARIAS   </th>
+                <th> OBESIDAD   </th>
+                <th> CANCER   </th>
+                <th> HIPERTENSIÓN   </th>
+                <th>ENFERMEDADES ALERGICAS    </th>
+                <th> ASMA   </th>
+                <th>COMPLICACIONES PARTO    </th>
+                <th>LESIONES </th>
+                <th>  CUALES LESIONES  </th>
+                <th> TRABAJO CONCENTRARSE   </th>
+                <th> DOLOR MUSCULAR   </th>
+                <th>  PARTO CESAREAP  </th>
+                <th> PARTO NORMAL   </th>
+                <th> LESIONADO ACTUAL   </th>
+                <th> DIFICULTAD SUEÑO   </th>
+                <th>DOLOR CABEZA    </th>
+                <th> CIRUGIAS   </th>
+                <th> APETITO   </th>
+                <th>CANSADO    </th>
+                <th>OTRO    </th>
+                <th> HISTORIA DEL PROBLEMA   </th>
+
+
+
+                <th> PRUEBA  </th>
+                <th> PUNTUACION  </th>
+                <th> VALORACION  </th>
+                <th>CONCEPTO   </th>
+
+
+                <th>ENTRENAMIENTO ACTUAL PSI   </th>
+                <th>  HORAS DIARIAS PSI </th>
+                <th>  NUMERO SESIONES PSI </th>
+                <th>  LUGAR PSI </th>
+                <th> NOMBRE ENTRENADOR PSI  </th>
+                <th>  INICIO DEPORTE PSI </th>
+                <th> ENTRENAMIENTO PSI  </th>
+                <th>COMPETICIÓN PSI   </th>
+                <th> ENTRENAMIENTO GUIADO PSI  </th>
+                <th> ME APOYAN PSI  </th>
+                <th>COMPROMISO PSI   </th>
+                <th>  ENTRAMIENTO PSICOLOGICO PSI </th>
+                <th> OBSERVACIONES PSI  </th>
+                <th> RESULTADOS PSI  </th>
+                <th> RECOMENDACIONES PSI  </th>
+                <th> REMISION PSI  </th>
+                <th>  SEGUIMIENTO PSI </th>
+
+
+
+
+                @*<th> FECHA  </th>
+        <th>  EVOLUCIÓN </th>
+        <th>   FIRMADOC</th>*@
+
+                <th> CODIGO MEDICINA DEPORTIVA </th>
+                <th>FECHA CONSULTA  </th>
+                <th>MOTIVO CONSULTA  </th>
+                <th>ENFERMEDADA ACTUAL  </th>
+
+                <th> PATOLOGICOS </th>
+                <th>QUIRURGICOS  </th>
+                <th>FARMACOLOGICOS  </th>
+                <th>FAMILIARES  </th>
+                <th>TRAUMATOLOGICOS  </th>
+                <th>LESIONES DEPORTIVAS  </th>
+                <th> ALERGICOS </th>
+                <th>PRUEBA COVID19  </th>
+                @*<th> ANEXOS MEDICINA DEPORTIVA </th>*@
+
+
+
+                <th> TENSIÓN ARTERIAL </th>
+                <th> PESO </th>
+                <th> INDICE MASA CORPORAL </th>
+                <th> POSTURA </th>
+
+                <th> FRECUENCIA CARDIACA </th>
+                <th> TALLA </th>
+                <th> TANNER </th>
+
+
+                <th> GRASOS </th>
+                <th>MUSCULAR  </th>
+
+                <th>  EXAMEN ESPECIFICO</th>
+                <th>  DIAGNOSTICO</th>
+                <th> CONDUCTA </th>
+                <th> FIRMAMEDICO </th>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </tr>
+        </thead>
+    </table>
+</div>

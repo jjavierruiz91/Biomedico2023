@@ -1,0 +1,42 @@
+﻿@model BIOMEDICO.Models.ASignarPermisos
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles asignarPermisos</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdPermiso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdPermiso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodPermiso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodPermiso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodRol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodRol)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.IdPermiso }) |
+    @Html.ActionLink("Regresar", "AsignarPermisos")
+</p>

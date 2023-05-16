@@ -1,0 +1,417 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script defer src="~/Scripts/APP/Nutricion/Nutricion.js"></script>
+<h1><strong>Ficha Tecnica- Nutrición</strong></h1>
+
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
+
+    <form id="FormNutricionDeportiva" name="FormNutricionDeportiva">
+
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong> Numero Identificación</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="Cedula" name="Cedula" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4" style="right:inherit">
+                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Buscar</button>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Nombre</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="PrimerNombre" name="PrimerNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Nombre</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="SegundoNombre" name="SegundoNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Apellido</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="PrimerApellido" name="PrimerApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Apellido</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="SegundoApellido" name="SegundoApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Edad</strong> </label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="Edad" onkeypress="return soloNumeros(event)" name="Edad" />
+            </div>
+
+        </div>
+    </form>
+    <br />
+    <br />
+
+    <h1><strong>Antecedentes</strong></h1>
+    <hr width=100% align="right" size=200 color="black">
+
+    <div class="row m-0">
+
+        <form id="FormNutricionDeportiva" name="FormNutricionDeportiva">
+
+            <div class="row m-0">
+                @*<div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Codigo Nutrición</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CodNutricion" name="CodNutricion" />
+        </div>*@
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Código</strong></label>
+                    <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CodNutricion" name="CodNutricion">
+                        <option value="">Seleccionar</option>
+                        <option value="2103">2103</option>
+
+                    </select>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Antecedentes</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="AntecedentesNutri" name="AntecedentesNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Familiares</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FamiliaresNutri" name="FamiliaresNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Personales</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PersonalesNutri" name="PersonalesNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Farmacologicos</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FarmacologicosNutri" name="FarmacologicosNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Ginecologico</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="GinecologicoNutri" name="GinecologicoNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Sueño</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SueñoNutri" name="SueñoNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Piel</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PielNutri" name="PielNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Apetito</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ApetitoNutri" name="ApetitoNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Fractura</strong> </label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FracturaNutri" name="FracturaNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Aspecto Fisico</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="AspectoFisicoNutri" name="AspectoFisicoNutri" />
+                </div>
+                @*<div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Pie</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PieNutri" name="PieNutri" />
+                </div>*@
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Tiempo Recuperación</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TiempoRecuperacionNutri" name="TiempoRecuperacionNutri" />
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Bioquimico</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="BioquimicoNutri"></textarea>
+
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Hidratación</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="HidratacionNutri" name="HidratacionNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Horario Actividad</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="HorarioActividadNutri" name="HorarioActividadNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Anexos</strong> </label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="file" class="form-control" id="AnexosNutricion" name="AnexosNutricion" />
+                    <img align="right" id="ImagenNutricionDeport" height="450" width="450" @*style="border-radius:50%;*@ border-color:#000000" />
+                </div>
+            </div>
+        </form>
+        <br />
+        <h1><strong>Anamnesis Alimentaria</strong></h1>
+        <hr width=100% align="right" size=200 color="black">
+
+        <div class="row m-0">
+
+            <form id="FormNutricionDeportiva" name="FormNutricionDeportiva">
+
+                <div class="row m-0">
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <label><strong>Desayuno</strong></label>
+                        <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="DesayunoNutri" name="DesayunoNutri" />
+                    </div>
+
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <label><strong>Media Mañana</strong></label>
+                        <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="MediaMañanaNutri" name="MediaMañanaNutri" />
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <label><strong>Almuerzo</strong></label>
+                        <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="AlmuerzoNutri" name="AlmuerzoNutri" />
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <label><strong>Media Tarde</strong></label>
+                        <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="MediaTardeNutri" name="MediaTardeNutri" />
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <label><strong>Cena</strong></label>
+                        <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="CenaNutri" name="CenaNutri" />
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <label><strong>Alergico</strong></label>
+                        <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="AlergicoNutri" name="AlergicoNutri" />
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <label><strong>Suplementación</strong></label>
+                        <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="SuplementacionNutri" name="SuplementacionNutri" />
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <label><strong>Alimento No Deseados</strong></label>
+                        <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="AlimentoNoDeseados" name="AlimentoNoDeseados" />
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+        <h1><strong>Antropometria</strong></h1>
+        <hr width=100% align="right" size=200 color="black">
+
+        <div class="row m-0">
+
+            <form id="FormNutricionDeportiva" name="FormNutricionDeportiva">
+
+                <div class="row m-0">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>Edad</strong></label>
+                        <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="EdadNutri" name="EdadNutri" />
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>Peso</strong></label>
+                        <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="PesoNutri" name="PesoNutri" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>Talla</strong></label>
+                        <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="TallaNutri" name="TallaNutri" />
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <label><strong>Porcentaje Imc</strong></label>
+                        <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="ImcNutri" name="ImcNutri" />
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <br />
+    <h1><strong>Pliegues</strong></h1>
+    <hr width=100% align="right" size=200 color="black">
+
+    <div class="row m-0">
+
+        <form id="FormNutricionDeportiva" name="FormNutricionDeportiva">
+
+            <div class="row m-0">
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Escapular</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="EscapularNutri" name="EscapularNutri" />
+                </div>
+
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Triceps</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="TricepsNutri" name="TricepsNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Biceps</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="BicepsNutri" name="BicepsNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Abdomen</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="AbdomenNutri" name="AbdomenNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Muslo</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="MusloNutri" name="MusloNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Pierna</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="PiernaNutri" name="PiernaNutri" />
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+    <br />
+    <h1><strong>Perimetros</strong></h1>
+    <hr width=100% align="right" size=200 color="black">
+
+    <div class="row m-0">
+
+        <form id="FormNutricionDeportiva" name="FormNutricionDeportiva">
+
+            <div class="row m-0">
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Brazos</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="BrazosNutrii" name="BrazosNutrii" />
+                </div>
+
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Antebrazo</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="AntebrazoNutrii" name="AntebrazoNutrii" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Muñeca</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="MuñecaNutrii" name="MuñecaNutrii" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Pecho</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="PechoNutrii" name="PechoNutrii" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Cintura</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="CinturaNutrii" name="CinturaNutrii" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Cadera</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="CaderaNutrii" name="CaderaNutrii" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Muslo Superior</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="MusloSuperiorNutrii" name="MusloSuperiorNutrii" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Muslo Medio</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="MusloMedioNutrii" name="MusloMedioNutrii" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Pierna Perimetro</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="PiernaPerimetroNutrii" name="PiernaPerimetroNutrii" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Tobillo Perimetro</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="TobilloPerimetroNutrii" name="TobilloPerimetroNutrii" />
+                </div>
+            </div>
+            
+
+        </form>
+    </div>
+    <br />
+    <h1><strong>Diametros</strong></h1>
+    <hr width=100% align="right" size=200 color="black">
+
+    <div class="row m-0">
+
+        <form id="FormNutricionDeportiva" name="FormNutricionDeportiva">
+
+            <div class="row m-0">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>Humero</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="HumeroNutri" name="HumeroNutri" />
+                </div>
+
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>Muñeca</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="MuñecaHumeroNutri" name="MuñecaHumeroNutri" />
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>Fermor</strong></label>
+                    <input  style="border: black; border-width: 1px; border-style: solid;"class="form-control" id="FermorHumeroNutri" name="FermorHumeroNutri" />
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+
+    <br />
+    <br />
+    <div class="row m-0">
+
+        <br />
+        <h1><strong>Resultados</strong></h1>
+        <hr width=100% align="right" size=200 color="black">
+        <form id="FormNutricionDeportiva" name="FormNutricionDeportiva">
+
+            <div class="row m-0">
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Porcentaje Imc</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ImcNutri" name="ImcNutri" />
+                </div>
+
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Porcentaje Grasa</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="GrasaNutri" name="GrasaNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Porcentaje Musculos</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="MusculosNutri" name="MusculosNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Porcentaje Hueso</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="HuesosNutri" name="HuesosNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Porcentaje Residuale</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ResidualesNutri" name="ResidualesNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Peso Grasa</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PesosGrasosNutri" name="PesosGrasosNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Peso Musculo</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PesosMusculosNutri" name="PesosMusculosNutri" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Peso Residual</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PesoResiducalesNutri" name="PesoResiducalesNutri" />
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Diagnostico</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="DiagnosticoNutri"></textarea>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Tratamiento</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="TratamientoNutri"></textarea>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Observaciones</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="ObservacionesNutricion"></textarea>
+
+                </div>
+                
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Proxima Cita</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="ProximaCitaNutri" name="ProximaCitaNutri" />
+                </div>
+                @*<div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Firma Doctor</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FirmaDoctorNutri" name="ProximaCitaNutri" />
+        </div>*@
+            </div>
+
+
+        </form>
+    </div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveNutricion">Guardar</button>
+    </div>
+</div>

@@ -1,0 +1,191 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script defer src="~/Scripts/APP/ControlFisioterapia/ControlFisioterapia.js"></script>
+<h2><strong>Historia Clinica - Fisioterapia</strong> </h2>
+
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
+
+    <form id="FormControlNutricionDeportiva" name="FormControlNutricionDeportiva">
+
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong> Número Identificación</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Cedula" name="Cedula" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4" style="right:inherit">
+                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Buscar</button>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Nombre</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerNombre" name="PrimerNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Nombre</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoNombre" name="SegundoNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Apellido</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerApellido" name="PrimerApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Apellido</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoApellido" name="SegundoApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Edad</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Edad" onkeypress="return soloNumeros(event)" name="Edad" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Telefono</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Telefono" onkeypress="return soloNumeros(event)" name="Telefono" />
+            </div>
+
+        </div>
+    </form>
+    <br />
+    <br />
+
+    <h1><strong>ANTECEDENTES</strong></h1>
+    <hr width=100% align="right" size=200 color="black">
+
+    <div class="row m-0">
+
+        <form id="FormNutricionDeportiva" name="FormNutricionDeportiva">
+
+            <div class="row m-0">
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Patologicos</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PatologicosClinicaFisio" name="PatologicosClinicaFisio" />
+                </div>
+
+
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Quirurgicoso</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="QuirurgicosClinicaFisio" name="QuirurgicosClinicaFisio" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Traumaticos </strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TraumaticosClinicaFisio" name="TraumaticosClinicaFisio" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Farmacologicos</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FarmacologicosClinicaFisio" name="FarmacologicosClinicaFisio" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Familiares </strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FamiliaresClinicaFisio" name="FamiliaresClinicaFisio" />
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Diagnostico Medico </strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="DiagnosticoMedicoClinicaFisio"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Motivo Consulta  </strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="MotivoConsultaClinicaFisio"></textarea>
+                </div>
+                <h1>VALORACION INICIAL</h1>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Dolor </strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="DolorClinicaFisio"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Edema  </strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="EdemaClinicaFisio"></textarea>
+                    <h1>INTEGRIDAD INTEGUMENTARIA</h1>
+                </div>
+                <br />
+                <br />
+                <br />
+      
+                <br />
+                <br />
+                <br />
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    
+
+                    <label><strong>Alterada </strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="AlteradaClinicaFisio" name="AlteradaClinicaFisio" />
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>No Alterda </strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NoalterdaClinicaFisio" name="NoalterdaClinicaFisio" />
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Screem Funcional </strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="ScreemFuncionalClinicaFisio"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Desempeño Muscular  </strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="DesempeñoClinicaFisio"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong> Postura </strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="PosturaClinicaFisio"></textarea>
+                </div>
+
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Fecha</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaClinicaFisio" name="FechaClinicaFisio" />
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong> Plan Tratamiento </strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="PlanTratamientoClinicaFisio"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Evolución</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="EvolucionClinicaFisio1"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Evolución</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="EvolucionClinicaFisio2"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Evolución</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="EvolucionClinicaFisio3"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Evolución</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="EvolucionClinicaFisio4"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Evolución</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="EvolucionClinicaFisio5"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Evolución</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="EvolucionClinicaFisio6"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Evolución</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="EvolucionClinicaFisio7"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Evolución</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="EvolucionClinicaFisio8"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Evolución</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="EvolucionClinicaFisio9"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Evolución</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="EvolucionClinicaFisio10"></textarea>
+                </div>
+
+
+            </div>
+        </form>
+
+
+    </div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveControPsicologia">Guardar</button>
+    </div>
+</div>

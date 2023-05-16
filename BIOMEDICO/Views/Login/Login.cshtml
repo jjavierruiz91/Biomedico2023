@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+
+}
+
+<div class="agileheader">
+
+    <h1></h1>
+</div>
+
+<div class="main-w3l">
+    <div class="w3layouts-main">
+        <h2>INICIA SESIÓN AHORA</h2>
+        <form method="post" action="@Url.Action("Login", "Login")">
+            <input value="E-MAIL" name="User" type="email" required="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-Mail';}" />
+            <input value="PASSWORD" name="Pass" type="password" required="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}" />
+            <h6><a href="#"></a></h6>
+            <div class="clear"></div>
+            <input type="submit" value="Ingresar" name="login">
+        </form>
+        <p></p>
+    </div>
+</div>
+
+

@@ -1,0 +1,82 @@
+﻿@model IEnumerable<BIOMEDICO.Models.Permisos>
+
+@{
+    ViewBag.Title = "Permisos";
+}
+<h2>Permisos</h2>
+
+<h1>
+    @Html.ActionLink("Crear Nuevo", "Agregar")
+</h1>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdPermiso)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.CodPermiso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomPermiso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EtiquetaPermiso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesPermiso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoPermiso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PadrePermiso)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.IdPermiso)
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.CodPermiso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NomPermiso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EtiquetaPermiso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Url)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DesPermiso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NomPermiso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PadrePermiso)
+    </td>
+    <td>
+        <a class="btn btn-primary btn-group-sm" title="Editar" href="@Url.Action("Editar","TipoPermiso", new { id = item.IdPermiso})">
+            <i class="icon-pencil"></i>
+        </a>
+        <a class="btn btn-info btn-group-sm" title="Detalles" href="@Url.Action("Detalles","TipoPermiso", new { id = item.IdPermiso})">
+            <i class="icon-newspaper"></i>
+        </a>
+        <a class="btn btn-danger btn-group-sm" title="Eliminar" href="@Url.Action("Eliminar","TipoPermiso", new { id = item.IdPermiso})">
+            <i class="icon-trash"></i>
+        </a>
+
+    </td>
+</tr>
+    }
+
+</table>

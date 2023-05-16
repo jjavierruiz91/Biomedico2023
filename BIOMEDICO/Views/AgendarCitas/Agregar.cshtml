@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script defer src="~/Scripts/APP/AgendarCitas/AgendarCitas.js"></script>
+<h2><strong>Horario Especialistas</strong></h2>
+
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
+
+    <form id="FormAgendarCitasDeportiva" name="FormAgendarCitasDeportiva">
+
+        <div class="row m-0">
+
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Identificación Especialista</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CedEspecialistaCitas" name="CedEspecialistaCitas" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Nombre Especialista</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NombrEspecilistaCitas" name="NombrEspecilistaCitas" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>NotificacionCampoCitas Especialista</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NotificacionCampoCitas" name="NotificacionCampoCitas" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong> Hora Inicio citas</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="time" class="form-control" id="HoraIniciocitas" name="HoraIniciocitas" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Hora Fin Citas</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="time" class="form-control" id="HoraFinCitas" name="HoraFinCitas" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Fecha Citas</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaCitas" name="FechaCitas" />
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <label><strong>Observaciones Horario Trabajo </strong></label>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="ObservacionesCitasMedicas"></textarea>
+            </div>
+        </div>
+    </form>
+
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveAgendaCita">Guardar</button>
+    </div>
+</div>
+
+

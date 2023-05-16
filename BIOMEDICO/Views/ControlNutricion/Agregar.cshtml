@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script defer src="~/Scripts/APP/ControlNutricion/ControlNutricion.js"></script>
+<h2><strong>Ficha Deportiva - Control</strong></h2>
+
+
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
+
+    <form id="FormControlNutricionDeportiva" name="FormControlNutricionDeportiva">
+
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong> Número Identificación</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Cedula" name="Cedula" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4" style="right:inherit">
+                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Buscar</button>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Nombre</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerNombre" name="PrimerNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Nombre</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoNombre" name="SegundoNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Apellido</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerApellido" name="PrimerApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Apellido</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoApellido" name="SegundoApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Edad</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Edad" onkeypress="return soloNumeros(event)" name="Edad" />
+            </div>
+
+        </div>
+    </form>
+    <br />
+    <br />
+
+    <h1><strong>Control</strong></h1>
+    <hr width=100% align="right" size=200 color="black">
+
+    <div class="row m-0">
+
+        <form id="FormNutricionDeportiva" name="FormNutricionDeportiva">
+
+            <div class="row m-0">
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Control</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ControlNutrii" name="ControlNutrii" />
+                </div>
+
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Fecha</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaNutrii" name="FechaNutrii" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Desayuno</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="DesayunoControl" name="DesayunoControl" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Media Mañana</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="MediaMañanaControl" name="MediaMañanaControl" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Almuerzo</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="AlmuerzoControl" name="AlmuerzoControl" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Media Tarde</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="MediaTardeControl" name="MediaTardeControl" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Cena</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CenaControl" name="CenaControl" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Peso</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PesoActualControl" name="PesoActualControl" />
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Cambios</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="CambiosControl"></textarea>
+
+                </div>
+
+              
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Nuevo Diagnostico</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="NuevoDiagnosticoControl"></textarea>
+                </div>
+                @*<div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Firma</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FirmaControlNuriii" name="FirmaControlNuriii" />
+                </div>*@
+
+            </div>
+        </form>
+       
+        
+    </div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveControlNutricion">Guardar</button>
+    </div>
+</div>

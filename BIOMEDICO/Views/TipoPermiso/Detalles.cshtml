@@ -1,0 +1,81 @@
+﻿@model BIOMEDICO.Models.Permisos
+
+@{
+    ViewBag.Title = "Detalles";
+}
+<h2>Detalles Permisos</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdPermiso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdPermiso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodPermiso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodPermiso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomPermiso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomPermiso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EtiquetaPermiso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EtiquetaPermiso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesPermiso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesPermiso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoPermiso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoPermiso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PadrePermiso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PadrePermiso)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.IdPermiso }) |
+    @Html.ActionLink("Regresar", "Permisos")
+</p>

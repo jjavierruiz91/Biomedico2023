@@ -1,0 +1,218 @@
+﻿
+@{
+    ViewBag.Title = "ListaFisioterapiaDeportiva";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script defer src="~/Scripts/APP/Fisioterapia/ListaFisioterapia.js"></script>
+<h2><strong>Lista Fisioterapia - Deportiva</strong></h2>
+
+
+<div class="table-responsive row col-xl-12 ">
+    <table class="table" id="datatable-Fisioterapia">
+        <thead>
+            <tr class="ColorTabla">
+                <th>IDENTIFICACIÓN DEPORTISTA</th>
+                <th>CODIGO</th>
+                <th>REPORTA LESIÓN</th>
+                <th>ANTECEDENTES LESIÓN</th>
+                <th>CUAL LESIÓN</th>
+                <th>LESIÓN ACTUAL </th>
+                <th> NUMERO RE LESIONES   </th>
+                <th> TRATAMIENTO </th>
+                <th>HUESO </th>
+                <th>LIGAMENTO </th>
+                <th> TENDON</th>
+                <th>MUSCULO </th>
+                <th>CABEZA </th>
+                <th>COLUMNA </th>
+                <th> HOMBRO    </th>
+                <th>CODO LESION    </th>
+                <th>MUÑECA MANO     </th>
+                <th> CADERA    </th>
+                <th> RODILLA    </th>
+                <th>  CUELLO PIE   </th>
+
+                <th> MMSS REAL DER   </th>
+                <th> MMSS REAL IZQ   </th>
+                <th>APARENTE MMSS DER    </th>
+                <th> APARENTE MMSS IZQ   </th>
+                <th>REALM MII DER    </th>
+                <th> REAL MMII IZQ   </th>
+                <th>  APARENTE MMII DER  </th>
+                <th> APARENTE MMII IZQ   </th>
+                <th> OBSERVACIONES POSTURA   </th>
+                <th> BALANCEO OJOS ABIERTOS 2   </th>
+                <th> BALANCEO OJOS ABIERTOS 1   </th>
+                <th> BALANCEO OJOS ABIERTOS 0   </th>
+                <th> BALANCEO OJOS ABIERTOS OBSERVACIONES   </th>
+                <th> BALANCEO OJOS CERRADOS 2   </th>
+                <th> BALANCEO OJOS CERRADOS 1   </th>
+                <th>  BALANCEO OJOS CERRADOS 0  </th>
+                <th> BALANCEO OJOS CERRADOS OBSERVACIONES   </th>
+                <th> FLEXIBILIDAD FISIOTERAPIA   </th>
+
+                <th> SENTADILLA 3   </th>
+                <th>  SENTADILLA 2  </th>
+                <th> SENTADILLA 1   </th>
+                <th> SENTADILLA 0   </th>
+                <th> PASOS VALLA 3   </th>
+                <th> PASOS VALLE 2   </th>
+                <th> PASOS VALLE 1   </th>
+                <th> PASOS VALLE 0   </th>
+                <th> TIJERA LINEA 3   </th>
+                <th> TIJERA LINEA 2   </th>
+                <th> TIJERA LINEA 1   </th>
+                <th> TIJERA LINEA 0   </th>
+                <th> HOMBRO ACTIVIDAD 3   </th>
+                <th> HOMBRO ACTIVIDAD 2   </th>
+                <th> HOMBRO ACTIVIDAD 1   </th>
+                <th> HOMBRO ACTIVIDAD 0   </th>
+                <th> PIERNA 3   </th>
+                <th> PIERNA 2   </th>
+                <th> PIERNA 1   </th>
+                <th> PIERNA 0   </th>
+                <th> PULGARES 3   </th>
+                <th>  PULGARES 2  </th>
+                <th>  PULGARES 1  </th>
+                <th>  PULGARES 0  </th>
+                <th>TRONCO 3    </th>
+                <th>TRONCO 2    </th>
+                <th> TRONCO 1   </th>
+                <th>TRONCO 0    </th>
+                <th> PLANCHAS 3   </th>
+                <th> PLANCHAS 2   </th>
+                <th> PLANCHAS 1   </th>
+                <th>PLANCHAS 0    </th>
+                <th>  SUMATORIA 3  </th>
+                <th> SUMATORIA 2   </th>
+                <th>  SUMATORIA 1  </th>
+                <th>  SUMATORIA 0  </th>
+                <th>  FLEXORES TRONCO  </th>
+                <th> FLEXORES PLANCHA   </th>
+                <th>FLEXORES COLUMNA    </th>
+                <th> FLEXORES RECTA   </th>
+                <th>OBSERVACIONES GLOBAL    </th>
+
+
+
+                <th>LESION EVALUACIÓN    </th>
+                <th> CUAL LESION EVALUACIÓN   </th>
+                <th>MMSS SIMETRIA    </th>
+                <th> MMSS ASIMETRIA   </th>
+                <th>  MMII SIMETRIA  </th>
+                <th>MMII ASIMETRIA    </th>
+                <th>DESCRIPCION ASIMETRIA    </th>
+                <th>DESCRIPCION SIMETRIA    </th>
+                <th> POSTURA EVALUACIÓN  </th>
+                <th>TROTE PUESTO    </th>
+                <th>GENERO FISIOTERAPIA    </th>
+                <th> SUPERIOS TEST   </th>
+                <th> EXCELENTE TEST   </th>
+                <th>BUENO TEST    </th>
+                <th> PROMEDIO TEST   </th>
+                <th> DEFICIENTE TEST   </th>
+                <th> POBRE TEST   </th>
+                <th>MUY POBRE TEST    </th>
+                <th>PASOS VALLA </th>
+                <th> SENTADILLA CALI   </th>
+                <th>TIJERA CALI    </th>
+                <th> HOMBRO CALI   </th>
+                <th>PIERNA CALI    </th>
+                <th> TRONCO CALI   </th>
+                <th>ESTABILIDAD CALI    </th>
+                <th>TOTAL CALI    </th>
+                <th>SENTADILLA OBS    </th>
+                <th>  TIJERA OBS  </th>
+                <th> HOMBRO OBS   </th>
+                <th> PIERNA OBS   </th>
+                <th> TRONCO OBS   </th>
+                <th> PASOS VALLA</th>
+                <th> ESTABILIDAD OBS   </th>
+                <th>TOTAL OBS    </th>
+                <th>RESISTENCI AF    </th>
+                <th> RESISTENCI AM   </th>
+                <th> PUENTE F   </th>
+                <th> PUENTE M   </th>
+                <th>EXTENSORES F    </th>
+                <th> EXTENSORES M   </th>
+                <th> PUENTE DF   </th>
+                <th>PUENTE DM    </th>
+                <th> PUENTE IF   </th>
+                <th> PUENTE IM   </th>
+                <th> EXCELENTE EVALUACIÓN   </th>
+                <th>  MUY BUENO EVALUACIÓN  </th>
+                <th>BUENO EVALUACION    </th>
+                <th>  REGULAR EVALUACIÓN  </th>
+                <th>  MALO REGULACION  </th>
+
+                <th> CALIFICACIÓN OBS    </th>
+                <th>  RECOMENDACIONES OBS   </th>
+                <th> TEST SIT GENERO   </th>
+                <th>TEST SIT SUPERIOR    </th>
+                <th> TEST SIT EXCELENTE   </th>
+                <th> TEST SIT BUENO   </th>
+                <th>TEST SIT PROMEDIO    </th>
+                <th>TEST SIT DEFICIENTE    </th>
+                <th>TEST SIT POBRE    </th>
+                <th>TEST SIT MUY POBRE    </th>
+                <th>TEST SENTADILLA PROFUNDA    </th>
+                <th>  TEST SENTADILLA PROFUNDA  </th>
+                <th> TEST PASO DE VALLA   </th>
+                <th> TEST PASO DE VALLA  </th>
+                <th> TEST TIJERA LINEA   </th>
+                <th>TEST TIJERA LINEA    </th>
+                <th> TEST HOMBRO  </th>
+                <th> TEST HOMBRO   </th>
+                <th> TEST MOVILIDAD PIERNA  </th>
+                <th>TEST MOVILIDAD PIERNA   </th>
+                <th> TEST PUSH   </th>
+                <th>TEST PUSH   </th>
+                <th>TEST ESTABILIDAD TRONCO    </th>
+                <th> TEST ESTABILIDAD TRONCO   </th>
+                <th> TEST SUMAROTIA   </th>
+                <th> TEST SUMAROTIA   </th>
+                <th> TEST OBSERVACIONES   </th>
+                <th> TEST OBSERVACIONES   </th>
+                <th> TEST FLEXORA1   </th>
+                <th>TEST FLEXORA2    </th>
+                <th> TEST PUENTE1   </th>
+                <th> TEST PUENTE2   </th>
+                <th> TEST RESISTENCIA   </th>
+                <th> TEST RESISTENCIA   </th>
+                <th>TEST PUENTE LATERAL    </th>
+                <th> TEST PUENTE LATERAL   </th>
+                <th> TEST CORE SUMATORIA   </th>
+                <th> TEST CORE SUMATORIA   </th>
+                <th> TEST CORE OBSERVACIONES  </th>
+                <th> TEST CORE OBSERVACIONES   </th>
+                <th> TEST CORE EXCELENTE   </th>
+                <th>TEST CORE MUY BUENO    </th>
+                <th>  TEST CORE BUENO  </th>
+                <th>TEST CORE REGULAR    </th>
+                <th> TEST CORE MALO   </th>
+             
+                <th>  FIRMA DOCTOR    </th>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </tr>
+        </thead>
+    </table>
+</div>
+
+

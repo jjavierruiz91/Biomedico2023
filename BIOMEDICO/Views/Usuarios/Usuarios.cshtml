@@ -1,0 +1,95 @@
+﻿@model IEnumerable<BIOMEDICO.Models.Usuarios>
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+<h2>Listado Usuarios</h2>
+<h1>
+    @Html.ActionLink("Crear Nuevo", "Agregar")
+</h1>
+<table class="table" id="TableUsuarios">
+    <thead class="">
+        <tr>
+            <th>
+                <label><strong>Id Usuario</strong></label>
+            </th>
+            <th>
+                <label><strong>Identificación Usuario</strong></label>
+            </th>
+            <th>
+                <label><strong>Nombre Usuario</strong></label>
+            </th>
+            <th>
+                <label><strong>Apellido Usuario</strong></label>
+            </th>
+            <th>
+                <label><strong>Telefono</strong></label>
+            </th>
+            <th>
+                <label><strong>Correo</strong></label>
+            </th>
+            <th>
+                <label><strong>Password</strong></label>
+
+            </th>
+            <th>
+                <label><strong>Codigo Rol</strong></label>
+            </th>
+            <th></th>
+        </tr>
+
+
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CedUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApeUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodRol)
+            </td>
+            @*<td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.IdUsuario }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.IdUsuario }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdUsuario })
+            </td>*@
+            <td>
+                <a class="btn btn-primary btn-group-sm" title="Editar" href="@Url.Action("Editar","Usuarios", new { id = item.IdUsuario})">
+                    <i class="icon-pencil"></i>
+                </a>
+                <a class="btn btn-info btn-group-sm" title="Detalles" href="@Url.Action("Detalles","Usuarios", new { id = item.IdUsuario})">
+                    <i class="icon-newspaper"></i>
+                </a>
+                <a class="btn btn-danger btn-group-sm" title="Eliminar" href="@Url.Action("Eliminar","Usuarios", new { id = item.IdUsuario})">
+                    <i class="icon-newspaper"></i>
+                </a>
+
+            </td>
+        </tr>
+       
+        }
+    </tbody>
+
+
+</table>

@@ -1,0 +1,34 @@
+﻿@model BIOMEDICO.Models.Rol
+
+@{
+    ViewBag.Title = "Detalles";
+}
+>
+<h2>Detalles Rol</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodRol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodRol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomRol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomRol)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.CodRol }) |
+    @Html.ActionLink("Regresar", "Rol")
+</p>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BIOMEDICO.Models.ASignarPermisos>
+
+@{
+    ViewBag.Title = "AsignarPermisos";
+}
+
+<h2>Asignar Permisos</h2>
+
+<h1>
+    @Html.ActionLink("Crear nuevo", "Agregar")
+</h1>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdPermiso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodPermiso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodRol)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdPermiso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CodPermiso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CodRol)
+    </td>
+    <td>
+        <a class="btn btn-primary btn-group-sm" title="Editar" href="@Url.Action("Editar","AsignarPermisos", new { id = item.IdPermiso})">
+            <i class="icon-pencil"></i>
+        </a>
+        <a class="btn btn-info btn-group-sm" title="Detalles" href="@Url.Action("Detalles","AsignarPermisos", new { id = item.IdPermiso})">
+            <i class="icon-newspaper"></i>
+        </a>
+        <a class="btn btn-danger btn-group-sm" title="Eliminar" href="@Url.Action("Eliminar","AsignarPermisos", new { id = item.IdPermiso})">
+            <i class="icon-newspaper"></i>
+        </a>
+        
+    </td>
+</tr>
+}
+
+</table>

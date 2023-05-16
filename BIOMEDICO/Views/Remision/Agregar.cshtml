@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script defer src="~/Scripts/APP/Remision/Remision.js"></script>
+<h1><strong>Remisión Citas Medicas</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
+
+    <form id="FormRemisionesMedicas" name="FormRemisionesMedicas">
+
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Estado Remisión</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EstadoRevision" name="EstadoRevision">
+                    <option value="">Seleccionar</option>
+                    <option value="PENDIENTE">PENDIENTE</option>
+                    <option value="ASIGNADA">ASIGNADA</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Número Identificación</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NumeroIdentificacion" name="NumeroIdentificacion" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Fecha Remisión</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaRemision" name="FechaRemision" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Disciplina</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="DisciplinaRemision" name="DisciplinaRemision">
+
+                    <option value="">Seleccionar</option>
+
+                    <option value="Futbol">Fútbol</option>
+                    <option value="Futbol de Salon">Fútbol de Salón</option>
+                    <option value="Ajedrez">Ajedrez</option>
+                    <option value="Atletismo">Atletismo</option>
+                    <option value="Baloncesto">Baloncesto</option>
+                    <option value="Beisbol">Beisbol</option>
+                    <option value="Billar">Billar</option>
+                    <option value="Boxeo">Boxeo</option>
+                    <option value="Bolos">Bolos</option>
+                    <option value="Ciclismo">Ciclismo</option>
+                    <option value="Ciclismo Mtb">Ciclismo Mtb</option>
+                    <option value="Judo">Judo</option>
+                    <option value="Levantamiento de Pesas">Levantamiento de Pesas</option>
+                    <option value="Motociclismo">Motociclismo</option>
+                    <option value="Natacion">Natación</option>
+                    <option value="Patinaje">Patinaje</option>
+                    <option value="Rugby">Rugby</option>
+                    <option value="Taekwondo">Taekwondo</option>
+                    <option value="Tenis">Tenis</option>
+                    <option value="Tiro con Arco">Tiro con Arco</option>
+                    <option value="Tenis de Mesa">Tenis de Mesa</option>
+                    <option value="Tenis de Campo">Tenis de Campo</option>
+                    <option value="Tejo">Tejo</option>
+                    <option value="Levicesar">Levicesar</option>
+                    <option value="Voleybol Playa">Voleybol Playa</option>
+                    <option value="Voleybol Piso">Voleybol Piso</option>
+                    <option value="Lidificer Discapacidad Fisica">Lidificer- Discapacidad Fisica</option>
+                    <option value="Lisorce">Lisorce</option>
+                    <option value="Levantamiento de Potencia">Levantamiento de Potencia</option>
+                    <option value="Motociclismo">Liga Motociclismo</option>
+                    <option value="Arqueros del Cesar">Liga de Arqueros del Cesar</option>
+                    <option value="Rugby">Liga de Rugby del Cesar</option>
+                    <option value="Baile Deportivo">Liga de Baile Deportivo del Cesar</option>
+                    <option value="Balonmano">Liga de Balonmano Tamalameque</option>
+                    <option value="Canotaje">liga de Catonaje del Cesar Chimichagua</option>
+                    <option value="Fisicolculturismo">Liga de Fisicolculturismo y Fitness del Cesar</option>
+                    <option value="Bowling">Liga de Bowling del Cesar</option>
+
+
+                </select>
+            </div>
+
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Municipio</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="MunicipioRemision" name="MunicipioRemision">
+
+                    <option value="">Seleccionar</option>
+                    <option value="VALLEDUPAR">VALLEDUPAR</option>
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Categoría</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CategoriaRemision" name="CategoriaRemision">
+                    <option value="">Seleccionar</option>
+                    <option value="INFANCIA">INFANCIA (6-11AÑOS)</option>
+                    <option value="ADOLESCENCIA">ADOLESCENCIA (12-19 AÑOS)</option>
+                    <option value="JUVENTUD">JUVENTUD (20-25 AÑOS)</option>
+                    <option value="ADULTEZ">ADULTEZ (26-60 AÑOS)</option>
+                    <option value="ADULYO MAYOR">ADULTO MAYOR (>61 AÑOS)</option>
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Area Servicio</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="AreaServicioRemision" name="AreaServicioRemision">
+
+                    <option value="">Seleccionar</option>
+                    <option value="MEDICINA DEPORTIVA">MEDICINA DEPORTIVA</option>
+                    <option value="FISIOTERAPIA">FISIOTERAPIA</option>
+                    <option value="NUTRICION">NUTRICIÓN</option>
+                    <option value="PSICOLOGIA">PSICOLOGIA</option>
+
+
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Nombre Deportista</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombreDeportistaRemision" name="NombreDeportistaRemision" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Celular Remision</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="CelularRemision" name="CelularRemision" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Correo Remisión</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="CorreoRemision" name="CorreoRemision" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Tipo Lesión</strong></label>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="TipoLesionRemision"></textarea>
+
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Fecha Lesión</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaLesionRemision" name="FechaLesionRemision" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Firma </strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="FirmaEntrenadoRemision" name="FirmaEntrenadoRemision" />
+            </div>
+        </div>
+    </form>
+
+    <div class="col-xs-6 col-sm-6 col-md-6">
+        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveRemisiones">Guardar</button>
+    </div>
+</div>
+
+
+
+

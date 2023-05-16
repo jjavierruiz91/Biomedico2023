@@ -1,0 +1,1654 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script defer src="~/Scripts/APP/Fisioterapia/Fisioterapia.js"></script>
+<h1><strong>Valoración - Fisioterapia</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
+
+    <form id="FormFisioterapia" name="FormFisioterapia">
+
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Número Identificación</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Cedula" name="Cedula" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4" style="right:inherit">
+
+                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Buscar</button>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Nombre</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerNombre" name="PrimerNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Nombre</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoNombre" name="SegundoNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Apellido</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerApellido" name="PrimerApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Apellido</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoApellido" name="SegundoApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Género</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Genero" name="Genero" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Edad</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Edad" onkeypress="return soloNumeros(event)" name="Edad" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Deporte</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="email" class="form-control" id="Deporte" name="Deporte" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Telefono</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Telefono" onkeypress="return soloNumeros(event)" name="Telefono" />
+            </div>
+            @*<div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Codigo Fisioterapia</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CodFisioterapi" name="CodFisioterapi" />
+        </div>*@
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Fecha Consulta</strong> </label>
+                <input type="date" style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FechaFisioter" name="FechaFisioter" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Código</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CodFisioterapi" name="CodFisioterapi">
+                    <option value="">Seleccionar</option>
+                    <option value="2103">2103</option>
+
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Reporta Lesión</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="ReportaLesion" name="ReportaLesion">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Antecedentes Lesión</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="AntecedentesLesion" name="AntecedentesLesion">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Cual Lesión</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CualLesion" name="CualLesion" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Lesión Actual</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="LesionActual" name="LesionActual">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Numero Re Lesiones</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NumeroReLesiones" name="NumeroReLesiones" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Tratamiento Lesión </strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TratamientoLesion" name="TratamientoLesion">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <br />
+            <br />
+
+
+        </div>
+    </form>
+</div>
+<br />
+<div class="col-xs-12 col-sm-12 col-md-12">
+
+    <div>
+        <br />
+        <table align="center" border="1" class="col-xs-12 col-sm-12 col-md-12">
+
+            <tr align="center">
+
+                <th colspan="8">ESTRUCTURA ANATÓMICA AFECTADA</th>
+            </tr>
+            <tr>
+
+                <td align="center"><strong>Hueso</strong> </td>
+                <td align="center"><strong>Ligamento</strong></td>
+                <td align="center"><strong>Tendon</strong></td>
+                <td align="center"><strong>Musculo</strong></td>
+
+
+
+            </tr>
+
+            <tr>
+                <th>
+                    <input class="form-control" id="HuesoLesion" name="HuesoLesion" />
+                </th>
+                <th>
+                    <input class="form-control" id="LigamentoLesion" name="LigamentoLesion" />
+                </th>
+                <th>
+                    <input class="form-control" id="TendonLesion" name="TendonLesion" />
+                </th>
+                <th>
+                    <input class="form-control" id="MusculoLesion" name="MusculoLesion" />
+                </th>
+
+            </tr>
+
+        </table>
+    </div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+
+    <div>
+        <br />
+        <table align="center" border="1" class="col-xs-12 col-sm-12 col-md-12">
+
+            <tr align="center">
+
+                <th colspan="12">UBICACIÓN TOPOGRÁFICA DE LA LESIÓN</th>
+            </tr>
+            <tr>
+
+                <td align="center"><strong>Cabeza</strong> </td>
+                <td align="center"><strong>Columna</strong></td>
+                <td align="center"><strong>Hombro</strong></td>
+                <td align="center"><strong>Codo</strong></td>
+                <td align="center"><strong>Muñeca-Mano</strong></td>
+                <td align="center"><strong>Cadera</strong></td>
+                <td align="center"><strong>Rodilla</strong></td>
+                <td align="center"><strong>Cuello-Pie</strong></td>
+
+
+
+            </tr>
+
+            <tr>
+                <th>
+                    <input class="form-control" id="CabezaLesion" name="CabezaLesion" />
+                </th>
+                <th>
+                    <input class="form-control" id="ColumnaLesion" name="ColumnaLesion" />
+                </th>
+                <th>
+                    <input class="form-control" id="HombroLesion" name="HombroLesion" />
+                </th>
+                <th>
+                    <input class="form-control" id="CodoLesion" name="CodoLesion" />
+                </th>
+                <th>
+                    <input class="form-control" id="MuñecamanoLesion" name="MuñecamanoLesion" />
+                </th>
+                <th>
+                    <input class="form-control" id="CaderaLesion" name="CaderaLesion" />
+                </th>
+                <th>
+                    <input class="form-control" id="RodillaLesion" name="RodillaLesion" />
+                </th>
+                <th>
+                    <input class="form-control" id="CuelloPieLesion" name="CuelloPieLesion" />
+                </th>
+            </tr>
+
+        </table>
+        <br />
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Anexos</strong> </label>
+            <input style="border: black; border-width: 1px; border-style: solid;" type="file" class="form-control" id="AnexosFisioterapia" name="AnexosFisioterapia" />
+            <img align="right" id="ImagenFisioterapiaDeport" height="450" width="450" @*style="border-radius:50%;*@ border-color:#000000" />
+
+        </div>
+    </div>
+</div>
+
+@*<h1><strong>LONGITUD DE MIEMBROS</strong></h1>*@
+<hr width=100% align="right" size=200 color="black">
+<div class="row m-0">
+
+    <form id="FormAntecedentesFisioterapia" name="FormAntecedentesFisioterapia">
+
+        <div class="row m-0">
+            <table align="center" border="1" class="col-xs-12 col-sm-12 col-md-12">
+
+                <tr align="center">
+
+                    <th colspan="12">LONGITUD DE MIEMBROS</th>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><strong>a). Real MMSS</strong></td>
+                    <td colspan="2" align="center"><strong>b). Aparente MMSS</strong> </td>
+                    <td colspan="2" align="center"><strong>c). Real MMII</strong></td>
+                    <td colspan="2" align="center"><strong>d). Aparente MMII</strong></td>
+
+                </tr>
+                <tr>
+                    <td align="center">
+                        <strong>
+                            DER
+                        </strong>
+                    </td>
+                    <td align="center">
+                        <strong>
+                            IZQ
+                        </strong>
+                    </td>
+                    <td align="center">
+                        <strong>
+                            DER
+                        </strong>
+                    </td>
+                    <td align="center">
+                        <strong>
+                            IZQ
+                        </strong>
+                    </td>
+                    <td align="center">
+                        <strong>
+                            DER
+                        </strong>
+                    </td>
+                    <td align="center">
+                        <strong>
+                            IZQ
+                        </strong>
+                    </td>
+                    <td align="center">
+                        <strong>
+                            DER
+                        </strong>
+                    </td>
+                    <td align="center">
+                        <strong>
+                            IZQ
+                        </strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input class="form-control" id="MmssRealDer" name="MmssRealDer" />
+                    </th>
+                    <th>
+                        <input class="form-control" id="MmssRealizq" name="MmssRealizq" />
+                    </th>
+                    <th>
+                        <input class="form-control" id="AparenteMmssDer" name="AparenteMmssDer" />
+                    </th>
+                    <th>
+                        <input class="form-control" id="AparenteMmssIzq" name="AparenteMmssIzq" />
+                    </th>
+                    <th>
+                        <input class="form-control" id="RealMmiiDer" name="RealMmiiDer" />
+                    </th>
+                    <th>
+                        <input class="form-control" id="RealMmiiIzq" name="RealMmiiIzq" />
+                    </th>
+                    <th>
+                        <input class="form-control" id="AparenteMmiiDer" name="AparenteMmiiDer" />
+                    </th>
+                    <th>
+                        <input class="form-control" id="AparenteMmiiIzq" name="AparenteMmiiIzq" />
+                    </th>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </form>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+    <br />
+    <hr width=100% align="right" size=200 color="black">
+    <h1>POSTURA:</h1>
+    <form id="FormEvolucionFisioterapia" name="FormEvolucionFisioterapia">
+        <div class="row m-0">
+
+            <div> <img src="../images/Posturas2.PNG" /></div>
+
+            <div class="col-xs-8 col-sm-8 col-md-8">
+                <label><strong>Observaciónes:</strong></label>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="10" cols="10" class="form-control" id="ObservacionesPosturaFisio"></textarea>
+            </div>
+
+        </div>
+
+        <br />
+    </form>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+    <br />
+
+    <h1>BALANCE: Marque con una X en la casilla correspondiente:</h1>
+    <hr width=100% align="right" size=200 color="black">
+    <form id="FormEvolucionFisioterapia" name="FormEvolucionFisioterapia">
+        <div class="row m-0">
+
+            <div align="left" class="col-xs-4 col-sm-4 col-md-4">
+                <img src="~/images/Ojos.PNG" />
+            </div>
+
+
+
+            <div class="row m-0">
+                <table align="center" border="1" class="col-xs-12 col-sm-12 col-md-12">
+
+                    <tr>
+                        <td colspan="1" align="center"><strong>Puntuación</strong></td>
+                        <td colspan="1" align="center"><strong>2</strong> </td>
+                        <td colspan="1" align="center"><strong>1</strong></td>
+                        <td colspan="1" align="center"><strong>0</strong></td>
+                        <td colspan="1" align="center"><strong>Observaciones</strong></td>
+
+
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <label>Ojos Abiertos</label>
+                        </th>
+                        <th>
+                            <input class="form-control" id="BalanceoOjosAbiertos2" name="BalanceoOjosAbiertos2" />
+                        </th>
+                        <th>
+                            <input class="form-control" id="BalanceoOjosAbiertos1" name="BalanceoOjosAbiertos1" />
+                        </th>
+                        <th>
+                            <input class="form-control" id="BalanceoOjosAbiertos0" name="BalanceoOjosAbiertos0" />
+                        </th>
+                        <th>
+                            <textarea name="textarea" rows="1" cols="70" class="form-control" id="BalanceoOjosAbiertosObservaciones"></textarea>
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th>
+                            <label>Ojos Cerrados</label>
+                        </th>
+                        <th>
+                            <input class="form-control" id="BalanceoOjosCerrados2" name="BalanceoOjosCerrados2" />
+                        </th>
+                        <th>
+                            <input class="form-control" id="BalanceoOjosCerrados1" name="BalanceoOjosCerrados1" />
+                        </th>
+                        <th>
+                            <input class="form-control" id="BalanceoOjosCerrados0" name="BalanceoOjosCerrados0" />
+                        </th>
+                        <th>
+                            <textarea name="textarea" rows="1" cols="70" class="form-control" id="BalanceoOjosCerradosObservaciones"></textarea>
+                        </th>
+
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+        <br />
+    </form>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12">
+    <br />
+    <hr width=100% align="right" size=200 color="black">
+
+    <h1>FLEXIBILIDAD: TEST DE SIT AND REACH MODIFICATION:</h1>
+    <form id="FormEvolucionFisioterapia" name="FormEvolucionFisioterapia">
+        <div class="row m-0">
+
+            <div align="left" class="col-xs-4 col-sm-4 col-md-4">
+            </div>
+            <img src="~/images/flexibilidad.jpg" />
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Flexibilidad:</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FlexibilidadFisioterapia" name="FlexibilidadFisioterapia" />
+
+            </div>
+        </div>
+
+        <br />
+    </form>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+    <br />
+    <hr width=100% align="right" size=200 color="black">
+    <form id="FormEvolucionFisioterapia" name="FormEvolucionFisioterapia">
+        <div class="row m-0">
+
+            <div align="left" class="col-xs-4 col-sm-4 col-md-4">
+
+            </div>
+
+
+
+            <div class="row m-0">
+                <table align="center" border="1" class="col-xs-12 col-sm-12 col-md-12">
+
+                    <tr>
+
+                        <td colspan="1" align="center"><strong>Prueba</strong></td>
+                        <td colspan="1" align="center"><strong>Puntuación 3</strong> </td>
+                        <td colspan="1" align="center"><strong>Puntuación 2</strong> </td>
+                        <td colspan="1" align="center"><strong>Puntuación 1</strong></td>
+                        <td colspan="1" align="center"><strong>Puntuación 0</strong></td>
+
+
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <label>Sentadilla Profunda</label>
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/Sentadilla3.PNG" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Sentadilla3" name="Sentadilla3" />
+
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/Sentadilla2.PNG" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Sentadilla2" name="Sentadilla2" />
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/Sentadilla1.PNG" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Sentadilla1" name="Sentadilla1" />
+                        </th>
+                        <th>
+
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Sentadilla0" name="Sentadilla0" />
+                        </th>
+                        
+                    </tr>
+                    @*<tr>
+                        <th>
+                            <label>Paso De Valla</label>
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/Valla3.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PasosValla3" name="PasosValla3" />
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/valla2.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PasosValle2" name="PasosValle2" />
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/valla1.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PasosValle1" name="PasosValle1" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PasosValle0" name="PasosValle0" />
+
+                        </th>
+                       
+                    </tr>*@
+                    <tr>
+                        <th>
+                            <label>Tijera En Linea</label>
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/tijera3.PNG" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TijeraLinea3" name="TijeraLinea3" />
+
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/tijera2.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TijeraLinea2" name="TijeraLinea2" />
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/tijera1.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TijeraLinea1" name="TijeraLinea1" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TijeraLinea0" name="TijeraLinea0" />
+                        </th>
+                       
+                    </tr>
+                    <tr>
+                        <th>
+                            <label>Movilidad Activa Hombro</label>
+                        </th>
+                        <th>
+                            <img src="~/images/hombro3.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="HombroActividad3" name="HombroActividad3" />
+                        </th>
+                        <th>
+                            <img src="~/images/hombro2.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="HombroActividad2" name="HombroActividad2" />
+                        </th>
+                        <th>
+                            <img src="~/images/hombro1.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="HombroActividad1" name="HombroActividad1" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="HombroActividad0" name="HombroActividad0" />
+
+                        </th>
+                    
+                    </tr>
+                    <tr>
+                        <th>
+                            <label>Movilidad Acividad Pierna</label>
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/pierna3.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Pierna3" name="Pierna3" />
+
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/pierna2.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Pierna2" name="Pierna2" />
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/pierna1.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Pierna1" name="Pierna1" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Pierna0" name="Pierna0" />
+                        </th>
+                        </tr>
+                    <tr>
+                        <th>
+                            <label>Pulgares</label>
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/pulgar3.jpg" />
+
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Pulgares3" name="Pulgares3" />
+
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/pulgar2.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Pulgares2" name="Pulgares2" />
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/pulgar1.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Pulgares1" name="Pulgares1" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Pulgares0" name="Pulgares0" />
+
+                        </th>
+                        
+                    </tr>
+                    <tr>
+                        <th>
+                            <label>Estabilidad Del Tronco Push-Up</label>
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/tronco3.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Tronco3" name="Tronco3" />
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/tronco2.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Tronco2" name="Tronco2" />
+                        </th>
+                        <th>
+                            <img height="150" width="150" src="~/images/tronco1.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Tronco1" name="Tronco1" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Tronco0" name="Tronco0" />
+
+                        </th>
+                       
+                    </tr>
+                    <tr>
+                        <th>
+                            <label>Puntuación Parcial</label>
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Planchas3" name="Planchas3" />
+
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Planchas2" name="Planchas2" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Planchas1" name="Planchas1" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Planchas0" name="Planchas0" />
+                        </th>
+                        
+                    </tr>
+                    <tr>
+                        <th>
+                            <label>Sumatoria Total</label>
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Sumatoria3" name="Sumatoria3" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Sumatoria2" name="Sumatoria2" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Sumatoria1" name="Sumatoria1" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Sumatoria0" name="Sumatoria0" />
+
+                        </th>
+                      
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+        <br />
+    </form>
+</div>
+<h1><strong>CORE: ESTABILIDAD CENTRAL</strong>
+</h1>
+<div class="col-xs-12 col-sm-12 col-md-12">
+
+    <hr width=100% align="right" size=200 color="black">
+    <form id="FormEvolucionFisioterapia" name="FormEvolucionFisioterapia">
+        <div class="row m-0">
+
+            <div class="row m-0">
+                <table align="center" border="1" class="col-xs-12 col-sm-12 col-md-12">
+
+                    <tr>
+
+                        <td colspan="12" align="center"><strong>Test de resistencia de flexores de tronco:</strong></td>
+
+
+
+                    </tr>
+
+                    <tr>
+
+                        <th>
+                            <img height="300" width="300" src="~/images/final1.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FlexoresTronco" name="FlexoresTronco" />
+
+                        </th>
+                        <th>
+                            <img height="300" width="300" src="~/images/final2.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FlexoresPlancha" name="FlexoresPlancha" />
+                        </th>
+
+                    </tr>
+                    <tr>
+
+                        <th>
+                            <img height="300" width="300" src="~/images/final3.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FlexoresColumna" name="FlexoresColumna" />
+                        </th>
+                        <th>
+                            <img height="300" width="300" src="~/images/final4.jpg" />
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FlexoresRecta" name="FlexoresRecta" />
+                        </th>
+
+
+                    </tr>
+
+                </table>
+
+            </div>
+            <div class="col-xs-12 col-sm12 col-md-12">
+                <label><strong>Observaciones</strong></label>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="ObservacionesGlobal"></textarea>
+            </div>
+            
+        </div>
+
+
+
+        <br />
+    </form>
+</div>
+
+
+<div class="row m-0">
+    <h1><strong> INFORME DE RESULTADOS EVALUACIÒN FISIOTERAPÈUTICA</strong></h1>
+    <hr width=100% align="right" size=200 color="black">
+    <div class="row m-0">
+
+        <form id="FormAntecedentesFisioterapia" name="FormAntecedentesFisioterapia">
+
+            <div class="row m-0">
+                
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Fecha Tratamiento</strong> </label>
+                    <input type="date" style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FechaTratamiento" name="FechaTratamiento" />
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Lesión Evaluación</strong></label>
+                    <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="LesionEvaluacion" name="LesionEvaluacion">
+                        <option value="">Seleccionar</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+
+                    </select>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4"">
+                    <label><strong>Cual Lesión Evaluacion </strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CualLesionEvaluacion" name="CualLesionEvaluacion" />
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <table align="center" border="1" class="col-xs-12 col-sm-12 col-md-12">
+
+                    <tr align="center">
+
+                        <th colspan="2">MEDIDAS (LONGITUD)</th>
+                    </tr>
+                    <tr>
+                        @*<td align="char"><strong>MMSS</strong></td>
+                <td align="center"><strong>MMII</strong> </td>*@
+
+                    </tr>
+
+                </table>
+                <div align="center" class="col-xs-3 col-sm-3 col-md-3">
+                    <label><strong>Mmss Simetria </strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="MmssSimetria" name="MmssSimetria" />
+                </div>
+                <div align="center" class="col-xs-3 col-sm-3 col-md-3">
+                    <label AL><strong>Mmss Asimetria </strong> </label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="MmssAsimetria" name="MmssAsimetria" />
+                </div>
+
+                <div align="center" class="col-xs-3 col-sm-3 col-md-3">
+                    <label><strong>Mmii Simetria</strong> </label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="MmiiSimetria" name="MmiiSimetria" />
+                </div>
+                <div align="center" class="col-xs-3 col-sm-3 col-md-3">
+                    <label><strong>Mmii Asimetria</strong> </label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="MmiiAsimetria" name="MmiiAsimetria" />
+                </div>
+
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>Descripcion Asimetria</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="DescripcionAsimetria"></textarea>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>Descripcion Simetria</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="DescripcionSimetria"></textarea>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>Postura</strong> </label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="PosturaEvaluacionFisio"></textarea>
+
+                    @*<input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PosturaEvaluacionFisio" name="PosturaEvaluacionFisio" />*@
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <label><strong>Trote en el Puesto</strong> </label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="TrotePuesto"></textarea>
+
+                    @*<input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TrotePuesto" name="TrotePuesto" />*@
+                </div>
+
+            </div>
+            <br />
+        </form>
+    </div>
+
+    <h1><strong>TEST SIT AND REACH</strong> </h1>
+    <hr width=100% align="right" size=200 color="black">
+    <div class="row m-0">
+
+        <form id="FormAntecedentesFisioterapia" name="FormAntecedentesFisioterapia">
+
+            <div class="row m-0">
+                <table align="center" border="1" class="col-xs-12 col-sm-12 col-md-12">
+
+                    <tr align="center">
+
+                        <th colspan="8">TEST SIT AND REACH</th>
+                    </tr>
+                    <tr>
+                        <td align="center"><strong>MASCULINO</strong></td>
+                        <td align="center"><strong>Superior+ 27 cm</strong> </td>
+                        <td align="center"><strong>Excelente + 17 a + 27 </strong></td>
+                        <td align="center">
+                            <strong>
+                                Bueno
+                                + 6 a + 16
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Promedio
+                                0 a + 5
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Deficiente
+                                - 8 a -1
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Pobre
+                                -19 a -9
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Muy pobre
+                                -20cm
+                            </strong>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td align="center"><strong>FEMENINO</strong></td>
+                        <td align="center">
+                            <strong>
+                                Superior
+                                + 30 cm
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Excelente
+                                + 21 a + 29
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Bueno
+                                + 11 a + 20
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Promedio
+                                +1 a + 10
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Deficiente
+                                - 7 a 0
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Pobre
+                                -14 a -8
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Muy pobre
+                                -15cm
+                            </strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="GeneroFisioterapia" name="GeneroFisioterapia" /></th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SuperiosTest" name="SuperiosTest" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ExcelenteTest" name="ExcelenteTest" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="BuenoTest" name="BuenoTest" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Promediotest" name="Promediotest" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="DeficienteTest" name="DeficienteTest" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PobreTest" name="PobreTest" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="MuyPobreTest" name="MuyPobreTest" />
+                        </th>
+
+                    </tr>
+
+
+                </table>
+
+
+            </div>
+        </form>
+    </div>
+    <br />
+    <br />
+
+    <h1><strong>SCREENING DE MOVIMIENTO FUNCIONAL (FMS)</strong> </h1>
+    <hr width=100% align="right" size=200 color="black">
+    <div class="row m-0">
+
+        <form id="FormAntecedentesFisioterapia" name="FormAntecedentesFisioterapia" class="col-xs-12 col-sm-12 col-md-12">
+            <p>
+                <strong>
+                    Calificación por prueba: <br />
+                    3 Excelente realización del movimiento<br />
+                    2 Realización del movimiento con pequeñas compensaciones<br />
+                    1 Realización del movimiento con muchas compensaciones<br />
+                    0 No realiza la prueba por dolor<br />
+                </strong>
+
+            </p>
+
+            <table align="center" border="1" class="col-xs-12 col-sm-12 col-md-12">
+
+
+                <thead class="col-xs-12 col-sm-12 col-md-12">
+                    <tr align="center">
+
+                        <th colspan="3">TEST SIT AND REACH</th>
+                    </tr>
+                    <tr>
+                        <th>PRUEBA</th>
+                        <th>CLASIFICACIÓN</th>
+                        <th>OBSERVACIONES</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th>Sentadilla Profunda</th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SentadillaCali" name="SentadillaObs" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SentadillaObs" name="SentadillaObs" />
+                        </th>
+
+                    </tr>
+
+
+                    <tr>
+                        <th>Tijera en línea</th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TijeraCali" name="TijeraCali" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TijeraObs" name="TijeraObs" />
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th>Movilidad de Hombro</th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="HombroCali" name="HombroCali" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="HombroObs" name="HombroObs" />
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th>Estiramiento activo de pierna</th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PiernaCali" name="PiernaCali" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PiernaObs" name="PiernaObs" />
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th>Push up Estabilidad de tronco </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TroncoCali" name="TroncoCali" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TroncoObs" name="TroncoObs" />
+                        </th>
+
+                    </tr>
+                    @*<tr>
+                        <th>Paso de valla</th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PasoVallaCali" name="PasoVallaCali" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PasoVallaObs" name="PasoVallaObs" />
+                        </th>
+
+                    </tr>*@
+                    <tr>
+                        <th>Estabilidad rotatoria de tronco</th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="EstabilidadCali" name="EstabilidadCali" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="EstabilidadObs" name="EstabilidadObs" />
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th>TOTAL</th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TotalCali" name="TotalCali" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TotalObs" name="TotalObs" />
+                        </th>
+
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </form>
+
+    </div>
+
+    <h1><strong></strong> </h1>
+    <hr width=100% align="right" size=200 color="black">
+    <div class="row m-0">
+
+
+        <div class="row m-0">
+            <table align="center" border="1" class="col-xs-12 col-sm-12 col-md-12">
+
+                <tr align="center">
+
+                    <th colspan="10">TEST SIT AND REACH</th>
+                </tr>
+                <tr>
+                    <td td colspan="2" align="center"><strong>PRUEBA</strong></td>
+                    <td td colspan="2" align="center"><strong>Resistencia Flexora</strong> </td>
+                    <td td colspan="2" align="center"><strong>Puente Prono</strong></td>
+                    <td td colspan="3" align="center"><strong>Resistencia Extensores</strong></td>
+                </tr>
+                <tr>
+                    <td td colspan="2" align="center"><strong>TIEMPO MINIMO</strong></td>
+                    <td align="center">
+                        <strong>
+                            F 144s
+                        </strong>
+                    </td>
+                    <td align="center">
+                        <strong>
+                            M 149s
+                        </strong>
+                    </td>
+                    <td align="center">
+                        <strong>
+                            F 60s
+                        </strong>
+                    </td>
+                    <td align="center">
+                        <strong>
+                            M 60s
+                        </strong>
+                    </td>
+                    <td align="center">
+                        <strong>
+                            F 146s
+                        </strong>
+                    </td>
+                    <td align="center">
+                        <strong>
+                            M 189s
+                        </strong>
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <th>
+
+                    </th>
+                    <th>
+
+
+                    </th>
+                    <th>
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ResistenciaF" name="ResistenciaF" />
+                    </th>
+                    <th>
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ResistenciaM" name="ResistenciaM" />
+                    </th>
+                    <th>
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Puentef" name="Puentef" />
+                    </th>
+                    <th>
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PuenteM" name="PuenteM" />
+                    </th>
+                    <th>
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ExtensoresF" name="ExtensoresF" />
+                    </th>
+                    <th>
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ExtensoresM" name="ExtensoresM" />
+                    </th>
+
+                </tr>
+
+                <tr>
+
+                    <td td colspan="10" align="center"><strong>Puente Lateral</strong></td>
+                </tr>
+                <tr>
+                    <td td colspan="2" align="center">
+                        <strong>
+                            D F 72s
+                        </strong>
+                    </td>
+                    <td td colspan="2" align="center">
+                        <strong>
+                            D M 94s
+                        </strong>
+                    </td>
+                    <td td colspan="2" align="center">
+                        <strong>
+                            I F77s
+                        </strong>
+                    </td>
+                    <td td colspan="2" align="center">
+                        <strong>
+                            I M97
+                        </strong>
+                    </td>
+                </tr>
+                <tr>
+
+
+                    <th td colspan="2">
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PuenteDF" name="PuenteDF" />
+                    </th>
+                    <th td colspan="2">
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PuenteDM" name="PuenteDM" />
+                    </th>
+                    <th td colspan="2">
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PuenteIF" name="PuenteIF" />
+                    </th>
+                    <th td colspan="2">
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PuenteIM" name="PuenteIM" />
+                    </th>
+
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><strong>SUMATORIA TOTAL</strong></td>
+                    <td colspan="10" align="center">
+                        <strong>
+                            CALIFICACION
+                        </strong>
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <th colspan="2">
+
+                    </th>
+
+                    <th colspan="12">
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CalificacionObs" name="CalificacionObs" />
+                    </th>
+
+                </tr>
+
+                <tr>
+                    <th colspan="2">
+
+                    </th>
+
+                    <td td colspan="1" align="center">
+                        <strong>
+                            5 Excelente
+                        </strong>
+                    </td>
+                    <td colspan="1" align="center">
+                        <strong>
+                            4 Muy bueno
+                        </strong>
+                    </td>
+                    <td td colspan="1" align="center">
+                        <strong>
+                            3 Bueno
+                        </strong>
+                    </td>
+                    <td td colspan="1" align="center">
+                        <strong>
+                            2 Regular
+                        </strong>
+                    </td>
+                    <td td colspan="1" align="center">
+                        <strong>
+                            1 Malo
+                        </strong>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th colspan="2"></th>
+
+                    <th td colspan="1">
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ExcelenteEvaluacion" name="ExcelenteEvaluacion" />
+                    </th>
+                    <th td colspan="1">
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="MuyBuenoEvaluacion" name="MuyBuenoEvaluacion" />
+                    </th>
+                    <th td colspan="1">
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="BuenoEvaluacion" name="BuenoEvaluacion" />
+                    </th>
+                    <th td colspan="1">
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="RegularEvaluacion" name="RegularEvaluacion" />
+                    </th>
+                    <th td colspan="1">
+                        <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="MaloRegulacion" name="MaloRegulacion" />
+                    </th>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <label><strong>Recomendaciónes</strong></label>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="RecomendacionesObs"></textarea>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <h1><strong>CONTROL FISIOTERAPIA</strong> </h1>
+            <hr width=100% align="right" size=200 color="black">
+
+            <div class="row m-0">
+                <table align="center" border="1" class="col-xs-12 col-sm-12 col-md-12">
+
+                    <tr align="center">
+
+                        <th colspan="8">TEST SIT AND REACH</th>
+                    </tr>
+                    <tr>
+                        <td align="center"><strong>MASCULINO</strong></td>
+                        <td align="center"><strong>Superior+ 27 cm</strong> </td>
+                        <td align="center"><strong>Excelente + 17 a + 27 </strong></td>
+                        <td align="center">
+                            <strong>
+                                Bueno
+                                + 6 a + 16
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Promedio
+                                0 a + 5
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Deficiente
+                                - 8 a -1
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Pobre
+                                -19 a -9
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Muy pobre
+                                -20cm
+                            </strong>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td align="center"><strong>FEMENINO</strong></td>
+                        <td align="center">
+                            <strong>
+                                Superior
+                                + 30 cm
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Excelente
+                                + 21 a + 29
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Bueno
+                                + 11 a + 20
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Promedio
+                                +11 a + 10
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Deficiente
+                                - 7 a 0
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Pobre
+                                -14 a -8
+                            </strong>
+                        </td>
+                        <td align="center">
+                            <strong>
+                                Muy pobre
+                                -15cm
+                            </strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestSitGenero" name="TestSitGenero" /></th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestSitSuperior" name="TestSitSuperior" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestSitExcelente" name="TestSitExcelente" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestSitBueno" name="TestSitBueno" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestSitPromedio" name="TestSitPromedio" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestSitDeficiente" name="TestSitDeficiente" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestSitPobre" name="TestSitPobre" />
+                        </th>
+                        <th>
+                            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestSitMuyPobre" name="TestSitMuyPobre" />
+                        </th>
+
+                    </tr>
+
+
+                </table>
+
+
+            </div>
+            <br />
+            <br />
+            <h1><strong>SCREENING DE MOVIMIENTO FUNCIONAL (FMS)</strong> </h1>
+            <hr width=100% align="right" size=200 color="black">
+            <div class="row m-0">
+
+                <form id="FormAntecedentesFisioterapia" name="FormAntecedentesFisioterapia" class="col-xs-12 col-sm-12 col-md-12">
+                    <p>
+                        <strong>
+                            Calificación por prueba: <br />
+                            3 Excelente realización del movimiento<br />
+                            2 Realización del movimiento con pequeñas compensaciones<br />
+                            1 Realización del movimiento con muchas compensaciones<br />
+                            0 No realiza la prueba por dolor<br />
+                        </strong>
+
+                    </p>
+
+                    <table align="center" border="1" class="col-xs-12 col-sm-12 col-md-12">
+
+
+                        <thead class="col-xs-12 col-sm-12 col-md-12">
+                            <tr align="center">
+
+                                <th colspan="3">TEST SIT AND REACH</th>
+                            </tr>
+                            <tr>
+                                <th>TEST DE CONTROL</th>
+                                <th>PRIMER TEST DE CONTROL</th>
+                                <th>SEGUNDO TEST DE CONTROL</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <th>Sentadilla Profunda</th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestSentadillaProfunda1" name="TestSentadillaProfunda1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestSentadillaProfunda2" name="TestSentadillaProfunda2" />
+                                </th>
+
+                            </tr>
+                            @*<tr>
+                                <th>Paso de Valla</th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestPasodeValla1" name="TestPasodeValla1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestPasodeValla2" name="TestPasodeValla2" />
+                                </th>
+
+                            </tr>*@
+
+                            <tr>
+                                <th>Tijera en línea</th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestTijeraLinea1" name="TestTijeraLinea1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestTijeraLinea2" name="TestTijeraLinea2" />
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>Movilidad de Hombro</th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestHombro1" name="TestHombro1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestHombro2" name="TestHombro2" />
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>Movilidad activa de pierna</th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestMovilidadPierna1" name="TestMovilidadPierna1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestMovilidadPierna2" name="TestMovilidadPierna2" />
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>Push up Estabilidad de tronco </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestPush1" name="TestPush1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestPush2" name="TestPush2" />
+                                </th>
+
+                            </tr>
+
+                            <tr>
+                                <th>Estabilidad Rotatoria de tronco </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestEstabilidadTronco1" name="TestEstabilidadTronco1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestEstabilidadTronco2" name="TestEstabilidadTronco2" />
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>Sumatoria</th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestSumarotia1" name="TestSumarotia1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestSumarotia2" name="TestSumarotia2" />
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>Observaciones</th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestObservaciones1" name="TestObservaciones1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestObservaciones2" name="TestObservaciones2" />
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th><strong>TEST DE CORE</strong></th>
+                                @*<th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TotalCali" name="TotalCali" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TotalObs" name="TotalObs" />
+                                </th>*@
+
+                            </tr>
+                            <tr>
+                                <th>Resistencia Flexora</th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestFlexora1" name="TestFlexora1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestFlexora2" name="TestFlexora2" />
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>Puente de Prono</th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestPuente1" name="TestPuente1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestPuente2" name="TestPuente2" />
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>Resistencia de Extensores</th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestResistencia1" name="TestResistencia1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestResistencia2" name="TestResistencia2" />
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>Puente Lateral</th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestPuenteLateral1" name="TestPuenteLateral1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestPuenteLateral2" name="TestPuenteLateral2" />
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>Sumatoria </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestCoreSumatoria1" name="TestCoreSumatoria1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestCoreSumatoria2" name="TestCoreSumatoria2" />
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>Observaciones</th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestCoreObservaciones1" name="TestCoreObservaciones1" />
+                                </th>
+                                <th>
+                                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestCoreObservaciones2" name="TestCoreObservaciones2" />
+                                </th>
+
+                            </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table>
+                     
+                        <tr>
+                            <td align="center"><strong>Excelente</strong></td>
+                            <td align="center"><strong>Muy Bueno</strong> </td>
+                            <td align="center"><strong>Bueno</strong></td>
+                            <td align="center"><strong>Regular</strong></td>
+                            <td align="center"><strong>Malo</strong></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <th><input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestCoreExcelente" name="TestCoreExcelente" /></th>
+                            <th>
+                                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestCoreMuyBueno" name="TestCoreMuyBueno" />
+                            </th>
+                            <th>
+                                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestCoreBueno" name="TestCoreBueno" />
+                            </th>
+                            <th>
+                                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestCoreRegular" name="TestCoreRegular" />
+                            </th>
+                            <th>
+                                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TestCoreMalo" name="TestCoreMalo" />
+                            </th>
+
+
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+            @*<div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Firma Fisioterapeuta</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FirmaDoctorFisioterapia" name="FirmaDoctorFisioterapia" />
+            </div>*@
+        </div>
+            
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveFisioterapia">Guardar </button>
+            </div>
+    </div>
+
+    </div>  
+
+
+

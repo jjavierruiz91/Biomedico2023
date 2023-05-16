@@ -1,0 +1,657 @@
+﻿
+@{
+    ViewBag.Title = "Biomedico";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutBiomedico.cshtml";
+
+
+
+}
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Centro Biomedico</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    @*<link href="~/img/favicon.png" rel="icon">
+        <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">*@
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">*@
+
+    <!-- Libraries CSS Files -->
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    @*<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">*@
+    <link href="~/lib/animate/animate.min.css" rel="stylesheet" />
+    @*<link href="lib/animate/animate.min.css" rel="stylesheet">*@
+    <link href="~/lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
+    @*<link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">*@
+    <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+    @*<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">*@
+    <link href="~/lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+    @*<link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">*@
+
+    <!-- Main Stylesheet File -->
+    <link href="~/css/style.css" rel="stylesheet" />
+       @*<link href="css/style.css" rel="stylesheet">*@
+    @*<meta charset="utf-8">
+        <title>Centro Biomedico</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        Favicons
+        <link href="img/favicon.png" rel="icon">
+        <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+        Google Fonts
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+        Bootstrap CSS File
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+        Libraries CSS Files
+        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="~/lib/animate/animate.min.css" rel="stylesheet" />
+        <link href="~/lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+        <link href="~/lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+        <link href="~/css/style.css" rel="stylesheet" />
+        Main Stylesheet File*@
+
+</head>
+
+<body>
+
+
+
+
+    <header id="header">
+        <div class="container-fluid">
+
+            <div id="logo" class="pull-left">
+                <h1><a href="#about" class="scrollto">BIOMEDICO</a></h1>
+                @*<a href="#intro"><img src="img/logo.png" alt="" title="" /></a>*@
+            </div>
+
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-active"><a href="#intro">Inicio</a></li>
+                    <li><a href="#about">Secretaria</a></li>
+                    <li><a href="#services">Funciones</a></li>
+                    <li><a href="#facts">Deportistas</a></li>
+                    <li><a href="#team">Personal Medico</a></li>
+                    @*<li class="menu-has-children">
+            <a href="">Drop Down</a>
+            <ul>
+                <li><a href="#">Drop Down 1</a></li>
+                <li><a href="#">Drop Down 3</a></li>
+                <li><a href="#">Drop Down 4</a></li>
+                <li><a href="#">Drop Down 5</a></li>
+            </ul>
+        </li>*@
+                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="#Biomedico">@Html.ActionLink("Biomedico", "Login", "Login")</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="intro">
+        <div class="intro-container">
+            <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+
+                <ol class="carousel-indicators"></ol>
+
+                <div class="carousel-inner" role="listbox">
+
+                    <div class="carousel-item active">
+                        <div class="carousel-background"><img src="~/img/intro-carousel/1.jpg" alt=""></div>
+                        <div class="carousel-container">
+
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-background"><img src="~/img/intro-carousel/2.jpg" alt=""></div>
+                        <div class="carousel-container">
+
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-background"><img src="~/img/intro-carousel/3.jpg" alt=""></div>
+                        <div class="carousel-container">
+
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-background"><img src="~/img/intro-carousel/4.jpg" alt=""></div>
+                        <div class="carousel-container">
+
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-background"><img src="~/img/intro-carousel/5.jpg" alt=""></div>
+                        <div class="carousel-container">
+                            >
+                        </div>
+                    </div>
+
+                </div>
+
+                <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <main id="main">
+
+
+
+        <section id="about">
+            <div class="container">
+
+                <header class="section-header">
+
+                    <h3>Secretaria de Educacion</h3>
+                    <div align="center"><img src="~/img/perfil_sec_deportes_2021.jpg"></div>
+                    <p>
+                        Régulo Alberto Pineda Arregocés es Licenciado en educación física y especialista en Gerencia
+                        de empresas. En esta administración asume el cargo de Secretario de Recreación y Deportes del
+                        Departamento del Cesar.
+                        Con su experiencia laboral como coordinador operativo misional internacional París – Francia de
+                        la Fundación Recreoedeportiva y Cultural Fuerza Viva, jefe de Bienestar Universitario de la Uni.
+                        Popular del Cesar y coordinador técnico en el Corsorcio Applus Control Gestión Social se une al
+                        gabinete Departamental del Gobierno Monsalvo Gnecco.
+                        La Secretaría de Recreación y Deportes del Cesar, es la encargada de coordinar y supervisar el
+                        desarrollo de las actividades deportivas, recreativas, de aprovechamiento del tiempo libre y la
+                        educación física en el departamento, así como también diseñar estrategias y actividades para
+                        apoyar a los deportistas y ligas deportivas en los eventos donde  representarán al departamento
+                        a nivel nacional e internacional, entre otras funciones..
+                    </p>
+                </header>
+
+                <div class="row about-cols">
+
+                    <div class="col-md-6 wow fadeInUp">
+                        <div class="about-col">
+                            <div class="img">
+                                <img src="~/img/about-vision.jpg" alt="" class="img-fluid">
+                                <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                            </div>
+                            <h2 class="title"><a href="#">MISIÓN</a></h2>
+                            <p>
+                                Contribuir a la formación de la cultura del deporte y el sano
+                                esparcimiento en las comunidades cesarenses, a través de la
+                                investigación y del desarrollo de sistemas y modelos modernos de
+                                la ciencia, la tecnología y el conocimiento en el deporte, la
+                                medicina deportiva, la informática y los programas específicos
+                                encaminados al crecimiento de las organizaciones deportivas del
+                                Departamento, facilitando los recursos tecnológicos, físicos,
+                                humanos y financieros.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="about-col">
+                            <div class="img">
+                                <img src="~/img/about-plan.jpg" alt="" class="img-fluid">
+                                <div class="icon"><i class="ion-ios-list-outline"></i></div>
+                            </div>
+                            <h2 class="title"><a href="#">VISIÓN</a></h2>
+                            <p>
+                                La Secretaría de Recreación y Deportes Departamental,
+                                trabajará para ser un asesor deportivo a alto nivel
+                                departamental difundiendo la cultura del deporte, la
+                                educación física, la recreación y el aprovechamiento del
+                                tiempo libre, a partir del niño, generando procesos en
+                                procura de formar deportistas integrales de talla nacional
+                                e internacional.
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+
+                <header class="section-header wow fadeInUp">
+                    <h3>FUNCIONES</h3>
+                    <p>
+                        De acuerdo con lo establecido en la Ley 181 de 1995, son funciones de la Secretaría de Recreación y Deportes
+                        Departamental, las siguientes:
+                    </p>
+                </header>
+
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+                        <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
+                        <p class="description">
+                            Estimular la participación comunitaria y la integración funcional en los términos de la Constitución Política, la ley 181
+                            de 1995, el marco ordenanza en la materia y las demás normas que lo regulen.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+                        <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
+                        <p class="description">
+                            Coordinar y desarrollar programas y actividades que permitan fomentar la práctica del deporte, la recreación y el
+                            aprovechamiento del tiempo libre en el territorio departamental.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+                        <div class="icon"><i class="ion-ios-paper-outline"></i></div>
+
+                        <p class="description">
+                            Prestar asistencia técnica y administrativa a los municipios y a las demás entidades del sistema nacional del deporte
+                            en el territorio de su jurisdicción.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                        <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                        <p class="description">
+                            Proponer y aprobar en lo de su competencia el plan departamental para el desarrollo del deporte, la recreación y el
+                            aprovechamiento del tiempo libre.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                        <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
+                        <p class="description">
+                            Participar en la elaboración y ejecución de programas de cofinanciación de la construcción, ampliación y mejoramiento
+                            de instalaciones deportivas de los municipios.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                        <div class="icon"><i class="ion-ios-people-outline"></i></div>
+                        <p class="description">
+                            Promover, difundir y fomentar la práctica de la educación física, el deporte y la recreación en el territorio departamental.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                        <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                        <p class="description">
+                            Cooperar con los municipios y las entidades deportivas y recreativas en la promoción y difusión de la actividad física,
+                            el deporte y la recreación y atender a su financiamiento de acuerdo con los planes y programas establecidos por la
+                            Administración Departamental y por los que presenten las ligas y clubes legalmente establecidos.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                        <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
+                        <p class="description">
+                            Ejecutar programas de recreación aplicando los principios de universalidad, integración funcional, democratización y
+                            ética deportiva.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                        <div class="icon"><i class="ion-ios-people-outline"></i></div>
+                        <p class="description">
+                            Fomentar la participación de personal con limitaciones físicas, sensoriales y síquicas en programas deportivos,
+                            recreativos, de educación física y aprovechamiento del tiempo libre, orientándolas a su rehabilitación e integración
+                            social.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                        <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                        <p class="description">
+                            Impulsar programas que generen oportunidades laborales y educativas a los deportistas Cesarenses reconocidos a
+                            que se refiere la Ley 181 de 1995 incluidos los que tengan reconocimientos en campeonatos departamentales de
+                            carácter oficial.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                        <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
+                        <p class="description">
+                            Establecer los mecanismos que permitan el fomento, la masificación, el desarrollo y la práctica del deporte, la
+                            recreación y el aprovechamiento del tiempo libre mediante la integración funcional de los Organismos del sistema
+                            Nacional del Deporte.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                        <div class="icon"><i class="ion-ios-people-outline"></i></div>
+                        <p class="description">
+                            Promover y gestionar convenios con entidades públicas y privadas para facilitar al deportista la práctica deportiva con
+                            garantías que permitan su normal desarrollo integral como persona antes que deportista.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="facts" class="wow fadeIn">
+            <div class="container">
+
+                <header class="section-header">
+                    <h3>Secretaría de Recreación y Deportes</h3>
+                    <p></p>
+                </header>
+
+                <div class="row counters">
+
+                    <div class="col-lg-4 col-6 text-center">
+                        <span data-toggle="counter-up">7.274</span>
+                        <p>Deportistas</p>
+                    </div>
+
+                    <div class="col-lg-4 col-6 text-center">
+                        <span data-toggle="counter-up">21</span>
+                        <p>Especialista</p>
+                    </div>
+
+                    <div class="col-lg-4 col-6 text-center">
+                        <span data-toggle="counter-up">32</span>
+                        <p>Ligas Deportivas</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 wow fadeInUp">
+                        <div class="member">
+                            <img src="~/img/Deportistas/01.jpg" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <div class="member-info-content">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="member">
+                            <img src="~/img/Deportistas/2.jpg" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <div class="member-info-content">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="member">
+                            <img src="~/img/Deportistas/3.jpg" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <div class="member-info-content">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="member">
+                            <img src="~/img/Deportistas/5.jpg" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <div class="member-info-content">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+               
+            </div>
+
+           
+        </section>
+
+
+        <section id="team">
+            <div class="container">
+                <div class="section-header wow fadeInUp">
+                    <h3>PERSONAL MEDICO</h3>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 wow fadeInUp">
+                        <div class="member">
+                            <img src="~/img/Medicos/team-2.jpg" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <div class="member-info-content">
+                                    <h4>Javier Ruiz</h4>
+                                    <span>Ingeniero de Sistemas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="member">
+                            <img src="~/img/Medicos/testimonial-1.jpg" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <div class="member-info-content">
+                                    <h4>Sarah Jhonson</h4>
+                                    <span>Medicina</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="member">
+                            <img src="~/img/Medicos/testimonial-4.jpg" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <div class="member-info-content">
+                                    <h4>William Anderson</h4>
+                                    <span>Fisioterapia</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="member">
+                            <img src="~/img/Medicos/testimonial-5.jpg" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <div class="member-info-content">
+                                    <h4>Natalia Perez</h4>
+                                    <span>Medicina</span>
+                                    <
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="member">
+                            <img src="~/img/Medicos/team-4.jpg" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <div class="member-info-content">
+                                    <h4>Franco Ovalle</h4>
+                                    <span>Nutricion</span>
+                                    <
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="member">
+                            <img src="~/img/Medicos/testimonial-2.jpg" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <div class="member-info-content">
+                                    <h4>Richar Castro Jepson</h4>
+                                    <span>Medicina</span>
+                                    <
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="member">
+                            <img src="~/img/Medicos/testimonial-5.jpg" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <div class="member-info-content">
+                                    <h4>Karla Perez</h4>
+                                    <span>Psicologa</span>
+                                    <
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="member">
+                            <img src="~/img/Medicos/team-2.jpg" class="img-fluid" alt="" height="150" width="1000">
+                            <div class="member-info">
+                                <div class="member-info-content">
+                                    <h4>Amanda Jepson</h4>
+                                    <span>Fisioterapia</span>
+                                    <
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="section-bg wow fadeInUp">
+
+            <div class="container">
+
+                <div class="section-header">
+                    <h3>
+                        Contacto
+                    </h3>
+                </div>
+
+                <div class="row contact-info">
+
+                    <div class="col-md-4">
+                        <div class="contact-address">
+                            <i class="ion-ios-location-outline"></i>
+                            <h3>Valledupar-cesar</h3>
+                            <address>Carrera </address>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="contact-phone">
+                            <i class="ion-ios-telephone-outline"></i>
+                            <h3>Telefono</h3>
+                            <p><a href="tel:+155895548855">315 987456</a></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="contact-email">
+                            <i class="ion-ios-email-outline"></i>
+                            <h3>Email</h3>
+                            <p><a href="mailto:info@example.com">infosecdeporte@gmail.com</a></p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <a href="#"><img class="logo" src="~/img/banner.png" alt="Gobernacion del cesar" width="1000" height="100"></a>
+
+        </section>
+
+    </main>
+
+
+
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h3>CENTRO BIOMEDICO</h3>
+
+                        <div class="social-links">
+                            <a href="https://twitter.com/Javierruiiz91" class="twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/Fuethe.ruiz.mendoza" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/javierruiiz91/" class="instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/javier-ruiz-mendoza-648129195/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                        </div>
+
+                    </div>
+                    <div class="container">
+                        <div class="copyright">
+                            &copy; <strong>GOBERNACION DEL CESAR </strong> <br />
+                            <strong>OFICINA DE SISTEMAS</strong>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+
+
+<!-- JavaScript Libraries -->
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script src="~/lib/jquery/jquery-migrate.min.js"></script>
+@*<script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-migrate.min.js"></script>*@
+<script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+@*<script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+<script src="~/lib/easing/easing.min.js"></script>
+@*<script src="lib/easing/easing.min.js"></script>*@
+<script src="~/lib/superfish/hoverIntent.js"></script>
+<script src="~/lib/superfish/superfish.min.js"></script>
+@*<script src="lib/superfish/hoverIntent.js"></script>
+    <script src="lib/superfish/superfish.min.js"></script>*@
+<script src="~/lib/wow/wow.min.js"></script>
+@*<script src="lib/wow/wow.min.js"></script>*@
+<script src="~/lib/waypoints/waypoints.min.js"></script>
+@*<script src="lib/waypoints/waypoints.min.js"></script>*@
+<script src="~/lib/counterup/counterup.min.js"></script>
+@*<script src="lib/counterup/counterup.min.js"></script>*@
+<script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+@*<script src="lib/owlcarousel/owl.carousel.min.js"></script>*@
+<script src="~/lib/isotope/isotope.pkgd.min.js"></script>
+@*<script src="lib/isotope/isotope.pkgd.min.js"></script>*@
+<script src="~/lib/lightbox/js/lightbox.min.js"></script>
+@*<script src="lib/lightbox/js/lightbox.min.js"></script>*@
+<script src="~/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+@*<script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>*@
+<!-- Contact Form JavaScript File -->
+@*<script src="contactform/contactform.js"></script>*@
+
+<!-- Template Main Javascript File -->
+<script src="~/js/main.js"></script>
+@*<script src="js/main.js"></script>*@
+
+
+

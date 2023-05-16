@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script defer src="~/Scripts/APP/ControlMedicinaDeportiva/ControlMedicinaDeportiva.js"></script>
+
+<h2><strong>Control - Medicina Deportiva</strong></h2>
+
+
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
+
+    <form id="FormControlMedcinaDeportiva" name="FormControlMedcinaDeportiva">
+
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong> Número Identificación</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Cedula" name="Cedula" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4" style="right:inherit">
+                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Buscar</button>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Nombre</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerNombre" name="PrimerNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Nombre</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoNombre" name="SegundoNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Apellido</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerApellido" name="PrimerApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Apellido</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoApellido" name="SegundoApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Edad</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Edad" onkeypress="return soloNumeros(event)" name="Edad" />
+            </div>
+
+        </div>
+    </form>
+    <br />
+    <br />
+
+    <h1><strong>Control</strong></h1>
+    <hr width=100% align="right" size=200 color="black">
+
+    <div class="row m-0">
+
+        <form id="FormNutricionDeportiva" name="FormNutricionDeportiva">
+
+            <div class="row m-0">
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Fecha</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="Fecha" name="Fecha" />
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Evolución Deportiva </strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="EvolucionDeportiva"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Conducta Deportiva </strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="ConductaDeportiva"></textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Diagnostico</strong></label>
+                    <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="DiagnosticoDeportiva"></textarea>
+                </div>
+                @*<div class="col-xs-4 col-sm-4 col-md-4">
+                    <label><strong>Firma Medico</strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FirmaDeportiva" name="FirmaDeportiva" />
+                </div>*@
+               
+
+            </div>
+        </form>
+
+
+    </div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveControlMedicinaDeportiva">Guardar</button>
+    </div>
+</div>

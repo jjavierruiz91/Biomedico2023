@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb5b5bd990d84e29bb64744b167a343a" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="BIOMEDICOModel.ASignarPermisos" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Permisos" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Rol" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.TipoPermiso" Width="1.5" PointX="1.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Usuarios" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_ASignar_permisos_Permisos1" ManuallyRouted="false" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_ASignar_permisos_Rol1" ManuallyRouted="false" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_Permisos_TipoPermiso" ManuallyRouted="false" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_Usuarios_Rol1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Ocupacion" Width="1.5" PointX="7.625" PointY="2" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.DatosFamiliares" Width="1.5" PointX="7.625" PointY="7.625" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Deportistas" Width="1.5" PointX="5.375" PointY="3" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_DatosFamiliares_Deportistas" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_Ocupacion_Deportistas" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.AntecedentesMedicinaDelDeporte" Width="1.5" PointX="3" PointY="22.75" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.MedicinaDelDeporte" Width="1.875" PointX="0.5" PointY="18.5" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_AntecedentesMedicinaDelDeporte_MedicinaDelDeporte" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.EnfermedadPersonalPsicologia" Width="1.5" PointX="7.625" PointY="15.125" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.FamiliaresPsicologia" Width="1.5" PointX="7.625" PointY="37.75" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.HistoriaFamiliaresPsicologia" Width="1.5" PointX="7.625" PointY="34.125" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.TestPsicologia" Width="1.5" PointX="7.625" PointY="27.875" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.CitasMedicas" Width="1.5" PointX="10.375" PointY="5.75" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Medicos" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.AnamnesisNutricion" Width="1.5" PointX="14.625" PointY="16.25" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.ExamenFisicoMedicinaDelDeporte" Width="1.5" PointX="3.125" PointY="17.125" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_ExamenFisicoMedicinaDelDeporte_MedicinaDelDeporte" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.SeguimientoMedicinaDeporte" Width="1.5" PointX="3.125" PointY="27.75" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_SeguimientoMedicinaDeporte_MedicinaDelDeporte1" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.AntecedentesFisioterapia" Width="1.5" PointX="19.625" PointY="20.75" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Evolucionfisioterapia" Width="1.5" PointX="19.625" PointY="2.5" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.SeguimientoPsicologia" Width="1.5" PointX="7.625" PointY="23.625" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.ControlNutricion" Width="1.5" PointX="14.625" PointY="25" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.DemograficoPsicologia" Width="1.5" PointX="5.375" PointY="25.375" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.VidapersonalPsicologia" Width="1.5" PointX="7.625" PointY="42.375" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_EnfermedadPersonalPsicologia_DemograficoPsicologia" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_FamiliaresPsicologia_DemograficoPsicologia" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_HistoriaFamiliaresPsicologia_DemograficoPsicologia" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_SeguimientoPsicologia_DemograficoPsicologia" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_TestPsicologia_DemograficoPsicologia" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_VidapersonalPsicologia_DemograficoPsicologia" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Remision" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.AgendarCitas" Width="2.25" PointX="10.375" PointY="9.875" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.EvaluacionFisioterapia" Width="2.25" PointX="19.625" PointY="27.625" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Fisioterapia" Width="1.5" PointX="17.375" PointY="21.875" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.SeguimientoNutricion" Width="1.5" PointX="14.625" PointY="10.5" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_AntecedentesFisioterapia_Fisioterapia" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_EvaluacionFisioterapia_Fisioterapia" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_Evolucionfisioterapia_Fisioterapia" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Nutricion" Width="1.5" PointX="12.375" PointY="16.875" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_AnamnesisNutricion_Nutricion" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_ControlNutricion_Nutricion" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_SeguimientoNutricion_Nutricion1" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.HistoriaClinicaFisioterapia" Width="1.5" PointX="19.625" PointY="49.625" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_HistoriaClinicaFisioterapia_Fisioterapia" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.EncuestaDeportistas" Width="1.5" PointX="22.375" PointY="3.625" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.EncuestaFamiliar" Width="1.5" PointX="24.625" PointY="8.875" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.EncuestaSocioeconomica" Width="1.5" PointX="24.625" PointY="1.75" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_EncuestaFamiliar_EncuestaDeportistas" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_EncuestaSocioeconomica_EncuestaDeportistas" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "ListaCitasMedicasDeportiva";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script defer src="~/Scripts/APP/CitasMedicas/ListasCitasMedicas.js"></script>
+<h1><strong>Listado Citas Medicas </strong></h1>
+
+<div class="table-responsive row col-xl-12 ">
+    <table class="table" id="datatable-citasmedicas">
+        <thead>
+
+            <tr class="ColorTabla">
+                @*<th>ID</th>*@
+                <th>IDENTIFICACION</th>
+                <th>ESPECIALISTAS</th>
+                <th>FECHA</th>
+                <th>HORA</th>
+                <th>ESTADO</th>
+            </tr>
+        </thead>
+    </table>
+</div>

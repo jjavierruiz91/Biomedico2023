@@ -1,0 +1,725 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/APP/Psicologia/Psicologia.js"></script>
+
+
+<h1><strong>Ficha Deportiva - Psicologia</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
+
+    <form id="FormPsicologia" name="FormPsicologia">
+
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Número Identificación</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Cedula" name="Cedula" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4" style="right:inherit">
+
+                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Buscar</button>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Nombre</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerNombre" name="PrimerNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Nombre</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoNombre" name="SegundoNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Apellido</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerApellido" name="PrimerApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Apellido</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoApellido" name="SegundoApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Género</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Genero" name="Genero" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Edad</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Edad" onkeypress="return soloNumeros(event)" name="Edad" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Deporte</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" type="email" class="form-control" id="Deporte" name="Deporte" />
+            </div>
+
+        </div>
+
+    </form>
+</div>
+<br />
+<br />
+
+<h1><strong>Datos Demograficos</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+<br />
+
+<div class="row m-0">
+
+    <form id="FormDatosDemograficos" name="FormDatosDemograficos">
+
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Código</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CodigoPsicologia" name="CodigoPsicologia">
+                    <option value="">Seleccionar</option>
+                    <option value="2105">2105</option>
+
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+
+                <label><strong>Estado Civil</strong> </label>
+
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EstadoCivil" name="EstadoCivil">
+                    <option value="">Seleccionar</option>
+                    <option value="Soltero(A)">Soltero(A)</option>
+                    <option value="Casado(A)">Casado(A)</option>
+                    <option value="Union Libre">Union Libre</option>
+                    <option value="Separado(A)">Separado(A)</option>
+                    <option value="Divorciado(A)">Divorciado(A)</option>
+                    <option value="Viudo(A)">Viudo(A)</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Nivel Estudio</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="NivelEducativo" name="NivelEducativo">
+                    <option value="">Seleccionar</option>
+                    <option value="Primaria">Primaria</option>
+                    <option value="Bachiller">Bachiller</option>
+                    <option value="Tecnico">Tecnico</option>
+                    <option value="Profesional">Profesional</option>
+                    <option value="Especialista">Especialista</option>
+                    <option value="Post-grado">Post-grado</option>
+                    <option value="Ninguno">Ninguno</option>
+
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Yo Soy </strong></label>
+
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="YoSoy" name="YoSoy">
+                    <option value="">Seleccionar</option>
+                    <option value="Hijo Unico">Hijo Unico</option>
+                    <option value="El Mayor">El Mayor</option>
+                    <option value="El Menor">El Menor</option>
+                    <option value="Intermedio">Intermedio</option>
+
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>N° Hermanos</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NumHermanos" name="NumHermanos" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Vivo Con</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="VivoCon" name="VivoCon" />
+
+                @*<select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="VivoCon" name="VivoCon">
+                    <option value="">Seleccionar</option>
+                    <option value="MADRE">MADRE</option>
+                    <option value="PADRE">PADRE</option>
+                    <option value="HERMANOS">HERMANOS</option>
+                    <option value="ESPOSO">ESPOSO(A)</option>
+                    <option value="HIJOS">HIJOS(A)</option>
+                    <option value="SOLO">SOLO(A)</option>
+                    <option value="AMIGOS">AMIGOS(AS)</option>
+                    <option value="OTROS FAMILIAES">OTROS FAMILIARES</option>
+
+                </select>*@
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Actualmente</strong></label>
+
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Actualmente" name="Actualmente">
+                    <option value="">Seleccionar</option>
+                    <option value="Trabajo">Trabajo</option>
+                    <option value="Entreno">Entreno</option>
+                    <option value="Estudio">Estudio</option>
+                    <option value="Entreno y Estudio">Entreno y Estudio</option>
+                    <option value="Trabajo,Entreno,Estudio">Trabajo,Entreno,Estudio</option>
+
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Religión</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Religion" name="Religion" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Dependencia Económica</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="DependenciaEconomia" name="DependenciaEconomia">
+                    <option value="">Seleccionar</option>
+                    <option value="Madre">Madre</option>
+                    <option value="Padre">Padre</option>
+                    <option value="Hermanos">Hermanos</option>
+                    <option value="Esposo(A)">Esposo(A)</option>
+                    <option value="Hijos(A)">Hijos(A)</option>
+                    <option value="Mi Trabajo">Mi Trabajo</option>
+                    <option value="Otros Familiares">Otros Familiares</option>
+                    <option value="Ingresos Como Deportistas">Ingresos Como Deportistas</option>
+
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Anexos</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="file" class="form-control" id="AnexosPsicologia" name="AnexosPsicologia" />
+                <img align="right" id="ImagenPsicologiaDeport" height="450" width="450" @*style="border-radius:50%;*@ border-color:#000000" />
+
+            </div>
+        </div>
+
+        <br />
+    </form>
+</div>
+
+<h1><strong>Historia Familiares</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+<br />
+<div class="row m-0">
+
+    <form id="FormDatosFamiliares" name="FormDatosFamiliares">
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Nombre Padre</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NombrePadre" name="NombrePadre" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Edad Padre</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="EdadPadre" name="EdadPadre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Relación Padre</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="RelacionPadre" name="RelacionPadre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Nombre Madre</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NombreMAdre" name="NombreMAdre" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Edad Madre</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="EdadMadre" name="EdadMadre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Relación Madre</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="RelacionMadre" name="RelacionMadre" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Relación Hermanos</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="RelacionHermanos" name="RelacionHermanos" />
+            </div>
+
+        </div>
+
+    </form>
+</div>
+<h1><strong>Enfermedades Familiares</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+
+<br />
+
+<div class="row m-0">
+
+    <form id="FormEfermedadFamiliares" name="FormEfermedadFamiliares">
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Sustancias Psicoactivas</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="SustanciasPsicoFmlia" name="SustanciasPsicoFmlia">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Enfermedades Mentales</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EnferMentalesFmlia" name="EnferMentalesFmlia">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Enfermedades Coronarias</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EnferCoronariasFmlia" name="EnferCoronariasFmlia">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Obesidad</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="ObesidadFmlia" name="ObesidadFmlia">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Cancer</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CancerFmlia" name="CancerFmlia">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Hipertensión</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="HipertensionFmlia" name="HipertensionFmlia">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Enfermería Alérgicas</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EnferAlergicasFmlia" name="EnferAlergicasFmlia">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+
+        </div>
+
+    </form>
+</div>
+<br />
+<h1><strong>Historia Personal</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+
+<br />
+
+<div class="row m-0">
+
+    <form id="FormHistoriaPersonal" name="FormHistoriaPersonal">
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Sustancias Psicoactivas</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="SustanciasPsicoactivasPer" name="SustanciasPsicoactivasPer">
+                    <option value="">Seleccionar</option>
+                       <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Enfermedades Mentales</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EnferMentalesPer" name="EnferMentalesPer">
+                    <option value="">Seleccionar</option>
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Diabetes</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="DiabetesPer" name="DiabetesPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Enfermededades Coronarias</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EnferCoronariasPer" name="EnferCoronariasPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Obesidad</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="ObesidadPer" name="ObesidadPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Cáncer</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CancerPer" name="CancerPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Hipertensión</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="HipertensionPer" name="HipertensionPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Enfermedades Alergicas</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EnferAlergicasPer" name="EnferAlergicasPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Asma</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="AsmaPer" name="AsmaPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Complicaciones Parto</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="ComplicacionesPartoPer" name="ComplicacionesPartoPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Lesiones</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="LesionesPer" name="LesionesPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Cual Lesiones</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CualesLesionesPer" name="CualesLesionesPer" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>¿Le cuesta trabajo concentrarse?</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TrabajoConcentrarsePer" name="TrabajoConcentrarsePer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Dolor Muscular</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="DolorMuscularPer" name="DolorMuscularPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Parto Cesarea</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="PartoCesareaPer" name="PartoCesareaPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Parto Normal</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="PartoNormalPer" name="PartoNormalPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Lesionado Actual</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="LesionadoActualPer" name="LesionadoActualPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>¿Dificultad para Dormir?</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="DificultadSueñoPer" name="DificultadSueñoPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Dolor Cabeza</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class=" select2 form-control" id="DolorCabezaPer" name="DolorCabezaPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Cirugías</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CirugiasPer" name="CirugiasPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Apetito</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="ApetitoPer" name="ApetitoPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Cansado</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CansadoPer" name="CansadoPer">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8">
+                <label><strong>Otros</strong></label>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="OtroPer"></textarea>
+            </div>
+            <br />
+            <br />
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h3 align="center"><strong>¿Desde cuando, como, curso del problema, factores asociados?</strong></h3>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="10" cols="50" class="form-control" id="HistoriadelProblemaPer"></textarea>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@*<h2>Historia del problema</h2>
+<div class="row m-0">
+
+    <form id="FormHistoria" name="FormHistoria" class="col-xl-12">
+        <div class="row m-0">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <label>Desde cuando, como, curso del problema, factores asociados:</label>
+                <textarea name="textarea" rows="10" cols="50" class="form-control" id="HistoriadelProblema"></textarea>
+            </div>
+
+        </div>
+
+    </form>
+</div>*@
+<br />
+<h2><strong>Test Psicologia</strong></h2>
+<hr width=100% align="right" size=200 color="black">
+
+<br />
+
+<div class="row m-0">
+
+    <form id="FormTestPsicologia" name="FormTestPsicologia">
+        <div class="row m-0">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <label><strong>Prueba</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Prueba" name="Prueba">
+                    <option value="">Seleccionar</option>
+                    <option value="Caracteristicas Psicologicas">Caracteristicas Psicologicas</option>
+                    <option value="Test Butt">Test Butt</option>
+                    <option value="Test Miedos">Test Miedos</option>
+                    <option value="Test Concentración">Test Concentración</option>
+
+                </select>
+            </div>
+          
+              @*<div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Variable</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Variable" name="Variable" />
+            </div>*@
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <label><strong>Puntuación</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Puntuacion" name="Puntuacion" />
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <label><strong>Valoración</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Valoracion" name="Valoracion" />
+            </div>
+
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <label><strong>Observaciones</strong></label>
+                <input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Concepto" name="Concepto" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <button type="button" onclick="AddTest()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="btnadd" name="btnadd">agregar</button>
+            </div>
+        </div>
+
+    </form>
+    <div class="table-responsive row col-xl-12 ">
+        <table class="table" id="datatable-Test">
+            <thead>
+                <tr class="ColorTabla">
+                    <th>Prueba</th>
+                    @*<th>Variable</th>*@
+                    <th>Puntuación</th>
+                    <th>Valoración</th>
+                    <th>Concepto</th>
+
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<br />
+<h1><strong>Vida Personal Deportiva</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+
+<br />
+
+<div class="row m-0">
+
+    <form id="FormVidaDeportiva" name="FormVidaDeportiva">
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Entrenamiento Actual</strong></label>
+                <br />
+                <label class="checkbox-inline">
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="checkbox" id="EntrenamientoActualPsi" value="lUNES">LUNES
+                </label>
+                <label class="checkbox-inline">
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="checkbox" id="EntrenamientoActualPsi2" value="MARTES">MARTES
+                </label>
+                <label class="checkbox-inline">
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="checkbox" id="EntrenamientoActualPsi3" value="MIERCOLES">MIERCOLES
+                </label>
+                <label class="checkbox-inline">
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="checkbox" id="EntrenamientoActualPsi4" value="JUEVES">JUEVES
+                </label>
+                <label class="checkbox-inline">
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="checkbox" id="EntrenamientoActualPsi5" value="VIERNES">VIERNES
+                </label>
+                @*<input  style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="EntrenamientoActual" name="EntrenamientoActual" />*@
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Horas Diarias</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="HorasDiariasPsi" name="HorasDiariasPsi" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Número Sesiones</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NumeroSesionesPsi" name="NumeroSesionesPsi" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Lugar</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="LugarPsi" name="LugarPsi" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Nombre Entrenador</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NombreEntrenadorPsi" name="NombreEntrenadorPsi" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Inicio Deporte</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="InicioDeportePsi" name="InicioDeportePsi" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Ha entrenado de manera:</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EntrenamiendoPsi" name="EntrenamiendoPsi">
+                    <option value="">Seleccionar</option>
+                    <option value="Continua">Continua</option>
+                    <option value="Interrumpida">Interrumpida</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Cuando comenzo a competir en este deporte:</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CompeticionPsi" name="CompeticionPsi" />
+
+                @*<select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CompeticionPsi" name="CompeticionPsi">
+                    <option value="">Seleccionar</option>
+                    <option value="LOCAL">LOCAL</option>
+                    <option value="NACIONAL">NACIONAL</option>
+                    <option value="INTERNACIONAL">INTERNACIONAL</option>
+
+                </select>*@
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Entrenamiento Guiado</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EntrenamientoGuiadoPsi" name="EntrenamientoGuiadoPsi">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin Entrenador">Sin Entrenador</option>
+                    <option value="Solo y/o con Entrenador">Solo y/o con Entrenador</option>
+                    <option value="Con Entrenador">Con Entrenador</option>
+                    <option value="Preparador Fisico">Preparador Fisico</option>
+                    <option value="Otros">Otros</option>
+
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Para mi practica deportiva me apoyan:</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="MeApoyanPsi" name="MeApoyanPsi">
+                    <option value="">Seleccionar</option>
+                    <option value="Mis Padres y Hermanos">Mis Padres y Hermanos</option>
+                    <option value="Otros Familiares">Otros Familiares</option>
+                    <option value="Federación y/o Ligas">Federación y/o Ligas</option>
+                    <option value="Comite Olimpico">Comite Olimpico</option>
+                    <option value="Universidad">Universidad</option>
+                    <option value="Ninguno">Ninguno</option>
+
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Que tan comprometido esta con su plan de entrenamiento( DEL 0-100%)</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CompromisoPsi" name="CompromisoPsi" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>He tenido entramiento psicologico</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EntramientoPsicologicoPsi" name="EntramientoPsicologicoPsi">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Observaciones</strong></label>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="ObservacionesPsi"></textarea>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Resultados</strong></label>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="ResultadosPsi"></textarea>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Recomendaciones</strong></label>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="RecomendacionesPsi"></textarea>
+            </div>
+            <div class="col-xs6 col-sm-6 col-md-6">
+                <label><strong>Remisión</strong></label>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="RemisionPsi"></textarea>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <label><strong>Seguimiento</strong></label>
+                <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="5" cols="50" class="form-control" id="SeguimientoPsi"></textarea>
+            </div>
+            
+            @*<div class="col-xs12 col-sm-12 col-md-12">
+                <label><strong>Firma Doctor</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FirmaDoctorPsicologia" name="FirmaDoctorPsicologia" />
+            </div>*@
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SavePsicologia">Guardar</button>
+        </div>
+    </form>
+</div>
+@*<br />
+<h1><strong>Plan De Tratamiento y Seguimiento</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+
+<br />*@
+
+
+
+
+

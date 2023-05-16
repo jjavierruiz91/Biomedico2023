@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script defer src="~/Scripts/APP/CitasMedicas/CitasMedicas.js"></script>
+
+<h1><strong>Registro Citas Medicas</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
+
+    <form id="FormCitasMedicasDeportiva" name="FormCitasMedicasDeportiva">
+
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Cedula</strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Cedula" name="Cedula" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4" style="right:inherit">
+                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Buscar</button>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Nombre</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerNombre" name="PrimerNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Nombre</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoNombre" name="SegundoNombre" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Primer Apellido</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="PrimerApellido" name="PrimerApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Segundo Apellido</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="SegundoApellido" name="SegundoApellido" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Edad</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Edad" onkeypress="return soloNumeros(event)" name="Edad" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Especialista</strong> </label>
+
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Especialista" name="Especialista" onchange="CargarSelectFecha()">
+                    <option value="">Seleccionar</option>
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Fecha</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Fecha" name="Fecha" onchange="CargarSelectHora()">
+                    <option value="">Seleccionar</option>
+                    
+
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Hora</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Hora" name="Hora" onchange="CargarSelectMInutos()">
+                    <option value="">Seleccionar</option>
+                   
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Minutos</strong>   </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Minutos" name="Minutos">
+                    <option value="">Seleccionar</option>
+                   
+                                   
+                </select>
+
+            </div>
+            <div class="col-xs-6 col-l-4 col-md-3" style="display:none">
+                <label><strong>Segundos</strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Segundos" name="Segundos">
+                    <option value="0">Seleccionar</option>
+                   
+                    </select>
+            </div>
+
+        </div>
+    </form>
+  
+
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveCitasMedicas">Guardar</button>
+    </div>
+</div>
+
+

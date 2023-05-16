@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BIOMEDICO.Models.Rol>
+
+@{
+    ViewBag.Title = "Rol";
+}
+
+<h2>Listado Rol</h2>
+
+<h1>
+    @Html.ActionLink("Crear Nuevo", "Agregar")
+</h1>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodRol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomRol)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CodRol)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NomRol)
+    </td>
+    <td>
+        <a class="btn btn-primary btn-group-sm" title="Editar" href="@Url.Action("Editar","Rol", new { id = item.CodRol})">
+            <i class="icon-pencil"></i>
+        </a>
+        <a class="btn btn-info btn-group-sm" title="Detalles" href="@Url.Action("Detalles","Rol", new { id = item.CodRol})">
+            <i class="icon-newspaper"></i>
+        </a>
+        <a class="btn btn-danger btn-group-sm" title="Eliminar" href="@Url.Action("Eliminar","Rol", new { id = item.CodRol})">
+            <i class="icon-newspaper"></i>
+        </a>
+
+    </td>
+</tr>
+    }
+
+</table>
