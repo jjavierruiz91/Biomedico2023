@@ -1,0 +1,289 @@
+﻿
+
+@{
+    if (Convert.ToBoolean(@ViewBag.ViewFree))
+    {
+        ViewBag.Title = "BuscarCitaPasaporte";
+        Layout = "~/Views/Shared/BuscarCitasPasaport.cshtml";
+    }
+    else
+    {
+        ViewBag.Title = "BuscarCitaPasaporte";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+}
+@*<link href="~/Content/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <script src="~/Scripts/sweetalert/sweetalert.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>*@
+<script defer src="~/Scripts/APP/CitasPasaporte/ListasCitasPasaporte.js"></script>
+<script defer src="~/Scripts/APP/CitasPasaporte/ListasCitasPasaporte.js"></script>
+<script defer src="~/Scripts/APP/CitasPasaporte/CitasPasaporte.js"></script>
+
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>SOLICITUD DE TRAMITE PASAPORTE</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+
+<div class="">
+
+    <form id="FormCitasPasaporte" name="FormCitasPasaporte">
+
+        <div class="row m-1">
+
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <label><strong>Tipo Documento</strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion" onchange="toggleButton()" >
+                    <option value="">Seleccionar</option>
+                    <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
+                    <option value="Registro Civil">Registro Civil</option>
+                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                    <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <label><strong>Numero Documento</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="NumDocumentoPasaporte" name="NumDocumentoPasaporte" placeholder="Digite su numero de documento"  />
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6" style="right:inherit">
+
+                <button type="button" id="boton" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()" disabled>Buscar</button>
+                @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
+
+            </div>
+            
+
+
+        </div>
+
+
+    </form>
+
+</div>
+<br />
+<br />
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
+
+
+    <div class="">
+
+        <form id="FormCitasPasaporte" name="FormCitasPasaporte">
+
+            <div class="row m-0">
+
+
+
+
+
+            </div>
+
+        </form>
+        <script>
+            $(document).ready(function () {
+                $("#boton").click(function (event) {
+                    event.preventDefault();
+                    $("#boton").prop('disabled', true)
+
+                    return false;
+                })
+            })
+        </script>
+        <br />
+        <br />
+        @*<div class="row" id="ConsultaPasaporte" style="display:none">*@
+    <div class="row" id="ConsultaPasaporte" style="display: none ">
+
+
+
+
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Tipo Solicitud</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TipoSolicitudPasaporte" name="TipoSolicitudPasaporte" disabled />
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Tipo Documento</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TipoDocumentoPasaporte" name="TipoDocumentoPasaporte" disabled />
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Numero Identificación</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NumIdentificacion" name="NumIdentificacion" disabled />
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Fecha Cita Agendada</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Fecha" name="Fecha" disabled />
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Hora Cita Agendada</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Hora" name="Hora" disabled />
+        </div>
+        @*<div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Fecha Cita Agendada</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Minutos" name="Minutos" disabled />
+        </div>*@
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Nombres</strong></label>
+            <input type="hidden" id="IdCitas" />
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NombresPasaporte" name="NombresPasaporte" disabled />
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Apellidos</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ApellidosPasaporte" name="ApellidosPasaporte" disabled />
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Telefono Celular</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CelularPasaporte" name="CelularPasaporte" disabled />
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Correo electronico</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CorreoPasaporte" name="CorreoPasaporte" disabled />
+        </div>
+
+        <script>
+            function toggleButton() {
+                var TipoIdentificacion = document.getElementById('TipoIdentificacion').value;
+               /* var NumDocumentoPasaporte = document.getElementById('NumDocumentoPasaporte').value;*/
+                if (TipoIdentificacion) {
+                    document.getElementById('boton').disabled = false;
+                } else {
+                    document.getElementById('boton').disabled = true;
+                }
+            }
+        </script>
+
+        <br />
+
+        <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
+
+            @*<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="ActualizarCitasPasaporte(' + item.IdCitasPasaporte + ')"> Tramitar</i>*@
+            @{
+                if (@ViewBag.ViewFree)
+                {
+                    <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="RenderUpdateCita(true)">Reprogramar Cita</button>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="RenderUpdateCita(false)">Reprogramar Cita</button>
+                }
+            }
+
+            @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
+
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
+
+            <button type="button" class="btn btn-block btn-outline-danger btn-rounded btn-outline mt-4" onclick="CancelarCita()">Cancelar</button>
+            @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
+
+        </div>
+
+
+
+    </div>
+
+
+    </div>
+
+
+    <footer id="footer">
+
+        <div class="">
+            <div class="container">
+                <div class="">
+                    <div id="copyright">
+
+
+
+                        <!-- BEGIN: Custom advanced (www.pluginaria.com) -->
+                        <div style="text-align: center;">
+                            <hr style="color: #1051eae2;">
+                            <span style="color: #0d3c61;">
+                                <strong>Horario de Atención:</strong>
+                            </span>&nbsp;
+                            <span style="color: #000000;">Lunes a Viernes de 07:45 am - 12:45 pm y 02:45 pm - 05:45 pm</span>
+                        </div>
+                        <div style="text-align: center;">
+                            <span style="color: #000000;">
+                                <span style="color: #0d3c61;">
+                                    <strong style="text-align: center;">Dirección:</strong>
+                                </span>&nbsp;Calle 16 # 12 - 120 Edificio
+                                Alfonso López Michelsen Valledupar - Cesar - Colombia
+                            </span>
+                        </div>
+                        <div style="text-align: center;">
+                            <span style="color: #000000;"></span>
+                            <span>
+                                <span style="color: #0d3c61;">
+                                    <strong>
+                                        Líneas de Atención a la
+                                        Ciudadanía:
+                                    </strong>
+                                </span>&nbsp;<span style="color: #000000;">
+                                    01 8000 954 099 / (575)
+                                    5748230
+                                </span>
+                            </span>
+                        </div>
+                        <div style="text-align: justify;">
+
+                            <div style="text-align: center;">
+                                <span style="color: #000000;">
+                                    <strong>
+                                        <span style="color: #0d3c61;">Correo Institucional:</span>
+                                        &nbsp;
+                                    </strong>
+                                    <a href="mailto:contactenos@cesar.gov.co" style="color: #000000;">contactenos@cesar.gov.co</a>
+                                    &nbsp;
+                                </span>
+                            </div>
+                            <div style="text-align: center;">
+                                <span style="color: #000000;">
+                                    <span style="color: #0d3c61;">
+                                        <strong>Código Postal:</strong>&nbsp;
+                                    </span>200001
+                                </span>
+                            </div>
+                            <div style="text-align: center;">
+                                <span style="color: #000000;">
+                                    <span style="color: #0d3c61;">
+                                        <strong>Nit:</strong>
+                                        &nbsp;
+                                    </span>892399999-1
+                                </span>
+                            </div>
+                            <div style="text-align: center;">
+                                <strong style="color: #0d3c61;">
+                                    <a href="https://cesar.gov.co/d/index.php/es/2-uncategorised/2856-artpolpriv"
+                                       style="color: #0d3c61;">
+                                        Políticas
+                                        de Privacidad y Condiciones de Uso de la Información
+                                    </a>
+                                </strong>
+                            </div>
+                        </div>
+                        <div>
+                            &nbsp;&nbsp;
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="~/images/banner_28.png" alt="0000 2020 imggbp 01" width="800" height="90" />
+
+                        </div>
+                        <br><br>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </footer>

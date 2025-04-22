@@ -1,52 +1,146 @@
-﻿function Save_Data(callbacksussces, Url, ObjetoGuardar, TituloMensaje, Recargar, callbackerror) {
+﻿//function Save_Data(callbacksussces, Url, ObjetoGuardar, TituloMensaje, Recargar, callbackerror) {
+//    var formURL = SetUrlForQueryLocal(Url);
+//    $.ajax(
+//        {
+//            url: formURL,
+//            type: "POST",
+//            dataType: "json",
+//            data: JSON.stringify(ObjetoGuardar),
+//            contentType: "application/json",
+//            success: function (data, textStatus, jqXHR) {
+//                if (!data.Error) {
+//                    swal({
+//                        title: TituloMensaje,
+//                        text: data.mensaje,
+//                        type: "success",
+//                        confirmButtonClass: "btn-danger",
+//                        confirmButtonText: "Ok",
+//                        closeOnConfirm: false,
+//                        closeOnCancel: false
+//                    },
+//                        function (isConfirm) {
+//                            if (isConfirm) {
+//                                swal.close()
+//                                callbacksussces(data)
+//                            }
+//                            else {
+//                                swal.close()
+//                            }
+//                        });
+                    
+                    
+//                }
+//                else {
+//                    //SwalErrorMsj(data.mensaje);
+//                    swal({
+//                        title: "¡Atencion!",
+//                        text: data.mensaje,
+//                        //confirmButtonColor: "#ab2328",
+//                        type: "error",
+//                        closeOnConfirm: true,
+//                    });
+//                }
+//            },
+//            error: function (jqXHR, textStatus, errorThrown) {
+//                console.log(errorThrown);
+//            }
+//        });
+
+
+//}
+function Save_Data(callbacksussces, Url, ObjetoGuardar, TituloMensaje, Recargar, callbackerror) {
     var formURL = SetUrlForQueryLocal(Url);
-    $.ajax(
-        {
-            url: formURL,
-            type: "POST",
-            dataType: "json",
-            data: JSON.stringify(ObjetoGuardar),
-            contentType: "application/json",
-            success: function (data, textStatus, jqXHR) {
-                if (!data.Error) {
-                    swal({
-                        title: TituloMensaje,
-                        text: data.mensaje,
-                        type: "success",
-                        confirmButtonClass: "btn-danger",
-                        confirmButtonText: "Ok",
-                        closeOnConfirm: false,
-                        closeOnCancel: false
-                    },
-                        function (isConfirm) {
-                            if (isConfirm) {
-                                swal.close()
-                                callbacksussces(data)
-                            }
-                            else {
-                                swal.close()
-                            }
-                        });
-                    
-                    
-                }
-                else {
-                    //SwalErrorMsj(data.mensaje);
-                    swal({
-                        title: "¡Atencion!",
-                        text: data.mensaje,
-                        //confirmButtonColor: "#ab2328",
-                        type: "error",
-                        closeOnConfirm: true,
+    console.log("URL: " + formURL);  // Verificar URL
+    console.log("Datos enviados: " + JSON.stringify(ObjetoGuardar));  // Verificar datos enviados
+    $.ajax({
+        url: formURL,
+        type: "POST",
+        dataType: "json",
+        data: ObjetoGuardar,
+        contentType: "application/json",
+        success: function (data, textStatus, jqXHR) {
+            if (!data.Error) {
+                swal({
+                    title: TituloMensaje,
+                    text: data.mensaje,
+                    type: "success",
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Ok",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            swal.close()
+                            callbacksussces(data)
+                        } else {
+                            swal.close()
+                        }
                     });
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(errorThrown);
+            } else {
+                swal({
+                    title: "¡Atencion!",
+                    text: data.mensaje,
+                    type: "error",
+                    closeOnConfirm: true,
+                });
             }
-        });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error en la solicitud AJAX:", textStatus, errorThrown);
+            if (callbackerror) {
+                callbackerror(jqXHR, textStatus, errorThrown);
+            }
+        }
+    });
+}
 
-
+function Save_Data_FormData(callbacksussces, Url, ObjetoGuardar, TituloMensaje, Recargar, callbackerror) {
+    var formURL = SetUrlForQueryLocal(Url);
+    console.log("URL: " + formURL);  // Verificar URL
+    console.log("Datos enviados: " + JSON.stringify(ObjetoGuardar));  // Verificar datos enviados
+    $.ajax({
+        url: formURL,
+        type: "POST",
+        dataType: "json",
+        data: ObjetoGuardar,
+        contentType: false,
+        processData: false,
+        success: function (data, textStatus, jqXHR) {
+            if (!data.Error) {
+                swal({
+                    title: TituloMensaje,
+                    text: data.mensaje,
+                    type: "success",
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Ok",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            swal.close()
+                            callbacksussces(data)
+                        } else {
+                            swal.close()
+                        }
+                    });
+            } else {
+                swal({
+                    title: "¡Atencion!",
+                    text: data.mensaje,
+                    type: "error",
+                    closeOnConfirm: true,
+                });
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error en la solicitud AJAX:", textStatus, errorThrown);
+            if (callbackerror) {
+                callbackerror(jqXHR, textStatus, errorThrown);
+            }
+        }
+    });
 }
 
 function Update_Data(callbacksussces, Url, ObjetoGuardar, TituloMensaje, Recargar, callbackerror) {

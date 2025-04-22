@@ -20,7 +20,7 @@ namespace BIOMEDICO.Models
         {
             this.Configuration.LazyLoadingEnabled = false;
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -61,5 +61,6 @@ namespace BIOMEDICO.Models
         public virtual DbSet<EncuestaDeportistas> EncuestaDeportistas { get; set; }
         public virtual DbSet<EncuestaFamiliar> EncuestaFamiliar { get; set; }
         public virtual DbSet<EncuestaSocioeconomica> EncuestaSocioeconomica { get; set; }
+        public virtual DbSet<InscripcionesDeportistas> InscripcionesDeportistas { get; set; }
     }
 }

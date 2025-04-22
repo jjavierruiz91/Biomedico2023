@@ -51,15 +51,31 @@ namespace BIOMEDICO.Controllers
         }
 
         [HttpGet]
-        public JsonResult BuscarDeportista(long Identificacion)
+        public JsonResult BuscarDeportista(long NumIdentificacion)
         {
-            var DatosdEportista = new Deportistas();
             using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
             {
-                DatosdEportista = db.Deportistas.FirstOrDefault(w => w.NumIdentificacion == Identificacion);
+                var DatosdEportista = db.InscripcionesDeportistas
+                                       .FirstOrDefault(w => w.NumIdentificacionInscripciones == NumIdentificacion);
+
+                if (DatosdEportista == null)
+                {
+                    return Json(new { success = false, message = "Deportista no encontrado." }, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(new { success = true, data = DatosdEportista }, JsonRequestBehavior.AllowGet);
             }
-            return Json(DatosdEportista, JsonRequestBehavior.AllowGet);
         }
+
+        //public JsonResult BuscarDeportista(long NumIdentificacion)
+        //{
+        //    var DatosdEportista = new InscripcionesDeportistas();
+        //    using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+        //    {
+        //        DatosdEportista = db.InscripcionesDeportistas.FirstOrDefault(w => w.NumIdentificacionInscripciones == NumIdentificacion);
+        //    }
+        //    return Json(DatosdEportista, JsonRequestBehavior.AllowGet);
+        //}
         [HttpGet]
         public JsonResult GetDeportistaPorSexo()
         {

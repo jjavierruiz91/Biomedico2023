@@ -31,6 +31,122 @@ $(document).ready(function () {
    
 });
 
+function CargarInfoinicial() {
+    var Valuecedula = $('#NumIdentificacion').val();
+    if (!Valuecedula) {
+        swal('Advertencia', 'El campo de número de identificación está vacío. Por favor, ingresa un valor.', 'warning');
+        return;
+    }
+
+    Get_Data(LlenarcamposInicial, '/Deportista/BuscarDeportista?NumIdentificacion=' + Valuecedula);
+}
+
+function Get_Data(callback, url) {
+    $.ajax({
+        url: url,
+        method: 'GET',
+        success: function (response) {
+            if (response.success) {
+                callback(response.data);
+            } else {
+                swal('Error', response.message, 'error');
+            }
+        },
+        error: function () {
+            swal('Error', 'Hubo un problema al buscar el deportista. Intenta nuevamente más tarde.', 'error');
+        }
+    });
+}
+
+//function CargarInfoinicial() {
+//    var Valuecedula = $('#NumIdentificacion').val();
+//    if (!Valuecedula) {
+//        swal('Advertencia', 'El campo de número de identificación está vacío. Por favor, ingresa un valor.', 'warning');
+//        return;
+//    }
+
+//    $.ajax({
+//        url: '/Deportista/BuscarDeportista?NumIdentificacion=' + Valuecedula,
+//        method: 'GET',
+//        success: function (response) {
+//            if (response.success) {
+//                LlenarcamposInicial(response.data);
+//            } else {
+//                swal('Error', response.message, 'error');
+//            }
+//        },
+//        error: function () {
+//            swal('Error', 'Hubo un problema al buscar el deportista. Intenta nuevamente más tarde.', 'error');
+//        }
+//    });
+//}
+
+//function CargarInfoinicial() {
+//    var Valuecedula = $('#NumIdentificacion').val();
+//    Get_Data(LlenarcamposInicial, '/Deportista/BuscarDeportista?NumIdentificacion=' + Valuecedula)
+//}
+//function CargarInfoinicial() {
+//    var Valuecedula = $('#NumIdentificacion').val();
+//    if (!Valuecedula) {
+//        alert('The identification number field is empty. Please enter a value.');
+//    } else {
+//        Get_Data(LlenarcamposInicial, '/MedicinaDeportiva/BuscarDeportista?NumIdentificacion=' + Valuecedula);
+//    }
+//}
+
+function LlenarcamposInicial(data) {
+    $('#PrimerNombre').val(data.PrimerNombreInscripciones)
+    $('#SegundoNombre').val(data.SegundonombreInscripciones)
+    $('#PrimerApellido').val(data.PrimerApellidoInscripciones)
+    $('#SegundoApellido').val(data.SegundoApellidoInscripciones)
+    $('#PaisResidencia').val(data.PaisNacimientoInscripciones)
+    $('#DepartamentoResidencia').val(data.DepartamentoInscripciones)
+    $('#MunicipioResidencia').val(data.MunicipioInscripciones)
+    $('#FechaNacimiento').val(data.FechaNacimientoInscripciones)
+    $('#Edad').val(data.EdadInscripciones)
+    $('#PaisNacimiento').val(data.DireccionResidencia)
+    $('#DepartamentoNacimiento').val(data.BarrioResidencia)
+    
+    
+   
+    setSelectValue('#TipoIdentificacion', data.TipoIdentificacionInscripciones)
+    setSelectValue('#Genero', data.GeneroInscripciones)
+    setSelectValue('#MunicipioNacimiento', data.MunicipioResidencia)
+    setSelectValue('#GrupoEtareo', data.GrupoEtarreoInscripciones)
+    setSelectValue('#BarrioResidencia', data.EstratoResidencia)
+    setSelectValue('#ZonaInfluencia', data.ZonaResidencia)
+    setSelectValue('#EstadoCivil', data.EstadoCivil)
+    setSelectValue('#NivelEstudio', data.NivelEstudio)
+    setSelectValue('#NombreGrupo', data.GeneroInscripciones)
+    setSelectValue('#GrupoSanguineo', data.Tiposangre)
+    setSelectValue('#CondicionPoblacion', data.CondicionPoblacion)
+    setSelectValue('#EntidadPrestadora', data.GeneroInscripciones)
+    setSelectValue('#TipoEtnia', data.GrupoEtnico)
+    setSelectValue('#Deporte', data.DeportePractica)
+    $('#Telefono').val(data.TelefonoResidencia)
+    $('#Eps').val(data.Eps)
+    $('#CorreoDeportista').val(data.CorreoContacto)
+    $('#DireccionResidencia').val(data.NombreContacto)
+    $('#NombreMonitor').val(data.NombreEntrenador)
+    
+        
+    
+
+  
+}
+
+// Función para asegurar que el select tiene la opción y asignarle el valor
+function setSelectValue(selectId, value) {
+    var selectElement = $(selectId);
+    if (selectElement.find("option[value='" + value + "']").length) {
+        selectElement.val(value);
+    } else {
+        // Opcionalmente, agregar la opción si no existe
+        selectElement.append(new Option(value, value, true, true));
+    }
+}
+
+
 //window.addEventListener("offline", (event) => {
 //    const statusDisplay = document.getElementById("status");
 //    statusDisplay.textContent = "OFFline";
@@ -72,23 +188,23 @@ function doOnlineCheck() {
     });
 }
 
-function ValidarCedula() {
-    let Cedula = $('#NumIdentificacion').val();
-    Get_Data(MostrarAlerta, '/Deportista/BuscarDeportista?Identificacion=' + Cedula)
-}
-function MostrarAlerta(data) {
-    if (data != null || data != undefined) {
-        swal({
-            title: "Atención",
-            text: "El Deportista Ya Se Encuentra Registrado",
-            type: "warning",
-            /*showCancelButton: true,*/
-            /*   confirmButtonClass: "btn-danger",*/
-            confirmButtonText: "Ok",
-        });
-    }
+//function ValidarCedula() {
+//    let Cedula = $('#NumIdentificacion').val();
+//    Get_Data(MostrarAlerta, '/Deportista/BuscarDeportista?Identificacion=' + Cedula)
+//}
+//function MostrarAlerta(data) {
+//    if (data != null || data != undefined) {
+//        swal({
+//            title: "Atención",
+//            text: "El Deportista Ya Se Encuentra Registrado",
+//            type: "warning",
+//            /*showCancelButton: true,*/
+//            /*   confirmButtonClass: "btn-danger",*/
+//            confirmButtonText: "Ok",
+//        });
+//    }
 
-}
+//}
 
 
 function LlenarCampos(data) {
@@ -284,7 +400,7 @@ async function Createobj() {
 
 
         if (IsUpdate) {
-            Save_Data(ActualizarVista, '/Deportista/Actualizar', ObjDeportista, 'Actualizacion');
+            Save_Data(ActualizarVista, '/Deportista/Actualizar', JSON.stringify( ObjDeportista), 'Actualizacion');
         }
         else {
             Save_Data(ActualizarVista, '/Deportista/Agregar', ObjDeportista, 'Guardado');

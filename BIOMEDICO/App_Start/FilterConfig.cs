@@ -8,7 +8,7 @@ namespace BIOMEDICO
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new Filters.Verificaciones());
+            //filters.Add(new Filters.Verificaciones());
         }
     }
 }

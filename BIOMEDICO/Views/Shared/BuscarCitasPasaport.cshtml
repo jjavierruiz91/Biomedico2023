@@ -1,0 +1,108 @@
+﻿@{ 
+    string V = "1";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Oficina Deporte</title>
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="~/images/Gober.png" />
+    <link href="~/Content/css/icons/icomoon/styles.css" rel="stylesheet" />
+    <link href="~/Content/css/icons/fontawesome/styles.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/Internet.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap_limitless.css" rel="stylesheet" />
+    <link href="~/Content/css/layout.css" rel="stylesheet" />
+    <link href="~/Content/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/colors.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+
+    <link href="~/Content/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    @*<link href="~/Content/css/plugins/dataTables/datatables.min.css" rel="stylesheet" />*@
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+
+    <script src="~/Content/js/main/jquery.min.js?@V"></script>
+    <script src="~/Content/js/main/bootstrap.bundle.min.js?@V"></script>
+    <script src="~/Content/js/plugins/loaders/blockui.min.js?@V"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script src="~/Content/js/plugins/visualization/d3/d3.min.js?@V"></script>
+    <script src="~/Content/js/plugins/visualization/d3/d3_tooltip.js?@V"></script>
+    <script src="~/Content/js/plugins/forms/styling/switchery.min.js?@V"></script>
+    <script src="~/Content/js/plugins/forms/selects/bootstrap_multiselect.js?@V"></script>
+    <script src="~/Content/js/plugins/ui/moment/moment.min.js?@V"></script>
+    <script src="~/Content/js/plugins/pickers/daterangepicker.js?@V"></script>
+
+    <script src="~/Content/js/demo_pages/dashboard.js?@V"></script>
+    <script src="~/Content/js/app.js?@V"></script>
+    @*<script src="~/Content/js/app.js?@V"></script>*@
+    <!-- /theme JS files -->
+
+    <script src="~/Content/js/plugins/forms/validation/validate.min.js?@V"></script>
+    <script src="~/Content/js/plugins/forms/validation/localization/messages_es.js?@V"></script>
+    <script src="~/Content/js/plugins/sweetalert/sweetalert.min.js?@V"></script>
+    <script src="~/Content/js/plugins/dataTables/datatables.min.js?@V"></script>
+    <script src="~/Content/js/plugins/select2/select2.full.min.js?@V"></script>
+
+
+    <script src="~/Content/js/plugins/forms/styling/uniform.min.js?@V"></script>
+    <script src="~/Content/js/demo_pages/form_inputs.js?@V"></script>
+
+    <script src="~/Scripts/Utilitis.js"></script>
+    <script src="~/Scripts/FuncionesAjax/FuncionesAjax.js"></script>
+</head>
+
+<body style="overflow-y:scroll;">
+
+
+    <!-- /main navbar -->
+    <!-- Page content -->
+    <div class="page-content container" style="align-content:center !important">
+
+      
+        <!-- /main sidebar -->
+        <!-- Main content -->
+        <div class="" style="margin:1%">
+
+            @RenderBody()
+
+            <!-- /content area -->
+            <!-- Footer -->
+            <div class="navbar navbar-expand-lg navbar-light">
+                <div class="text-center d-lg-none w-100">
+                    <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
+                        <i class="icon-unfold mr-2"></i>
+                        Footer
+                    </button>
+                </div>
+                <div style="padding-left: 1.25rem;" class="navbar-collapse collapse" id="navbar-footer">
+                    <span class="navbar-text">
+                        &copy;  @DateTime.Now.Year - GOBERNACION DEL CESAR
+                        <br />
+                        <a href="http://cesar.gov.co/d/index.php/es/"> OFICINA DE SISTEMAS</a>
+
+                    </span>
+
+                </div>
+
+            </div>
+            <!-- /footer -->
+        </div>
+        <!-- /main content -->
+    </div>
+
+    
+    <!-- /page content -->
+    <script defer src="~/Content/js/Internet.js"></script>
+
+</body>
+</html>

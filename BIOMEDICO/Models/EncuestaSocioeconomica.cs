@@ -42,6 +42,6 @@ namespace BIOMEDICO.Models
         public string Fotografico { get; set; }
         public Nullable<int> IdEncuestaDeportista { get; set; }
     
-        public virtual EncuestaDeportistas EncuestaDeportistas { get; set; }
+        public virtual EncuestaDeportistas EncuestaDeportistas { get; set; } = new EncuestaDeportistas();
     }
 }

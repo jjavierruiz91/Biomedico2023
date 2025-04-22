@@ -672,6 +672,50 @@
           <Property Name="RelacionHermanos" Type="varchar(max)" />
           <Property Name="IdDatosDemograficos" Type="int" />
         </EntityType>
+        <EntityType Name="InscripcionesDeportistas">
+          <Key>
+            <PropertyRef Name="IdIncripcionBeneficiarios" />
+          </Key>
+          <Property Name="IdIncripcionBeneficiarios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramaInscripciones" Type="varchar(max)" />
+          <Property Name="DocumentoPdf" Type="varchar(max)" />
+          <Property Name="SaludPdf" Type="varchar(max)" />
+          <Property Name="AutorizacionPdf" Type="varchar(max)" />
+          <Property Name="CedulaPadrePdf" Type="varchar(max)" />
+          <Property Name="TipoIdentificacionInscripciones" Type="varchar(max)" />
+          <Property Name="NumIdentificacionInscripciones" Type="bigint" />
+          <Property Name="PrimerNombreInscripciones" Type="varchar(max)" />
+          <Property Name="SegundonombreInscripciones" Type="varchar(max)" />
+          <Property Name="PrimerApellidoInscripciones" Type="varchar(max)" />
+          <Property Name="SegundoApellidoInscripciones" Type="varchar(max)" />
+          <Property Name="FechaNacimientoInscripciones" Type="varchar(max)" />
+          <Property Name="EdadInscripciones" Type="bigint" />
+          <Property Name="PaisNacimientoInscripciones" Type="varchar(max)" />
+          <Property Name="DepartamentoInscripciones" Type="varchar(max)" />
+          <Property Name="MunicipioInscripciones" Type="varchar(max)" />
+          <Property Name="GeneroInscripciones" Type="varchar(max)" />
+          <Property Name="GrupoEtarreoInscripciones" Type="varchar(max)" />
+          <Property Name="DireccionResidencia" Type="varchar(max)" />
+          <Property Name="BarrioResidencia" Type="varchar(max)" />
+          <Property Name="MunicipioResidencia" Type="varchar(max)" />
+          <Property Name="EstratoResidencia" Type="varchar(max)" />
+          <Property Name="ZonaResidencia" Type="varchar(max)" />
+          <Property Name="TelefonoResidencia" Type="varchar(max)" />
+          <Property Name="CorreoResidencia" Type="varchar(max)" />
+          <Property Name="EstadoCivil" Type="varchar(max)" />
+          <Property Name="NivelEstudio" Type="varchar(max)" />
+          <Property Name="RegimenSalud" Type="varchar(max)" />
+          <Property Name="Eps" Type="varchar(max)" />
+          <Property Name="Tiposangre" Type="varchar(max)" />
+          <Property Name="CondicionPoblacion" Type="varchar(max)" />
+          <Property Name="DiscapacidadPoblacion" Type="varchar(max)" />
+          <Property Name="GrupoEtnico" Type="varchar(max)" />
+          <Property Name="DeportePractica" Type="varchar(max)" />
+          <Property Name="NombreEntrenador" Type="varchar(max)" />
+          <Property Name="NombreContacto" Type="varchar(max)" />
+          <Property Name="TelefonoContacto" Type="varchar(max)" />
+          <Property Name="CorreoContacto" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="MedicinaDelDeporte">
           <Key>
             <PropertyRef Name="IdMedicina" />
@@ -1235,6 +1279,7 @@
           <EntitySet Name="Fisioterapia" EntityType="Self.Fisioterapia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistoriaClinicaFisioterapia" EntityType="Self.HistoriaClinicaFisioterapia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistoriaFamiliaresPsicologia" EntityType="Self.HistoriaFamiliaresPsicologia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InscripcionesDeportistas" EntityType="Self.InscripcionesDeportistas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MedicinaDelDeporte" EntityType="Self.MedicinaDelDeporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medicos" EntityType="Self.Medicos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nutricion" EntityType="Self.Nutricion" Schema="dbo" store:Type="Tables" />
@@ -1586,6 +1631,7 @@
             <End Role="EncuestaDeportistas" EntitySet="EncuestaDeportistas" />
             <End Role="EncuestaSocioeconomica" EntitySet="EncuestaSocioeconomica" />
           </AssociationSet>
+          <EntitySet Name="InscripcionesDeportistas" EntityType="BIOMEDICOModel.InscripcionesDeportistas" />
           </EntityContainer>
         <EntityType Name="Ocupacion">
           <Key>
@@ -2733,6 +2779,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="InscripcionesDeportistas">
+          <Key>
+            <PropertyRef Name="IdIncripcionBeneficiarios" />
+          </Key>
+          <Property Name="IdIncripcionBeneficiarios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramaInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentoPdf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SaludPdf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AutorizacionPdf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CedulaPadrePdf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoIdentificacionInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NumIdentificacionInscripciones" Type="Int64" />
+          <Property Name="PrimerNombreInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SegundonombreInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PrimerApellidoInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SegundoApellidoInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimientoInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EdadInscripciones" Type="Int64" />
+          <Property Name="PaisNacimientoInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DepartamentoInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MunicipioInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GeneroInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GrupoEtarreoInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionResidencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BarrioResidencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MunicipioResidencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EstratoResidencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ZonaResidencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoResidencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoResidencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoCivil" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NivelEstudio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RegimenSalud" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Eps" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tiposangre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CondicionPoblacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DiscapacidadPoblacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GrupoEtnico" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DeportePractica" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NombreEntrenador" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NombreContacto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoContacto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoContacto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3663,6 +3753,51 @@
                 <ScalarProperty Name="UniformeAdecuado" ColumnName="UniformeAdecuado" />
                 <ScalarProperty Name="Acueducto" ColumnName="Acueducto" />
                 <ScalarProperty Name="IdEncuestaSocieconomica" ColumnName="IdEncuestaSocieconomica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InscripcionesDeportistas">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.InscripcionesDeportistas">
+              <MappingFragment StoreEntitySet="InscripcionesDeportistas">
+                <ScalarProperty Name="CorreoContacto" ColumnName="CorreoContacto" />
+                <ScalarProperty Name="TelefonoContacto" ColumnName="TelefonoContacto" />
+                <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
+                <ScalarProperty Name="NombreEntrenador" ColumnName="NombreEntrenador" />
+                <ScalarProperty Name="DeportePractica" ColumnName="DeportePractica" />
+                <ScalarProperty Name="GrupoEtnico" ColumnName="GrupoEtnico" />
+                <ScalarProperty Name="DiscapacidadPoblacion" ColumnName="DiscapacidadPoblacion" />
+                <ScalarProperty Name="CondicionPoblacion" ColumnName="CondicionPoblacion" />
+                <ScalarProperty Name="Tiposangre" ColumnName="Tiposangre" />
+                <ScalarProperty Name="Eps" ColumnName="Eps" />
+                <ScalarProperty Name="RegimenSalud" ColumnName="RegimenSalud" />
+                <ScalarProperty Name="NivelEstudio" ColumnName="NivelEstudio" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="CorreoResidencia" ColumnName="CorreoResidencia" />
+                <ScalarProperty Name="TelefonoResidencia" ColumnName="TelefonoResidencia" />
+                <ScalarProperty Name="ZonaResidencia" ColumnName="ZonaResidencia" />
+                <ScalarProperty Name="EstratoResidencia" ColumnName="EstratoResidencia" />
+                <ScalarProperty Name="MunicipioResidencia" ColumnName="MunicipioResidencia" />
+                <ScalarProperty Name="BarrioResidencia" ColumnName="BarrioResidencia" />
+                <ScalarProperty Name="DireccionResidencia" ColumnName="DireccionResidencia" />
+                <ScalarProperty Name="GrupoEtarreoInscripciones" ColumnName="GrupoEtarreoInscripciones" />
+                <ScalarProperty Name="GeneroInscripciones" ColumnName="GeneroInscripciones" />
+                <ScalarProperty Name="MunicipioInscripciones" ColumnName="MunicipioInscripciones" />
+                <ScalarProperty Name="DepartamentoInscripciones" ColumnName="DepartamentoInscripciones" />
+                <ScalarProperty Name="PaisNacimientoInscripciones" ColumnName="PaisNacimientoInscripciones" />
+                <ScalarProperty Name="EdadInscripciones" ColumnName="EdadInscripciones" />
+                <ScalarProperty Name="FechaNacimientoInscripciones" ColumnName="FechaNacimientoInscripciones" />
+                <ScalarProperty Name="SegundoApellidoInscripciones" ColumnName="SegundoApellidoInscripciones" />
+                <ScalarProperty Name="PrimerApellidoInscripciones" ColumnName="PrimerApellidoInscripciones" />
+                <ScalarProperty Name="SegundonombreInscripciones" ColumnName="SegundonombreInscripciones" />
+                <ScalarProperty Name="PrimerNombreInscripciones" ColumnName="PrimerNombreInscripciones" />
+                <ScalarProperty Name="NumIdentificacionInscripciones" ColumnName="NumIdentificacionInscripciones" />
+                <ScalarProperty Name="TipoIdentificacionInscripciones" ColumnName="TipoIdentificacionInscripciones" />
+                <ScalarProperty Name="CedulaPadrePdf" ColumnName="CedulaPadrePdf" />
+                <ScalarProperty Name="AutorizacionPdf" ColumnName="AutorizacionPdf" />
+                <ScalarProperty Name="SaludPdf" ColumnName="SaludPdf" />
+                <ScalarProperty Name="DocumentoPdf" ColumnName="DocumentoPdf" />
+                <ScalarProperty Name="ProgramaInscripciones" ColumnName="ProgramaInscripciones" />
+                <ScalarProperty Name="IdIncripcionBeneficiarios" ColumnName="IdIncripcionBeneficiarios" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

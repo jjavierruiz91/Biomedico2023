@@ -1,4 +1,24 @@
-﻿@{
+﻿@*@{
+    string V = "1";
+    List<BIOMEDICO.Models.ASignarPermisos> listapermisosasignados = new List<BIOMEDICO.Models.ASignarPermisos>();
+    if (BIOMEDICO.Clases.Utilidades.ActiveUser.IdUsuario != null)
+    {
+        listapermisosasignados = BIOMEDICO.Clases.Utilidades.Getlistapermisos();
+    }
+
+}*@
+
+@{
+    BIOMEDICO.Models.Usuarios dUsuarios = BIOMEDICO.Clases.Utilidades.ActiveUser;
+    if (dUsuarios == null)
+    {
+
+        Response.Redirect("~/Login/Login");
+
+    }
+
+
+
     string V = "1";
     List<BIOMEDICO.Models.ASignarPermisos> listapermisosasignados = new List<BIOMEDICO.Models.ASignarPermisos>();
     if (BIOMEDICO.Clases.Utilidades.ActiveUser.IdUsuario != null)
@@ -28,14 +48,14 @@
     <link href="~/Content/css/layout.css" rel="stylesheet" />
     <link href="~/Content/css/components.min.css" rel="stylesheet" type="text/css">
     <link href="~/Content/css/colors.css" rel="stylesheet" />
-   
+
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
 
     <link href="~/Content/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
     @*<link href="~/Content/css/plugins/dataTables/datatables.min.css" rel="stylesheet" />*@
     <!-- /global stylesheets -->
     <!-- Core JS files -->
-    
+
     <script src="~/Content/js/main/jquery.min.js?@V"></script>
     <script src="~/Content/js/main/bootstrap.bundle.min.js?@V"></script>
     <script src="~/Content/js/plugins/loaders/blockui.min.js?@V"></script>
@@ -155,7 +175,7 @@
                     <div class="close-icon"><i class="uil uil-times"></i></div>
                 </div>
             </div>
-            
+
             <!-- /sidebar mobile toggler -->
             <!-- Sidebar content -->
             <div class="sidebar-content">
@@ -202,7 +222,19 @@
                                 </li>
                             }
                         }
+                        @{
+                            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "INSCRIPCION") != null)
+                            {
+                                <li id="C0001" class="nav-item nav-item-submenu">
+                                    <a href="#" class="nav-link"><i class="icon-vcard"></i> <span>INSCRIPCIÓN DEPORTISTA</span></a>
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                                        <li class="nav-item"><a href="~/InscripcionDeportistas/Agregar" class="nav-link">AGREGAR</a></li>
+                                        <li class="nav-item"><a href="~/InscripcionDeportistas/ListaInscripcionDeportistas" class="nav-link">LISTADO</a></li>
 
+                                    </ul>
+                                </li>
+                            }
+                        }
 
                         @{
                             if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "DEPORTISTA") != null)
@@ -358,8 +390,8 @@
                             }
                         }
                     </ul>
-                    
-                    
+
+
                 </div>
                 <!-- /main navigation -->
             </div>

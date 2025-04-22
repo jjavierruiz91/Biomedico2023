@@ -49,6 +49,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetZip, Version=1.16.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.16.0\lib\net40\DotNetZip.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -85,6 +88,20 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -173,6 +190,7 @@
     <Compile Include="Controllers\EncuestaDeportistasController.cs" />
     <Compile Include="Controllers\FisioterapiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InscripcionDeportistasController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MedicinaDeportivaController.cs" />
     <Compile Include="Controllers\MedicosController.cs" />
@@ -217,6 +235,7 @@
     <Compile Include="Models\Deportistas.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DocumentosEnBytes.cs" />
     <Compile Include="Models\EncuestaDeportistas.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
@@ -248,6 +267,9 @@
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HistoriaFamiliaresPsicologia.cs">
+      <DependentUpon>ModelBiomedico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InscripcionesDeportistas.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MedicinaDelDeporte.cs">
@@ -2604,6 +2626,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\ANA_RAMIREZ.PNG" />
     <Content Include="images\ANDREA_PABA.PNG" />
+    <Content Include="images\banner1.png" />
     <Content Include="images\ELIANA_ROA.PNG" />
     <Content Include="images\ELIANA_DAZA.PNG" />
     <Content Include="images\ENRIQUE_JIMENEZ.png" />
@@ -2671,6 +2694,8 @@
     <Content Include="Scripts\APP\ControlMedicinaDeportiva\ListaControlMedicinaDeportiva.js" />
     <Content Include="Scripts\APP\ControlPsicologia\ControlPsicologia.js" />
     <Content Include="Scripts\APP\ControlPsicologia\ListaControlPsicologia.js" />
+    <Content Include="Scripts\APP\InscripcionDerportistas\InscripcionDerportistas.js" />
+    <Content Include="Scripts\APP\InscripcionDerportistas\ListaInscripcionDerportistas.js" />
     <Content Include="Scripts\APP\Deportista\deportista.js" />
     <Content Include="Scripts\APP\Deportista\LIstaDeportista.js" />
     <Content Include="Scripts\APP\EncuestaDeportista\ListaEncuestaDeportistas.js" />
@@ -2956,9 +2981,14 @@
     <Content Include="Views\EncuestaDeportistas\ListaEncuestaDeportistas.cshtml" />
     <Content Include="Views\EncuestaDeportistas\Agregar.cshtml" />
     <Content Include="Views\EncuestaDeportistas\Encuesta.cshtml" />
+    <Content Include="Views\InscripcionDeportistas\ListaInscripcionDeportistas.cshtml" />
+    <Content Include="Views\InscripcionDeportistas\Agregar.cshtml" />
+    <Content Include="Views\InscripcionDeportistas\BuscarCitaPasaporte.cshtml" />
+    <Content Include="Views\Shared\BuscarCitasPasaport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ArchivosPDF\" />
     <Folder Include="Content\PdfsTemporales\" />
     <Folder Include="images\Deportistas\" />
     <Folder Include="images\Fisioterapia\" />

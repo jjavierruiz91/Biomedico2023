@@ -78,8 +78,11 @@ namespace BIOMEDICO.Controllers
                 //});
 
             }
+            var jsonResult = Json(ret, JsonRequestBehavior.AllowGet);
+            jsonResult.MaxJsonLength = int.MaxValue;
+            return jsonResult;
 
-            return Json(ret, JsonRequestBehavior.AllowGet);
+            //return Json(ret, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

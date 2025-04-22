@@ -64,6 +64,7 @@
         <EntityTypeShape EntityType="BIOMEDICOModel.EncuestaSocioeconomica" Width="1.5" PointX="24.625" PointY="1.75" />
         <AssociationConnector Association="BIOMEDICOModel.FK_EncuestaFamiliar_EncuestaDeportistas" />
         <AssociationConnector Association="BIOMEDICOModel.FK_EncuestaSocioeconomica_EncuestaDeportistas" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.InscripcionesDeportistas" Width="1.5" PointX="16.375" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

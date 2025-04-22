@@ -61,7 +61,7 @@ namespace BIOMEDICO.Models
         public string CuantasVecesMovilizacion { get; set; }
         public string ParquesEntrenar { get; set; }
         public Nullable<int> IdEncuestaDeportista { get; set; }
-    
-        public virtual EncuestaDeportistas EncuestaDeportistas { get; set; }
+
+        public virtual EncuestaDeportistas EncuestaDeportistas { get; set; } = new EncuestaDeportistas();
     }
 }

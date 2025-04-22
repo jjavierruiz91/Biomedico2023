@@ -1,0 +1,740 @@
+﻿
+@{
+    if (Convert.ToBoolean(@ViewBag.ViewFree))
+    {
+        ViewBag.Title = "Agregar";
+        Layout = "~/Views/Shared/BuscarCitasPasaport.cshtml";
+    }
+    else
+    {
+        ViewBag.Title = "Agregar";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+}
+
+<script defer src="~/Scripts/APP/InscripcionDerportistas/InscripcionDerportistas.js"></script>
+<div class="image-container" style="text-align: center;">
+    <img src="~/images/banner1.png" alt="0000 2020 imggbp 01" class="responsive-image" />
+</div>
+<style>
+    /* Asegúrate de que el contenedor ocupe el 100% del ancho disponible */
+    .image-container {
+        width: 100%;
+        max-width: 1080px; /* Ajusta esto si es necesario */
+        margin: auto; /* Centra el contenedor */
+        overflow: hidden; /* Oculta cualquier contenido desbordante */
+    }
+
+    /* Hace que la imagen sea responsive */
+    .responsive-image {
+        max-width: 100%; /* La imagen no excederá el ancho del contenedor */
+        max-height: 300px; /* La imagen no excederá la altura de 300px */
+        width: 1080px; /* Ajusta el ancho automáticamente */
+        height: 300px; /* Mantiene la proporción de la imagen */
+        display: block; /* Elimina el espacio en blanco debajo de la imagen */
+        margin: auto; /* Centra la imagen dentro del contenedor */
+    }
+</style>
+<br />
+<h1 class="titulo"><strong>INSCRIPCIÓN DE BENEFICIARIOS DEL DEPORTE DEL DEPARTAMENTO DEL CESAR</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .titulo {
+        text-align: center;
+        color: #006068;
+    }
+</style>
+<div class="row m-0">
+    <form id="FormFisioterapia" name="FormFisioterapia">
+        <div class="row m-0">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Programa en el que desea inscribirse y/o ingresar <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;"
+                        class="select2 form-control"
+                        id="ProgramaInscripciones"
+                        name="ProgramaInscripciones"
+                        onchange="toggleInputFields()">
+                    <OPTION VALUE="">SELECCIONAR</OPTION>
+                    <OPTION VALUE="PROGRAMA DEPORTE SOCIAL COMUNITARIO">PROGRAMA DEPORTE SOCIAL COMUNITARIO</OPTION>
+                    <OPTION VALUE="PROGRAMA DEPORTISTAS ALTO RENDIMIENTO - SELECCIONES DEPARTAMENTALES">PROGRAMA DEPORTISTAS ALTO RENDIMIENTO - SELECCIONES DEPARTAMENTALES</OPTION>
+                    <OPTION VALUE="PROGRAMA HÁBITOS Y ESTILOS DE VIDA SALUDABLES">PROGRAMA HÁBITOS Y ESTILOS DE VIDA SALUDABLES</OPTION>
+                    <OPTION VALUE="PROGRAMA JORNADA DEPORTIVAS ESCOLARES COMPLEMENTARIAS Y/O ESCUELAS DE FORMACIÓN">PROGRAMA JORNADA DEPORTIVAS ESCOLARES COMPLEMENTARIAS Y/O ESCUELAS DE FORMACIÓN</OPTION>
+                    <OPTION VALUE="PROGRAMA JUEGOS INTERCOLEGIADOS">PROGRAMA JUEGOS INTERCOLEGIADOS</OPTION>
+                    <OPTION VALUE="PROGRAMA RECREACIÓN">PROGRAMA RECREACIÓN</OPTION>
+                    <OPTION VALUE="PROGRAMA RECREACIÓN">PROGRAMA VACACIONAL</OPTION>
+                </select>
+
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 hidden" id="DocumentoPdfField">
+                <label><strong>Cargar Documento Identidad Deportista</strong></label>
+                <input type="file"
+                       style="border: black; border-width: 1px; border-style: solid;"
+                       class="form-control"
+                       id="DocumentoPdf"
+                       name="DocumentoPdf"
+                       accept="application/pdf"
+                       onchange="validateFileType('DocumentoPdf')" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 hidden" id="SaludPdfField">
+                <label><strong>Cargar Documento Afiliación salud</strong></label>
+                <input type="file"
+                       style="border: black; border-width: 1px; border-style: solid;"
+                       class="form-control"
+                       id="SaludPdf"
+                       name="SaludPdf"
+                       accept="application/pdf"
+                       onchange="validateFileType('SaludPdf')" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 hidden" id="AutorizacionPdfField">
+                <label><strong>Cargar Documento Autorizacion del padre</strong></label>
+                <input type="file"
+                       style="border: black; border-width: 1px; border-style: solid;"
+                       class="form-control"
+                       id="AutorizacionPdf"
+                       name="AutorizacionPdf"
+                       accept="application/pdf"
+                       onchange="validateFileType('AutorizacionPdf')" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 hidden" id="CedulaPadrePdfField">
+                <label><strong>Cargar Documento Responsable del Deportista</strong></label>
+                <input type="file"
+                       style="border: black; border-width: 1px; border-style: solid;"
+                       class="form-control"
+                       id="CedulaPadrePdf"
+                       name="CedulaPadrePdf"
+                       accept="application/pdf"
+                       onchange="validateFileType('CedulaPadrePdf')" />
+            </div>
+            @*<div class="col-xs-4 col-sm-4 col-md-4 hidden" id="jornadaDeportivaDiv">
+                    <label><strong>Jornada Deportiva</strong> </label>
+                    <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacionInscripciones" name="TipoIdentificacionInscripciones">
+                        <OPTION VALUE="">SELECCIONAR</OPTION>
+                        <OPTION VALUE="JORNADA MAÑANA - AM">JORNADA MAÑANA - AM</OPTION>
+                        <OPTION VALUE="JORNADA MAÑANA - PM">JORNADA MAÑANA - PM</OPTION>
+                    </select>
+                </div>*@
+            <script>
+                function validateFileType(inputId) {
+                    var input = document.getElementById(inputId);
+                    var file = input.files[0];
+                    if (file) {
+                        var fileType = file.type;
+                        if (fileType !== 'application/pdf') {
+                            // Usar SweetAlert en lugar de alert
+                            swal({
+                                icon: 'error',
+                                title: 'Tipo de archivo incorrecto',
+                                text: 'Por favor, sube un archivo PDF.',
+                            });
+                            input.value = ''; // Borrar el valor del campo de entrada
+                        }
+                    }
+                }
+
+                function toggleInputFields() {
+                    var select = document.getElementById('ProgramaInscripciones');
+                    var selectedValue = select.value;
+                    var requiredOption = "PROGRAMA JORNADA DEPORTIVAS ESCOLARES COMPLEMENTARIAS Y/O ESCUELAS DE FORMACIÓN";
+
+                    var fields = ['DocumentoPdfField', 'SaludPdfField', 'AutorizacionPdfField', 'CedulaPadrePdfField'];
+
+                    fields.forEach(function (fieldId) {
+                        var field = document.getElementById(fieldId);
+                        if (selectedValue === requiredOption) {
+                            field.classList.remove('hidden');
+                        } else {
+                            field.classList.add('hidden');
+                        }
+                    });
+                }
+
+            </script>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Tipo Identificación <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacionInscripciones" name="TipoIdentificacionInscripciones" required onchange="handleSelectionChange()">
+                    <OPTION VALUE="">SELECCIONAR</OPTION>
+                    <OPTION VALUE="CEDULA DE CIUDADANIA">CEDULA DE CIUDADANIA</OPTION>
+                    <OPTION VALUE="TARJETA DE IDENTIDAD">TARJETA DE IDENTIDAD</OPTION>
+                    <OPTION VALUE="CEDULA DE EXTRANJERIA">CEDULA DE EXTRANJERIA</OPTION>
+                    <OPTION VALUE="PASAPORTE">PASAPORTE</OPTION>
+                    <OPTION VALUE="REGISTRO CIVIL">REGISTRO CIVIL</OPTION>
+                    <OPTION VALUE="OTRO">OTRO</OPTION>
+                </select>
+
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Jornada Deportiva <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacionInscripciones" name="TipoIdentificacionInscripciones">
+                    <OPTION VALUE="">SELECCIONAR</OPTION>
+                    <OPTION VALUE="JORNADA DE LA MAÑANA - AM">JORNADA DE LA MAÑANA - AM</OPTION>
+                    <OPTION VALUE="JORNADA DE LA TARDE - PM">JORNADA DE LA TARDE - PM</OPTION>
+                </select>
+
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Número Identificación <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NumIdentificacionInscripciones" name="NumIdentificacionInscripciones" type="number" @*onchange="ValidarCedula()" /*@>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label for="PrimerNombreInscripciones"><strong>Primer Nombre <span style="color: red;"> *</span></strong></label>
+                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="PrimerNombreInscripciones" name="PrimerNombreInscripciones" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label for="SegundonombreInscripciones"><strong>Segundo Nombre <span style="color: red;"> *</span></strong></label>
+                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="SegundonombreInscripciones" name="SegundonombreInscripciones" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label for="PrimerApellidoInscripciones"><strong>Primer Apellido <span style="color: red;"> *</span></strong></label>
+                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="PrimerApellidoInscripciones" name="PrimerApellidoInscripciones" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label for="SegundoApellidoInscripciones"><strong>Segundo Apellido <span style="color: red;"> *</span></strong></label>
+                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="SegundoApellidoInscripciones" name="SegundoApellidoInscripciones" />
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const inputFields = [
+                        'PrimerNombreInscripciones',
+                        'SegundonombreInscripciones',
+                        'PrimerApellidoInscripciones',
+                        'SegundoApellidoInscripciones',
+                        'PaisNacimientoInscripciones',
+                        'DepartamentoInscripciones',
+                        'MunicipioInscripciones',
+                        'Eps',
+                        'NombreEntrenador',
+                        'NombreContacto',
+                        'DireccionResidencia',
+                        'BarrioResidencia',
+                        'MunicipioResidencia',
+                        'CorreoContacto',
+                        'CorreoResidencia'
+
+
+                    ];
+
+                    inputFields.forEach(function (fieldId) {
+                        const field = document.getElementById(fieldId);
+                        if (field) {
+                            field.addEventListener('input', function (event) {
+                                this.value = this.value.toUpperCase();
+                            });
+                        } else {
+                            console.warn(`Elemento con ID ${fieldId} no encontrado.`);
+                        }
+                    });
+                });
+            </script>
+
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Fecha Nacimiento <span style="color: red;"> *</span></strong> </label>
+                <input type="date" style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FechaNacimientoInscripciones" name="FechaNacimientoInscripciones" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Edad <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="EdadInscripciones" name="EdadInscripciones" placeholder="Digite su edad" disabled />
+            </div>
+            <script>
+                // Obtener los elementos del DOM
+                const fechaNacimientoInput = document.getElementById('FechaNacimientoInscripciones');
+                const edadPoliticaInput = document.getElementById('EdadInscripciones');
+
+                // Agregar un evento de escucha al cambio en el campo de fecha de nacimiento
+                fechaNacimientoInput.addEventListener('change', function () {
+                    // Obtener la fecha seleccionada
+                    const fechaNacimiento = new Date(this.value);
+
+                    // Obtener la fecha actual
+                    const fechaActual = new Date();
+
+                    // Calcular la edad en años
+                    let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+
+                    // Verificar si el cumpleaños aún no ha pasado este año
+                    if (fechaNacimiento.getMonth() > fechaActual.getMonth() || (fechaNacimiento.getMonth() === fechaActual.getMonth() && fechaNacimiento.getDate() > fechaActual.getDate())) {
+                        edad--;
+                    }
+
+                    // Actualizar el valor del campo de edad
+                    edadPoliticaInput.value = edad;
+                });
+            </script>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label for="PaisNacimientoInscripciones"><strong>País de Nacimiento <span style="color: red;"> *</span></strong></label>
+                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="PaisNacimientoInscripciones" name="PaisNacimientoInscripciones" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label for="DepartamentoInscripciones"><strong>Departamento de Nacimiento <span style="color: red;"> *</span></strong></label>
+                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="DepartamentoInscripciones" name="DepartamentoInscripciones" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label for="MunicipioInscripciones"><strong>Municipio de Nacimiento <span style="color: red;"> *</span></strong></label>
+                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="MunicipioInscripciones" name="MunicipioInscripciones" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Género y/o Sexo <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="GeneroInscripciones" name="GeneroInscripciones">
+                    <option value="">SELECCIONAR</option>
+                    <option value="MASCULINO">MASCULINO</option>
+                    <option value="FEMENINO">FEMENINO</option>
+                    <option value="PREFIERO NO DECIR">PREFIERO NO DECIR</option>
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Grupo Etareo <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="GrupoEtarreoInscripciones" name="GrupoEtarreoInscripciones">
+                    <option value="">SELECCIONAR</option>
+                    <option value="INFANCIA (0 - 5 AÑOS)">INFANCIA (0 - 5 AÑOS)</option>
+                    <option value="NIÑEZ (6 - 11 AÑOS)">NIÑEZ (6 - 11 AÑOS)</option>
+                    <option value="ADOLESCENTES (12 - 19 AÑOS)">ADOLESCENTES (12 - 19 AÑOS)</option>
+                    <option value="JUVENTUD (20 - 25 AÑOS)">JUVENTUD (20 - 25 AÑOS)</option>
+                    <option value="ADULTEZ (26 - 60 AÑOS)">ADULTEZ (26 - 60 AÑOS)</option>
+                    <option value="ADULTO MAYOR (+ 60 AÑOS)">ADULTO MAYOR (+ 60 AÑOS)</option>
+
+                    @*<option value="Infancia (0 - 5 Años)">Infancia (0 - 5 Años)</option>
+                        <option value="Niñez (6 - 11 Años)">Niñez (6 - 11 Años)</option>
+                        <option value="Adolescentes (12 - 19 Años)">Adolescentes (12 - 19 Años)</option>
+                        <option value="Juventud (20 - 25 Años)">Juventud (20 - 25 Años)</option>
+                        <option value="Adultez (26 - 60 Años)">Adultez (26 - 60 Años)</option>
+                        <option value="Adulto Mayor (+ 60 Años)">Adulto Mayor (+ 60 Años)</option>*@
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Direccion de Residencia <span style="color: red;"> *</span></strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" text-transform: uppercase;" class="form-control" id="DireccionResidencia" name="DireccionResidencia" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Barrio de Residencia <span style="color: red;"> *</span></strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" text-transform: uppercase;" class="form-control" id="BarrioResidencia" name="BarrioResidencia" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Municipio Residencia <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" text-transform: uppercase;" class="select2 form-control" id="MunicipioResidencia" name="MunicipioResidencia">
+                    <option value="">SELECCIONAR</option>
+                    <option value="VALLEDUPAR">VALLEDUPAR</option>
+                    <option value="AGUACHICA">AGUACHICA</option>
+                    <option value="AGUSTÍN CODAZZI">AGUSTÍN CODAZZI</option>
+                    <option value="ASTREA">ASTREA</option>
+                    <option value="BECERRIL">BECERRIL</option>
+                    <option value="BOSCONIA">BOSCONIA</option>
+                    <option value="CHIMICHAGUA">CHIMICHAGUA</option>
+                    <option value="CHIRIGUANÁ">CHIRIGUANÁ</option>
+                    <option value="CURUMANÍ">CURUMANÍ</option>
+                    <option value="EL COPEY">EL COPEY</option>
+                    <option value="EL PASO">EL PASO</option>
+                    <option value="GAMARRA">GAMARRA</option>
+                    <option value="GONZÁLEZ">GONZÁLEZ</option>
+                    <option value="LA GLORIA">LA GLORIA</option>
+                    <option value="LA JAGUA DE IBIRICO">LA JAGUA DE IBIRICO</option>
+                    <option value="LA PAZ">LA PAZ</option>
+                    <option value="MANAURE BALCÓN DEL CESAR">MANAURE BALCÓN DEL CESAR</option>
+                    <option value="PAILITAS">PAILITAS</option>
+                    <option value="PELAYA">PELAYA</option>
+                    <option value="PUEBLO BELLO">PUEBLO BELLO</option>
+                    <option value="RÍO DE ORO">RÍO DE ORO</option>
+                    <option value="SAN ALBERTO">SAN ALBERTO</option>
+                    <option value="SAN DIEGO">SAN DIEGO</option>
+                    <option value="SAN MARTÍN">SAN MARTÍN</option>
+                    <option value="TAMALAMEQUE">TAMALAMEQUE</option>
+
+                </select>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Estrato Residencia <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EstratoResidencia" name="EstratoResidencia">
+                    <option value="">SELECCIONAR</option>
+                    <option value="1">ESTRATO 1</option>
+                    <option value="2">ESTRATO 2</option>
+                    <option value="3">ESTRATO 3</option>
+                    <option value="4">ESTRATO 4</option>
+                    <option value="5">ESTRATO 5</option>
+                    <option value="6">ESTRATO 6</option>
+                </select>
+
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Zona de Residencia <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="ZonaResidencia" name="ZonaResidencia">
+                    <OPTION VALUE="">SELECCIONAR</OPTION>
+                    <OPTION VALUE="URBANA">URBANA</OPTION>
+                    <OPTION VALUE="RURAL">RURAL</OPTION>
+                </select>
+
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Telefono Celular <span style="color: red;"> *</span></strong> </label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TelefonoResidencia" name="TelefonoResidencia" type="number" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Correo Electrónico <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid; text-transform: uppercase;"
+                       class="form-control"
+                       id="CorreoResidencia"
+                       name="CorreoResidencia"
+                       placeholder="digite su correo electrónico"
+                       type="email"
+                       onchange="validarCorreo(this)" />
+            </div>
+
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Estado Civil <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EstadoCivil" name="EstadoCivil">
+                    <OPTION VALUE="">SELECCIONAR</OPTION>
+                    <OPTION VALUE="SOLTERO">SOLTERO</OPTION>
+                    <OPTION VALUE="CASADO">CASADO</OPTION>
+                    <OPTION VALUE="UNIÓN LIBRE">UNIÓN LIBRE</OPTION>
+                    <OPTION VALUE="DIVORCIADO">DIVORCIADO</OPTION>
+                    <OPTION VALUE="SEPARADO">SEPARADO</OPTION>
+                    <OPTION VALUE="VIUDO">VIUDO</OPTION>
+                </select>
+
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Nivel de Estudios <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="NivelEstudio" name="NivelEstudio">
+                    <OPTION VALUE="">SELECCIONAR</OPTION>
+                    <OPTION VALUE="PRIMARIA INCOMPLETA">PRIMARIA INCOMPLETA</OPTION>
+                    <OPTION VALUE="PRIMARIA COMPLETA">PRIMARIA COMPLETA</OPTION>
+                    <OPTION VALUE="SECUNDARIA INCOMPLETA">SECUNDARIA INCOMPLETA</OPTION>
+                    <OPTION VALUE="SECUNDARIA COMPLETA">SECUNDARIA COMPLETA</OPTION>
+                    <OPTION VALUE="TÉCNICO">TÉCNICO</OPTION>
+                    <OPTION VALUE="TECNOLÓGICO">TECNOLÓGICO</OPTION>
+                    <OPTION VALUE="UNIVERSITARIO">UNIVERSITARIO</OPTION>
+                    <OPTION VALUE="POSTGRADO">POSTGRADO</OPTION>
+                </select>
+
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Régimen de Salud <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="RegimenSalud" name="RegimenSalud">
+                    <OPTION VALUE="">SELECCIONAR</OPTION>
+                    <OPTION VALUE="CONTRIBUTIVO">CONTRIBUTIVO</OPTION>
+                    <OPTION VALUE="SUBSIDIADO">SUBSIDIADO</OPTION>
+                    <OPTION VALUE="ESPECIAL">ESPECIAL</OPTION>
+                    <OPTION VALUE="EXCEPCIÓN">EXCEPCIÓN</OPTION>
+                </select>
+
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label for="Eps"><strong>Eps o Ips a la que pertenece <span style="color: red;"> *</span></strong></label>
+                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="Eps" name="Eps" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Tipo de sangre <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Tiposangre" name="Tiposangre">
+                    <option value="">Seleccionar</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Condición de Población <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CondicionPoblacion" name="CondicionPoblacion">
+                    <OPTION VALUE="">SELECCIONAR</OPTION>
+                    <OPTION VALUE="NINGUNA">NINGUNA</OPTION>
+                    <OPTION VALUE="DESPLAZADO">DESPLAZADO</OPTION>
+                    <OPTION VALUE="VÍCTIMA DE CONFLICTO ARMADO">VÍCTIMA DE CONFLICTO ARMADO</OPTION>
+                    <OPTION VALUE="INDÍGENA">INDÍGENA</OPTION>
+                    <OPTION VALUE="AFRODESCENDIENTE">AFRODESCENDIENTE</OPTION>
+                    <OPTION VALUE="PALENQUERO">PALENQUERO</OPTION>
+                    <OPTION VALUE="RAIZAL">RAIZAL</OPTION>
+                    <OPTION VALUE="ROM (GITANO)">ROM (GITANO)</OPTION>
+                    <OPTION VALUE="POBLACIÓN CON DISCAPACIDAD">POBLACIÓN CON DISCAPACIDAD</OPTION>
+                    <OPTION VALUE="MUJER CABEZA DE FAMILIA">MUJER CABEZA DE FAMILIA</OPTION>
+                    <OPTION VALUE="LGBTI">LGBTI</OPTION>
+                    <OPTION VALUE="ADULTO MAYOR">ADULTO MAYOR</OPTION>
+                    <OPTION VALUE="INFANCIA Y ADOLESCENCIA">INFANCIA Y ADOLESCENCIA</OPTION>
+                    <OPTION VALUE="JOVEN">JOVEN</OPTION>
+                </select>
+
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Tipo de Discapacidad<span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="DiscapacidadPoblacion" name="DiscapacidadPoblacion">
+                    <OPTION VALUE="">SELECCIONAR</OPTION>
+                    <OPTION VALUE="NINGUNA">NINGUNA</OPTION>
+                    <OPTION VALUE="DISCAPACIDAD FÍSICA/MOTORA">DISCAPACIDAD FÍSICA/MOTORA</OPTION>
+                    <OPTION VALUE="DISCAPACIDAD SENSORIAL (VISUAL)">DISCAPACIDAD SENSORIAL (VISUAL)</OPTION>
+                    <OPTION VALUE="DISCAPACIDAD SENSORIAL (AUDITIVA)">DISCAPACIDAD SENSORIAL (AUDITIVA)</OPTION>
+                    <OPTION VALUE="DISCAPACIDAD INTELECTUAL">DISCAPACIDAD INTELECTUAL</OPTION>
+                    <OPTION VALUE="DISCAPACIDAD PSICOSOCIAL">DISCAPACIDAD PSICOSOCIAL</OPTION>
+                    <OPTION VALUE="DISCAPACIDAD MÚLTIPLE">DISCAPACIDAD MÚLTIPLE</OPTION>
+                    <OPTION VALUE="DISCAPACIDAD COGNITIVA">DISCAPACIDAD COGNITIVA</OPTION>
+                    <OPTION VALUE="DISCAPACIDAD SORDOCEGUERA">DISCAPACIDAD SORDOCEGUERA</OPTION>
+                </select>
+
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Tipo Etnia <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="GrupoEtnico" name="GrupoEtnico">
+                    <OPTION VALUE="">SELECCIONAR</OPTION>
+                    <OPTION VALUE="NINGUNA">NINGUNA</OPTION>
+                    <OPTION VALUE="MAYORITARIOS">MAYORITARIOS</OPTION>
+                    <OPTION VALUE="RAIZALES">RAIZALES</OPTION>
+                    <OPTION VALUE="INDIGENA">INDIGENA</OPTION>
+                    <OPTION VALUE="MESTIZOS">MESTIZOS</OPTION>
+                    <OPTION VALUE="ROM-GITANOS">ROM-GITANOS</OPTION>
+                    <OPTION VALUE="CAMPESINOS">CAMPESINOS</OPTION>
+                    <OPTION VALUE="AFRODESCENDIENTES">AFRODESCENDIENTES</OPTION>
+                    <OPTION VALUE="PALENQUEROS">PALENQUEROS</OPTION>
+
+                </select>
+
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Deporte <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="DeportePractica" name="DeportePractica">
+                        <OPTION VALUE="">SELECCIONAR</OPTION>
+                        <OPTION VALUE="AJEDREZ">AJEDREZ</OPTION>
+                        <OPTION VALUE="ATLETISMO">ATLETISMO</OPTION>
+                        <OPTION VALUE="BALONCESTO">BALONCESTO</OPTION>
+                        <OPTION VALUE="BALONMANO">BALONMANO</OPTION>
+                        <OPTION VALUE="BAILE DEPORTIVO">BAILE DEPORTIVO</OPTION>
+                        <OPTION VALUE="BEISBOL">BEISBOL</OPTION>
+                        <OPTION VALUE="BILLAR">BILLAR</OPTION>
+                        <OPTION VALUE="BOWLING">BOWLING</OPTION>
+                        <OPTION VALUE="BOXEO">BOXEO</OPTION>
+                        <OPTION VALUE="CANOTAJE">CANOTAJE</OPTION>
+                        <OPTION VALUE="CICLISMO">CICLISMO</OPTION>
+                        <OPTION VALUE="CICLISMO MTV">CICLISMO MTV</OPTION>
+                        <OPTION VALUE="ESGRIMA">ESGRIMA</OPTION>
+                        <OPTION VALUE="FISIOCULTURISMO">FISIOCULTURISMO</OPTION>
+                        <OPTION VALUE="FÚTBOL">FÚTBOL</OPTION>
+                        <OPTION VALUE="FÚTBOL DE SALÓN">FÚTBOL DE SALÓN</OPTION>
+                        <OPTION VALUE="FÚTBOL SALA">FÚTBOL SALA</OPTION>
+                        <OPTION VALUE="GIMNASIA">GIMNASIA</OPTION>
+                        <OPTION VALUE="JUDO">JUDO</OPTION>
+                        <OPTION VALUE="KARATE">KARATE</OPTION>
+                        <OPTION VALUE="LEVANTAMIENTO DE POTENCIA">LEVANTAMIENTO DE POTENCIA</OPTION>
+                        <OPTION VALUE="LEVANTAMIENTO DE PESAS">LEVANTAMIENTO DE PESAS</OPTION>
+                        <OPTION VALUE="LIDIFICESAR - DISCAPACIDAD FISICA">LIDIFICESAR - DISCAPACIDAD FISICA</OPTION>
+                        <OPTION VALUE="LIMITADOS VISUALES">LIMITADOS VISUALES</OPTION>
+                        <OPTION VALUE="LISORCE - SORDOS">LISORCE - SORDOS</OPTION>
+                        <OPTION VALUE="MOTOCICLISMO">MOTOCICLISMO</OPTION>
+                        <OPTION VALUE="NATACIÓN">NATACIÓN</OPTION>
+                        <OPTION VALUE="PARAATLETISMO">PARAATLETISMO</OPTION>
+                        <OPTION VALUE="PATINAJE">PATINAJE</OPTION>
+                        <OPTION VALUE="RUGBY">RUGBY</OPTION>
+                        <OPTION VALUE="SOFTBOL">SOFTBOL</OPTION>
+                        <OPTION VALUE="TAEKWONDO">TAEKWONDO</OPTION>
+                        <OPTION VALUE="TEJO">TEJO</OPTION>
+                        <OPTION VALUE="TENIS">TENIS</OPTION>
+                        <OPTION VALUE="TENIS DE MESA">TENIS DE MESA</OPTION>
+                        <OPTION VALUE="TIRO CON ARCO">TIRO CON ARCO</OPTION>
+                        <OPTION VALUE="TIRO DEPORTIVO">TIRO DEPORTIVO</OPTION>
+                        <OPTION VALUE="VOLEIBOL PISO">VOLEIBOL PISO</OPTION>
+                        <OPTION VALUE="VOLEIBOL PLAYA">VOLEIBOL PLAYA</OPTION>
+                        <OPTION VALUE="WUSHU">WUSHU</OPTION>
+                    </SELECT>
+
+
+</div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label for="NombreEntrenador"><strong>Nombre de su entrenador y/o Profesor <span style="color: red;"> *</span></strong></label>
+                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="NombreEntrenador" name="NombreEntrenador" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label for="NombreContacto"><strong>Nombre de un contacto<span style="color: red;"> *</span></strong></label>
+                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="NombreContacto" name="NombreContacto" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Telefono Celular de un contacto<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TelefonoContacto" name="TelefonoContacto" type="number" />
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Correo Electronico de un contacto<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid; text-transform: uppercase;"
+                       class="form-control"
+                       id="CorreoContacto"
+                       name="CorreoContacto"
+                       placeholder="digite su correo electrónico"
+                       type="email"
+                       onchange="validarCorreo(this)" />
+
+            </div>
+        </div>
+
+    </form>
+    <br />
+    <div class="form-check form-check-inline">
+        <label class="form-check-label" for="inlineCheckbox2">
+            <strong>
+                Nota: Le solicitamos completar el siguiente formulario con los datos necesarios para la inscripción de los deportistas. Es importante que todos los campos sean llenados con información precisa y actualizada, ya que todos son obligatorios.
+            </strong>
+        </label>
+    </div>
+    <br />
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveInscripcioDeportista">Guardar</button>
+    </div>
+</div>
+
+
+@*<script type="text/javascript">
+    function Createobj() {
+        // Aquí puedes agregar la lógica que necesitas para la función Createobj.
+        desactivarBoton();
+    }
+
+    function desactivarBoton() {
+        var boton = document.getElementById("SaveInscripcioDeportista");
+        boton.disabled = true;
+        boton.innerText = "Procesando...";
+    }
+</script>*@
+<footer id="footer">
+
+    <div class="">
+        <div class="container">
+            <div class="">
+                <div id="copyright">
+
+
+
+                    <!-- BEGIN: Custom advanced (www.pluginaria.com) -->
+                    <div style="text-align: center;">
+                        <hr style="color: #1051eae2;">
+                        <span style="color: #0d3c61;">
+                            <strong>Horario de Atención:</strong>
+                        </span>&nbsp;
+                        <span style="color: #000000;">Lunes a Viernes de 07:45 am - 12:45 pm y 02:45 pm - 05:45 pm</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="color: #000000;">
+                            <span style="color: #0d3c61;">
+                                <strong style="text-align: center;">Dirección:</strong>
+                            </span>&nbsp;Calle 16 # 12 - 120 Edificio
+                            Alfonso López Michelsen Valledupar - Cesar - Colombia
+                        </span>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="color: #000000;"></span>
+                        <span>
+                            <span style="color: #0d3c61;">
+                                <strong>
+                                    Líneas de Atención a la
+                                    Ciudadanía:
+                                </strong>
+                            </span>&nbsp;<span style="color: #000000;">
+                                01 8000 954 099 / (575)
+                                5748230
+                            </span>
+                        </span>
+                    </div>
+                    <div style="text-align: justify;">
+
+                        <div style="text-align: center;">
+                            <span style="color: #000000;">
+                                <strong>
+                                    <span style="color: #0d3c61;">Correo Institucional:</span>
+                                    &nbsp;
+                                </strong>
+                                <a href="mailto:contactenos@cesar.gov.co" style="color: #000000;">contactenos@cesar.gov.co</a>
+                                &nbsp;
+                            </span>
+                        </div>
+                        <div style="text-align: center;">
+                            <span style="color: #000000;">
+                                <span style="color: #0d3c61;">
+                                    <strong>Código Postal:</strong>&nbsp;
+                                </span>200001
+                            </span>
+                        </div>
+                        <div style="text-align: center;">
+                            <span style="color: #000000;">
+                                <span style="color: #0d3c61;">
+                                    <strong>Nit:</strong>
+                                    &nbsp;
+                                </span>892399999-1
+                            </span>
+                        </div>
+                        <div style="text-align: center;">
+                            <strong style="color: #0d3c61;">
+                                <a href="https://cesar.gov.co/d/index.php/es/2-uncategorised/2856-artpolpriv"
+                                   style="color: #0d3c61;">
+                                    Políticas
+                                    de Privacidad y Condiciones de Uso de la Información
+                                </a>
+                            </strong>
+                        </div>
+                    </div>
+                    <div>
+                        &nbsp;&nbsp;
+                    </div>
+                    @*<div style="text-align: center;">
+                            <img src="~/images/banner_28.png" alt="0000 2020 imggbp 01" style="max-width: 100%;" />
+
+                        </div>*@
+                    <br><br>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+</footer>
+
+
+
+
+<style>
+
+    #footer {
+        text-align: center;
+        width: 100%;
+        background-color: #f5f5f5;
+        padding: 20px;
+    }
+
+        #footer img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #footer div {
+            max-width: 100%;
+        }
+</style>
+
+
+
+
+
+
+
+
+
