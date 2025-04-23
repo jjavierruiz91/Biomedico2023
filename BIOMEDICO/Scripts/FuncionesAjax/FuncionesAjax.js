@@ -55,7 +55,7 @@ function Save_Data(callbacksussces, Url, ObjetoGuardar, TituloMensaje, Recargar,
     $.ajax({
         url: formURL,
         type: "POST",
-        dataType: "json",
+        dataType: "json",//pilla que aqui dice que en josn y si no lo mandas en json se rompe
         data: ObjetoGuardar,
         contentType: "application/json",
         success: function (data, textStatus, jqXHR) {

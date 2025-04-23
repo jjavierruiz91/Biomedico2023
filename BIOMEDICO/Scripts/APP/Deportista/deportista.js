@@ -403,11 +403,11 @@ async function Createobj() {
             Save_Data(ActualizarVista, '/Deportista/Actualizar', JSON.stringify( ObjDeportista), 'Actualizacion');
         }
         else {
-            Save_Data(ActualizarVista, '/Deportista/Agregar', ObjDeportista, 'Guardado');
+            Save_Data(ActualizarVista, '/Deportista/Agregar', JSON.stringify(ObjDeportista), 'Guardado');//debes mandar como json todo, no te funciono porque solo lo pusisyte en el update y no en el add
 
-           // LimpiarFormulario()
+           // LimpiarFormulario() entonces todos los guardar se deben de actualiza a JSON?
         }
-
+        //claro, porque mira que el servicio que se conecta dice en formato json
     } 
 
     
