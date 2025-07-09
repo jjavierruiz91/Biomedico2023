@@ -22,6 +22,6 @@ namespace BIOMEDICO.Models
         public string Concepto { get; set; }
         public Nullable<int> IdDatosDemograficos { get; set; }
     
-        public virtual DemograficoPsicologia DemograficoPsicologia { get; set; } = new DemograficoPsicologia();
+        public virtual DemograficoPsicologia DemograficoPsicologia { get; set; }
     }
 }

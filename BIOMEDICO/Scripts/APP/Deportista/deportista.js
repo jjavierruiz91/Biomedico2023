@@ -120,7 +120,7 @@ function LlenarcamposInicial(data) {
     setSelectValue('#NombreGrupo', data.GeneroInscripciones)
     setSelectValue('#GrupoSanguineo', data.Tiposangre)
     setSelectValue('#CondicionPoblacion', data.CondicionPoblacion)
-    setSelectValue('#EntidadPrestadora', data.GeneroInscripciones)
+    setSelectValue('#EntidadPrestadora', data.DiscapacidadPoblacion)
     setSelectValue('#TipoEtnia', data.GrupoEtnico)
     setSelectValue('#Deporte', data.DeportePractica)
     $('#Telefono').val(data.TelefonoResidencia)

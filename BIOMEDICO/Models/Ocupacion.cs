@@ -29,6 +29,6 @@ namespace BIOMEDICO.Models
         public Nullable<int> NumeroHijos { get; set; }
         public Nullable<int> IdDeportista { get; set; }
     
-        public virtual Deportistas Deportistas { get; set; }= new Deportistas();
+        public virtual Deportistas Deportistas { get; set; }
     }
 }

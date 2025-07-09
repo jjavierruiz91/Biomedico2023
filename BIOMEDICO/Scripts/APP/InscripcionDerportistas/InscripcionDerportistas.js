@@ -315,11 +315,78 @@ function Atras() {
 
 
 
+////}
+//async function Createobj() {
+//    boton.disabled = true;
+
+//    setTimeout(function () {
+//        boton.disabled = false;
+//    }, 3000);
+
+//    if (VerDetalles == "SI") {
+//        Atras();
+//    } else {
+//        var test = $('#NumIde').val();
+//        var IdIncripcionBeneficiarios = 0;
+
+//        if (IsUpdate) {
+//            IdIncripcionBeneficiarios = IdIncripcionBeneficiariosData;
+       
+
+//        var ObjInscripcionDeportistas = {
+//            InscripcionDeportistasDeport: {
+//                IdIncripcionBeneficiarios: IdIncripcionBeneficiarios,
+//                ProgramaInscripciones: $('#ProgramaInscripciones').val(),
+//                TipoIdentificacionInscripciones: $('#TipoIdentificacionInscripciones').val(),               
+//                NumIdentificacionInscripciones: $('#NumIdentificacionInscripciones').val(),
+//                PrimerNombreInscripciones: $('#PrimerNombreInscripciones').val(),
+//                SegundonombreInscripciones: $('#SegundonombreInscripciones').val(),
+//                PrimerApellidoInscripciones: $('#PrimerApellidoInscripciones').val(),
+//                SegundoApellidoInscripciones: $('#SegundoApellidoInscripciones').val(),
+//                FechaNacimientoInscripciones: $('#FechaNacimientoInscripciones').val(),
+//                EdadInscripciones: $('#EdadInscripciones').val(),
+//                PaisNacimientoInscripciones: $('#PaisNacimientoInscripciones').val(),
+//                DepartamentoInscripciones: $('#DepartamentoInscripciones').val(),
+//                MunicipioInscripciones: $('#MunicipioInscripciones').val(),
+//                GeneroInscripciones: $('#GeneroInscripciones').val(),
+//                GrupoEtarreoInscripciones: $('#GrupoEtarreoInscripciones').val(),
+//                DireccionResidencia: $('#DireccionResidencia').val(),
+//                BarrioResidencia: $('#BarrioResidencia').val(),
+//                MunicipioResidencia: $('#MunicipioResidencia').val(),
+//                EstratoResidencia: $('#EstratoResidencia').val(),
+//                ZonaResidencia: $('#ZonaResidencia').val(),
+//                TelefonoResidencia: $('#TelefonoResidencia').val(),
+//                CorreoResidencia: $('#CorreoResidencia').val(),
+//                EstadoCivil: $('#EstadoCivil').val(),
+//                NivelEstudio: $('#NivelEstudio').val(),
+//                RegimenSalud: $('#RegimenSalud').val(),
+//                Eps: $('#Eps').val(),
+//                Tiposangre: $('#Tiposangre').val(),
+//                CondicionPoblacion: $('#CondicionPoblacion').val(),
+//                DiscapacidadPoblacion: $('#DiscapacidadPoblacion').val(),
+//                GrupoEtnico: $('#GrupoEtnico').val(),
+//                DeportePractica: $('#DeportePractica').val(),
+//                NombreEntrenador: $('#NombreEntrenador').val(),
+//                NombreContacto: $('#NombreContacto').val(),
+//                TelefonoContacto: $('#TelefonoContacto').val(),
+//                CorreoContacto: $('#CorreoContacto').val(),
+//            }
+//        };
+               
+
+//        if (IsUpdate) {
+//            // Save_Data(ActualizarVista, '/Deportista/Actualizar', ObjDeportista, 'Actualizacion');
+//        } else {
+//            Save_Data_FormData(ActualizarVista, '/InscripcionDeportistas/Agregar', formDataModel, 'Guardado');
+//        }
+//    }
 //}
+
 async function Createobj() {
     var boton = document.getElementById("SaveInscripcioDeportista");
     boton.disabled = true;
 
+    // Reactivar el botón después de 5 segundos (5000 milisegundos)
     setTimeout(function () {
         boton.disabled = false;
     }, 3000);
@@ -327,35 +394,20 @@ async function Createobj() {
     if (VerDetalles == "SI") {
         Atras();
     } else {
+        // if (validadorFormDeportista.form()) {
         var test = $('#NumIde').val();
         var IdIncripcionBeneficiarios = 0;
 
         if (IsUpdate) {
             IdIncripcionBeneficiarios = IdIncripcionBeneficiariosData;
         }
-        const fileFormDocumento = document.querySelector('#DocumentoPdf') ? (document.querySelector('#DocumentoPdf').files ? document.querySelector('#DocumentoPdf').files[0] : null) : null;
-        const fileFormSalud = document.querySelector('#SaludPdf') ? (document.querySelector('#SaludPdf').files ? document.querySelector('#SaludPdf').files[0] : null) : null;
-        const fileFormAutorizacion = document.querySelector('#AutorizacionPdf') ? (document.querySelector('#AutorizacionPdf').files ? document.querySelector('#AutorizacionPdf').files[0] : null) : null;
-        const fileFormCedulaPadre = document.querySelector('#CedulaPadrePdf') ? (document.querySelector('#CedulaPadrePdf').files ? document.querySelector('#CedulaPadrePdf').files[0] : null) : null;
-
-        try {
-            var fileStringBase64Documento = await getBase64(fileFormDocumento);
-            var fileStringBase64Salud = await getBase64(fileFormSalud);
-            var fileStringBase64Autorizacion = await getBase64(fileFormAutorizacion);
-            var fileStringBase64CedulaPadre = await getBase64(fileFormCedulaPadre);
-        } catch (error) {
-            console.error("Error al convertir archivos a Base64:", error);
-        }
-
-        var ObjInscripcionDeportistas = {
+     
+        ObjInscripcionDeportistas = {
             InscripcionDeportistasDeport: {
                 IdIncripcionBeneficiarios: IdIncripcionBeneficiarios,
+
                 ProgramaInscripciones: $('#ProgramaInscripciones').val(),
-                TipoIdentificacionInscripciones: $('#TipoIdentificacionInscripciones').val(),
-                //DocumentoPdf: fileStringBase64Documento,
-                //SaludPdf: fileStringBase64Salud,
-                //AutorizacionPdf: fileStringBase64Autorizacion,
-                //CedulaPadrePdf: fileStringBase64CedulaPadre,
+                TipoIdentificacionInscripciones: $('#TipoIdentificacionInscripciones').val(),                
                 NumIdentificacionInscripciones: $('#NumIdentificacionInscripciones').val(),
                 PrimerNombreInscripciones: $('#PrimerNombreInscripciones').val(),
                 SegundonombreInscripciones: $('#SegundonombreInscripciones').val(),
@@ -391,129 +443,16 @@ async function Createobj() {
             }
         };
 
-        console.log("Objeto a enviar:", ObjInscripcionDeportistas);
-        let formDataModel = new FormData()
-        formDataModel.append('persona', JSON.stringify(ObjInscripcionDeportistas))
-
-        let cedulaBeneficiarioFile = $('#DocumentoPdf').get(0).files;
-        for (let e = 0; e < cedulaBeneficiarioFile.length; e++) {
-            formDataModel.append("cedulaBeneficiarioFile", cedulaBeneficiarioFile[e])
-        }
-
-        let saludFile = $('#SaludPdf').get(0).files;
-        for (let e = 0; e < saludFile.length; e++) {
-            formDataModel.append("saludFile", saludFile[e])
-        }
-
-        let autorizacionFile = $('#AutorizacionPdf').get(0).files;
-        for (let e = 0; e < autorizacionFile.length; e++) {
-            formDataModel.append("autorizacionFile", autorizacionFile[e])
-        }
-
-        let cedulaPadreFile = $('#CedulaPadrePdf').get(0).files;
-        for (let e = 0; e < cedulaPadreFile.length; e++) {
-            formDataModel.append("cedulaPadreFile", cedulaPadreFile[e])
-        }
+        let id = 10;
 
         if (IsUpdate) {
             // Save_Data(ActualizarVista, '/Deportista/Actualizar', ObjDeportista, 'Actualizacion');
         } else {
-            Save_Data_FormData(ActualizarVista, '/InscripcionDeportistas/Agregar', formDataModel, 'Guardado');
+            Save_Data(ActualizarVista, '/InscripcionDeportistas/Agregar', ObjInscripcionDeportistas, 'Guardado');
+            // LimpiarFormulario()
         }
     }
 }
-
-//async function Createobj() {
-//    var boton = document.getElementById("SaveInscripcioDeportista");
-//    boton.disabled = true;
-
-//    // Reactivar el botón después de 5 segundos (5000 milisegundos)
-//    setTimeout(function () {
-//        boton.disabled = false;
-//    }, 3000);
-
-//    if (VerDetalles == "SI") {
-//        Atras();
-//    } else {
-//        // if (validadorFormDeportista.form()) {
-//        var test = $('#NumIde').val();
-//        var IdIncripcionBeneficiarios = 0;
-
-//        if (IsUpdate) {
-//            IdIncripcionBeneficiarios = IdIncripcionBeneficiariosData;
-//        }
-//        const fileFormDocumento = document.querySelector('#DocumentoPdf') ? (document.querySelector('#DocumentoPdf').files ? document.querySelector('#DocumentoPdf').files[0] : null) : null;
-//        const fileFormSalud = document.querySelector('#SaludPdf') ? (document.querySelector('#SaludPdf').files ? document.querySelector('#SaludPdf').files[0] : null) : null;
-//        const fileFormAutorizacion = document.querySelector('#AutorizacionPdf') ? (document.querySelector('#AutorizacionPdf').files ? document.querySelector('#AutorizacionPdf').files[0] : null) : null;
-//        const fileFormCedulaPadre = document.querySelector('#CedulaPadrePdf') ? (document.querySelector('#CedulaPadrePdf').files ? document.querySelector('#CedulaPadrePdf').files[0] : null) : null;
-
-//        try {
-//            var fileStringBase64Documento = await getBase64(fileFormDocumento);
-//            var fileStringBase64Salud = await getBase64(fileFormSalud);
-//            var fileStringBase64Autorizacion = await getBase64(fileFormAutorizacion);
-//            var fileStringBase64CedulaPadre = await getBase64(fileFormCedulaPadre);
-
-//            // Continuar con el procesamiento de los archivos
-//        } catch (error) {
-//            // No es necesario hacer nada aquí si el error esperado es "Falta el archivo"
-//            // Puedes agregar otro manejo de errores si es necesario.
-//        }
-
-//        ObjInscripcionDeportistas = {
-//            InscripcionDeportistasDeport: {
-//                IdIncripcionBeneficiarios: IdIncripcionBeneficiarios,
-
-//                ProgramaInscripciones: $('#ProgramaInscripciones').val(),
-//                TipoIdentificacionInscripciones: $('#TipoIdentificacionInscripciones').val(),
-//                DocumentoPdf: fileStringBase64Documento,
-//                SaludPdf: fileStringBase64Salud,
-//                AutorizacionPdf: fileStringBase64Autorizacion,
-//                CedulaPadrePdf: fileStringBase64CedulaPadre,
-//                NumIdentificacionInscripciones: $('#NumIdentificacionInscripciones').val(),
-//                PrimerNombreInscripciones: $('#PrimerNombreInscripciones').val(),
-//                SegundonombreInscripciones: $('#SegundonombreInscripciones').val(),
-//                PrimerApellidoInscripciones: $('#PrimerApellidoInscripciones').val(),
-//                SegundoApellidoInscripciones: $('#SegundoApellidoInscripciones').val(),
-//                FechaNacimientoInscripciones: $('#FechaNacimientoInscripciones').val(),
-//                EdadInscripciones: $('#EdadInscripciones').val(),
-//                PaisNacimientoInscripciones: $('#PaisNacimientoInscripciones').val(),
-//                DepartamentoInscripciones: $('#DepartamentoInscripciones').val(),
-//                MunicipioInscripciones: $('#MunicipioInscripciones').val(),
-//                GeneroInscripciones: $('#GeneroInscripciones').val(),
-//                GrupoEtarreoInscripciones: $('#GrupoEtarreoInscripciones').val(),
-//                DireccionResidencia: $('#DireccionResidencia').val(),
-//                BarrioResidencia: $('#BarrioResidencia').val(),
-//                MunicipioResidencia: $('#MunicipioResidencia').val(),
-//                EstratoResidencia: $('#EstratoResidencia').val(),
-//                ZonaResidencia: $('#ZonaResidencia').val(),
-//                TelefonoResidencia: $('#TelefonoResidencia').val(),
-//                CorreoResidencia: $('#CorreoResidencia').val(),
-//                EstadoCivil: $('#EstadoCivil').val(),
-//                NivelEstudio: $('#NivelEstudio').val(),
-//                RegimenSalud: $('#RegimenSalud').val(),
-//                Eps: $('#Eps').val(),
-//                Tiposangre: $('#Tiposangre').val(),
-//                CondicionPoblacion: $('#CondicionPoblacion').val(),
-//                DiscapacidadPoblacion: $('#DiscapacidadPoblacion').val(),
-//                GrupoEtnico: $('#GrupoEtnico').val(),
-//                DeportePractica: $('#DeportePractica').val(),
-//                NombreEntrenador: $('#NombreEntrenador').val(),
-//                NombreContacto: $('#NombreContacto').val(),
-//                TelefonoContacto: $('#TelefonoContacto').val(),
-//                CorreoContacto: $('#CorreoContacto').val(),
-//            }
-//        };
-
-//        let id = 10;
-
-//        if (IsUpdate) {
-//            // Save_Data(ActualizarVista, '/Deportista/Actualizar', ObjDeportista, 'Actualizacion');
-//        } else {
-//            Save_Data(ActualizarVista, '/InscripcionDeportistas/Agregar', ObjInscripcionDeportistas, 'Guardado');
-//            // LimpiarFormulario()
-//        }
-//    }
-//}
 
 function ActualizarVista() {
     window.location.reload();

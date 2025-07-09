@@ -35,6 +35,6 @@ namespace BIOMEDICO.Models
         public string FlexibilidadFisioterapia { get; set; }
         public Nullable<int> IdFisioterapia { get; set; }
     
-        public virtual Fisioterapia Fisioterapia { get; set; } = new Fisioterapia();
+        public virtual Fisioterapia Fisioterapia { get; set; }
     }
 }

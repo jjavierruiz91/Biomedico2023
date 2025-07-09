@@ -115,6 +115,6 @@ namespace BIOMEDICO.Models
         public string TestCoreRegular { get; set; }
         public string TestCoreMalo { get; set; }
     
-        public virtual Fisioterapia Fisioterapia { get; set; } = new Fisioterapia();
+        public virtual Fisioterapia Fisioterapia { get; set; }
     }
 }

@@ -26,6 +26,6 @@ namespace BIOMEDICO.Models
         public string AnexosMedicinaDeportiva { get; set; }
         public Nullable<int> IdMedicina { get; set; }
     
-        public virtual MedicinaDelDeporte MedicinaDelDeporte { get; set; } = new MedicinaDelDeporte();
+        public virtual MedicinaDelDeporte MedicinaDelDeporte { get; set; }
     }
 }

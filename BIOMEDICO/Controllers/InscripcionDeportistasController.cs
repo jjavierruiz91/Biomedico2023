@@ -200,39 +200,7 @@ namespace BIOMEDICO.Controllers
                     db.InscripcionesDeportistas.Add(a.InscripcionDeportistasDeport);
                     db.SaveChanges();
 
-                    string basePath = AppDomain.CurrentDomain.BaseDirectory;
-                    string path = Path.Combine(basePath, "ArchivosPDF", $"{a.InscripcionDeportistasDeport.NumIdentificacionInscripciones}");
-
-                    if (!Directory.Exists(path))
-                    {
-                        Directory.CreateDirectory(path);
-                    }
-                    if (string.IsNullOrEmpty(a.InscripcionDeportistasDeport.DocumentoPdf) || EsPDF(documentosEnBytes?.documentoBenefBytes))
-                    {
-                        if (!string.IsNullOrEmpty(documentoBenefFile?.FileName))
-                        {
-                            System.IO.File.WriteAllBytes($"{path}/{a.InscripcionDeportistasDeport.NumIdentificacionInscripciones}-Documento.pdf", documentosEnBytes.documentoBenefBytes);
-                        }
-
-                        if (!string.IsNullOrEmpty(saludFile?.FileName) && EsPDF(documentosEnBytes?.saludFileBytes))
-                        {
-                            System.IO.File.WriteAllBytes($"{path}/{a.InscripcionDeportistasDeport.NumIdentificacionInscripciones}-Salud.pdf", documentosEnBytes.saludFileBytes);
-                        }
-  
-                        if (!string.IsNullOrEmpty(autorizacionFile?.FileName) && EsPDF(documentosEnBytes?.autorizacionFileBytes))
-                        {
-                            System.IO.File.WriteAllBytes($"{path}/{a.InscripcionDeportistasDeport.NumIdentificacionInscripciones}-Autorizacion.pdf", documentosEnBytes.autorizacionFileBytes);
-                        }
-
-                        if (!string.IsNullOrEmpty(cedulaPadreFile?.FileName) && EsPDF(documentosEnBytes?.cedulaPadreFileBytes))
-                        {
-                            System.IO.File.WriteAllBytes($"{path}/{a.InscripcionDeportistasDeport.NumIdentificacionInscripciones}-Cedulafamiliar.pdf", documentosEnBytes.cedulaPadreFileBytes);
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("No tiene documento");
-                    }
+                    
 
                     Retorno.Error = false;
                     Retorno.mensaje = "Formulario Inscripcion Deportistas guardado correctamente.";
@@ -247,19 +215,7 @@ namespace BIOMEDICO.Controllers
             return Json(Retorno, JsonRequestBehavior.AllowGet);
 
             // Función para verificar si es un PDF
-            bool EsPDF(byte[] bytes)
-            {               
-                if (bytes.Length >= 5 &&
-                    bytes[0] == 0x25 && // %
-                    bytes[1] == 0x50 && // P
-                    bytes[2] == 0x44 && // D
-                    bytes[3] == 0x46 && // F
-                    bytes[4] == 0x2D)   // -
-                {
-                    return true;
-                }
-                return false;
-            }
+            
         }
 
 

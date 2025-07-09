@@ -59,6 +59,6 @@ namespace BIOMEDICO.Models
         public Nullable<System.DateTime> FechaTratamiento { get; set; }
         public Nullable<int> IdFisioterapia { get; set; }
     
-        public virtual Fisioterapia Fisioterapia { get; set; } = new Fisioterapia();
+        public virtual Fisioterapia Fisioterapia { get; set; }
     }
 }

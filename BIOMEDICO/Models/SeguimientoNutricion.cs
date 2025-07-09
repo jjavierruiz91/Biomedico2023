@@ -34,6 +34,6 @@ namespace BIOMEDICO.Models
         public Nullable<int> IdNutricion { get; set; }
         public Nullable<int> IdMedicina { get; set; }
     
-        public virtual Nutricion Nutricion { get; set; } = new Nutricion();
+        public virtual Nutricion Nutricion { get; set; }
     }
 }

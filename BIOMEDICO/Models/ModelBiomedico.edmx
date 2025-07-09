@@ -678,10 +678,6 @@
           </Key>
           <Property Name="IdIncripcionBeneficiarios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProgramaInscripciones" Type="varchar(max)" />
-          <Property Name="DocumentoPdf" Type="varchar(max)" />
-          <Property Name="SaludPdf" Type="varchar(max)" />
-          <Property Name="AutorizacionPdf" Type="varchar(max)" />
-          <Property Name="CedulaPadrePdf" Type="varchar(max)" />
           <Property Name="TipoIdentificacionInscripciones" Type="varchar(max)" />
           <Property Name="NumIdentificacionInscripciones" Type="bigint" />
           <Property Name="PrimerNombreInscripciones" Type="varchar(max)" />
@@ -715,6 +711,7 @@
           <Property Name="NombreContacto" Type="varchar(max)" />
           <Property Name="TelefonoContacto" Type="varchar(max)" />
           <Property Name="CorreoContacto" Type="varchar(max)" />
+          <Property Name="FechaRegistro" Type="date" />
         </EntityType>
         <EntityType Name="MedicinaDelDeporte">
           <Key>
@@ -2785,10 +2782,6 @@
           </Key>
           <Property Name="IdIncripcionBeneficiarios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProgramaInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DocumentoPdf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SaludPdf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AutorizacionPdf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CedulaPadrePdf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TipoIdentificacionInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="NumIdentificacionInscripciones" Type="Int64" />
           <Property Name="PrimerNombreInscripciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -2822,6 +2815,7 @@
           <Property Name="NombreContacto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TelefonoContacto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CorreoContacto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -3759,6 +3753,7 @@
           <EntitySetMapping Name="InscripcionesDeportistas">
             <EntityTypeMapping TypeName="BIOMEDICOModel.InscripcionesDeportistas">
               <MappingFragment StoreEntitySet="InscripcionesDeportistas">
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
                 <ScalarProperty Name="CorreoContacto" ColumnName="CorreoContacto" />
                 <ScalarProperty Name="TelefonoContacto" ColumnName="TelefonoContacto" />
                 <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
@@ -3792,10 +3787,6 @@
                 <ScalarProperty Name="PrimerNombreInscripciones" ColumnName="PrimerNombreInscripciones" />
                 <ScalarProperty Name="NumIdentificacionInscripciones" ColumnName="NumIdentificacionInscripciones" />
                 <ScalarProperty Name="TipoIdentificacionInscripciones" ColumnName="TipoIdentificacionInscripciones" />
-                <ScalarProperty Name="CedulaPadrePdf" ColumnName="CedulaPadrePdf" />
-                <ScalarProperty Name="AutorizacionPdf" ColumnName="AutorizacionPdf" />
-                <ScalarProperty Name="SaludPdf" ColumnName="SaludPdf" />
-                <ScalarProperty Name="DocumentoPdf" ColumnName="DocumentoPdf" />
                 <ScalarProperty Name="ProgramaInscripciones" ColumnName="ProgramaInscripciones" />
                 <ScalarProperty Name="IdIncripcionBeneficiarios" ColumnName="IdIncripcionBeneficiarios" />
               </MappingFragment>

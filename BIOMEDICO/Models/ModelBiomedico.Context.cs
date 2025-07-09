@@ -18,9 +18,8 @@ namespace BIOMEDICO.Models
         public BIOMEDICOEntities5()
             : base("name=BIOMEDICOEntities5")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

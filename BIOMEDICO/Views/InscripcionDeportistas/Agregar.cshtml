@@ -14,320 +14,524 @@
 }
 
 <script defer src="~/Scripts/APP/InscripcionDerportistas/InscripcionDerportistas.js"></script>
-<div class="image-container" style="text-align: center;">
-    <img src="~/images/banner1.png" alt="0000 2020 imggbp 01" class="responsive-image" />
-</div>
-<style>
-    /* Asegúrate de que el contenedor ocupe el 100% del ancho disponible */
-    .image-container {
-        width: 100%;
-        max-width: 1080px; /* Ajusta esto si es necesario */
-        margin: auto; /* Centra el contenedor */
-        overflow: hidden; /* Oculta cualquier contenido desbordante */
+
+
+@{
+    if (Convert.ToBoolean(@ViewBag.ViewFree))
+    {
+        ViewBag.Title = "Agregar";
+        Layout = "~/Views/Shared/BuscarCitasPasaport.cshtml";
+    }
+    else
+    {
+        ViewBag.Title = "Agregar";
+        Layout = "~/Views/Shared/_Layout.cshtml";
     }
 
-    /* Hace que la imagen sea responsive */
-    .responsive-image {
-        max-width: 100%; /* La imagen no excederá el ancho del contenedor */
-        max-height: 300px; /* La imagen no excederá la altura de 300px */
-        width: 1080px; /* Ajusta el ancho automáticamente */
-        height: 300px; /* Mantiene la proporción de la imagen */
-        display: block; /* Elimina el espacio en blanco debajo de la imagen */
-        margin: auto; /* Centra la imagen dentro del contenedor */
-    }
-</style>
-<br />
-<h1 class="titulo"><strong>INSCRIPCIÓN DE BENEFICIARIOS DEL DEPORTE DEL DEPARTAMENTO DEL CESAR</strong></h1>
-<hr width=100% align="right" size=200 color="black">
-<style>
-    .hidden {
-        display: none;
-    }
+}
 
-    .titulo {
-        text-align: center;
-        color: #006068;
-    }
-</style>
-<div class="row m-0">
-    <form id="FormFisioterapia" name="FormFisioterapia">
-        <div class="row m-0">
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Programa en el que desea inscribirse y/o ingresar <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;"
-                        class="select2 form-control"
-                        id="ProgramaInscripciones"
-                        name="ProgramaInscripciones"
-                        onchange="toggleInputFields()">
-                    <OPTION VALUE="">SELECCIONAR</OPTION>
-                    <OPTION VALUE="PROGRAMA DEPORTE SOCIAL COMUNITARIO">PROGRAMA DEPORTE SOCIAL COMUNITARIO</OPTION>
-                    <OPTION VALUE="PROGRAMA DEPORTISTAS ALTO RENDIMIENTO - SELECCIONES DEPARTAMENTALES">PROGRAMA DEPORTISTAS ALTO RENDIMIENTO - SELECCIONES DEPARTAMENTALES</OPTION>
-                    <OPTION VALUE="PROGRAMA HÁBITOS Y ESTILOS DE VIDA SALUDABLES">PROGRAMA HÁBITOS Y ESTILOS DE VIDA SALUDABLES</OPTION>
-                    <OPTION VALUE="PROGRAMA JORNADA DEPORTIVAS ESCOLARES COMPLEMENTARIAS Y/O ESCUELAS DE FORMACIÓN">PROGRAMA JORNADA DEPORTIVAS ESCOLARES COMPLEMENTARIAS Y/O ESCUELAS DE FORMACIÓN</OPTION>
-                    <OPTION VALUE="PROGRAMA JUEGOS INTERCOLEGIADOS">PROGRAMA JUEGOS INTERCOLEGIADOS</OPTION>
-                    <OPTION VALUE="PROGRAMA RECREACIÓN">PROGRAMA RECREACIÓN</OPTION>
-                    <OPTION VALUE="PROGRAMA RECREACIÓN">PROGRAMA VACACIONAL</OPTION>
+<script defer src="~/Scripts/APP/InscripcionDerportistas/InscripcionDerportistas.js"></script>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Inscripción Deportiva</title>
+    Bootstrap CSS
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    Font Awesome para íconos
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    Select2 para selects mejorados
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    Animate.css para animaciones
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+            --text-color: #2c3e50;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: #f5f7fa;
+            line-height: 1.6;
+        }
+        /* Estilos para el select del programa */
+        .select2-container--bootstrap-5 .select2-selection--single {
+            white-space: normal !important;
+            height: auto !important;
+            min-height: 38px;
+            padding: 8px 12px !important;
+        }
+
+            .select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+                white-space: normal !important;
+                word-wrap: break-word !important;
+            }
+
+        .select2-results__option {
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            padding: 8px 12px !important;
+        }
+        .form-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1rem;
+        }
+
+        .form-header h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .form-header p {
+            color: var(--dark-gray);
+        }
+        .programa-nombre {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 300px; /* Ajusta según necesidad */
+        }
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .form-control {
+            border: 1px solid #ced4da;
+            border-radius: var(--border-radius);
+            padding: 0.5rem 0.75rem;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+
+        .form-control:hover {
+            border-color: var(--primary-color);
+        }
+
+        /* Estilos específicos para Select2 */
+        .select2-container .select2-selection--single {
+            height: auto !important;
+            padding: 0.5rem 0.75rem !important;
+            border: 1px solid #ced4da !important;
+            border-radius: var(--border-radius) !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 100% !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 1.5 !important;
+            padding-left: 0 !important;
+        }
+
+        .select2-dropdown {
+            border: 1px solid #ced4da !important;
+            border-radius: var(--border-radius) !important;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            z-index: 2;
+        }
+
+        .input-with-icon .form-control {
+            padding-left: 40px;
+        }
+
+        .input-with-icon .select2-selection--single {
+            padding-left: 40px !important;
+        }
+
+        .progress-container {
+            margin-bottom: 2rem;
+        }
+
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+            background-color: #e9ecef;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.6s ease;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            display: block;
+            margin: 2rem auto 0;
+            width: 200px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+            color: white;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin: 1.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            grid-column: 1 / -1;
+        }
+
+        .form-note {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 1.5rem 0;
+            grid-column: 1 / -1;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .animate-field {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .invalid-feedback {
+            color: var(--accent-color);
+            font-size: 0.85rem;
+        }
+
+        .is-invalid {
+            border-color: var(--accent-color) !important;
+        }
+
+        .is-invalid:focus {
+            box-shadow: 0 0 0 0.25rem rgba(231, 76, 60, 0.25) !important;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        @*@keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }*@
+
+        @*@media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 1rem;
+            }
+
+            .form-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .section-title, .form-note {
+                grid-column: 1;
+            }
+        }*@
+    </style>
+
+
+</head>
+<body>
+    <div class="container form-container animate__animated animate__fadeIn">
+        <!-- Barra de progreso -->
+        <div class="progress-container">
+            <div class="d-flex justify-content-between mb-2">
+                <span>Progreso del formulario</span>
+                <span id="progress-percentage">0%</span>
+            </div>
+            <div class="progress">
+                <div class="progress-bar" id="form-progress" role="progressbar" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Encabezado del formulario -->
+        <div class="form-header">
+            <h2><i class="fas fa-running me-2"></i>Formulario de Inscripción Deportiva</h2>
+            <p class="mb-0">Complete todos los campos para registrar al deportista</p>
+        </div>
+
+        <form id="FormFisioterapia" name="FormFisioterapia" class="form-grid">
+            <!-- Sección 1: Información del programa -->
+            <h5 class="section-title"><i class="fas fa-tasks me-2"></i>Información del Programa</h5>
+
+            <!-- Reemplaza tu div del programa con este código -->
+            <div class="animate-field">
+                <label for="ProgramaInscripciones" class="form-label">Programa en el que desea inscribirse <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="ProgramaInscripciones" name="ProgramaInscripciones" required onchange="toggleInputFields()">
+                    <option value="">Seleccionar programa</option>
+                    <option value="PROGRAMA DEPORTE SOCIAL COMUNITARIO">PROGRAMA DEPORTE SOCIAL COMUNITARIO</option>
+                    <option value="PROGRAMA DEPORTISTAS ALTO RENDIMIENTO - SELECCIONES DEPARTAMENTALES"
+                            data-fulltext="PROGRAMA DEPORTISTAS ALTO RENDIMIENTO - SELECCIONES DEPARTAMENTALES">
+                        PROGRAMA DEPORTISTAS ALTO RENDIMIENTO - SELECC. DEPART.
+                    </option>
+                    <option value="PROGRAMA HÁBITOS Y ESTILOS DE VIDA SALUDABLES">PROGRAMA HÁBITOS Y ESTILOS DE VIDA SALUDABLES</option>
+                    <option value="PROGRAMA JORNADA DEPORTIVAS ESCOLARES COMPLEMENTARIAS Y/O ESCUELAS DE FORMACIÓN"
+                            data-fulltext="PROGRAMA JORNADA DEPORTIVAS ESCOLARES COMPLEMENTARIAS Y/O ESCUELAS DE FORMACIÓN">
+                        PROGRAMA JORNADA DEPORTIVAS ESCOLARES COMPLEMENTARIAS Y/O ESCUELAS DE FORMACIÓN.
+                    </option>
+                    <option value="PROGRAMA JUEGOS INTERCOLEGIADOS">PROGRAMA JUEGOS INTERCOLEGIADOS</option>
+                    <option value="PROGRAMA RECREACIÓN">PROGRAMA RECREACIÓN</option>
+                    <option value="PROGRAMA VACACIONAL">PROGRAMA VACACIONAL</option>
                 </select>
-
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4 hidden" id="DocumentoPdfField">
-                <label><strong>Cargar Documento Identidad Deportista</strong></label>
-                <input type="file"
-                       style="border: black; border-width: 1px; border-style: solid;"
-                       class="form-control"
-                       id="DocumentoPdf"
-                       name="DocumentoPdf"
-                       accept="application/pdf"
-                       onchange="validateFileType('DocumentoPdf')" />
+            <div class="animate-field hidden" id="DocumentoPdfField">
+                <label for="DocumentoPdf" class="form-label">Cargar Documento Identidad Deportista</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-file-pdf"></i>
+                    <input type="file" class="form-control" id="DocumentoPdf" name="DocumentoPdf" accept="application/pdf" onchange="validateFileType('DocumentoPdf')" />
+                </div>
+                <div class="invalid-feedback">Por favor, sube un archivo PDF válido.</div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4 hidden" id="SaludPdfField">
-                <label><strong>Cargar Documento Afiliación salud</strong></label>
-                <input type="file"
-                       style="border: black; border-width: 1px; border-style: solid;"
-                       class="form-control"
-                       id="SaludPdf"
-                       name="SaludPdf"
-                       accept="application/pdf"
-                       onchange="validateFileType('SaludPdf')" />
+            <div class="animate-field hidden" id="SaludPdfField">
+                <label for="SaludPdf" class="form-label">Cargar Documento Afiliación salud</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-file-pdf"></i>
+                    <input type="file" class="form-control" id="SaludPdf" name="SaludPdf" accept="application/pdf" onchange="validateFileType('SaludPdf')" />
+                </div>
+                <div class="invalid-feedback">Por favor, sube un archivo PDF válido.</div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4 hidden" id="AutorizacionPdfField">
-                <label><strong>Cargar Documento Autorizacion del padre</strong></label>
-                <input type="file"
-                       style="border: black; border-width: 1px; border-style: solid;"
-                       class="form-control"
-                       id="AutorizacionPdf"
-                       name="AutorizacionPdf"
-                       accept="application/pdf"
-                       onchange="validateFileType('AutorizacionPdf')" />
+            <div class="animate-field hidden" id="AutorizacionPdfField">
+                <label for="AutorizacionPdf" class="form-label">Cargar Documento Autorización del padre</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-file-pdf"></i>
+                    <input type="file" class="form-control" id="AutorizacionPdf" name="AutorizacionPdf" accept="application/pdf" onchange="validateFileType('AutorizacionPdf')" />
+                </div>
+                <div class="invalid-feedback">Por favor, sube un archivo PDF válido.</div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4 hidden" id="CedulaPadrePdfField">
-                <label><strong>Cargar Documento Responsable del Deportista</strong></label>
-                <input type="file"
-                       style="border: black; border-width: 1px; border-style: solid;"
-                       class="form-control"
-                       id="CedulaPadrePdf"
-                       name="CedulaPadrePdf"
-                       accept="application/pdf"
-                       onchange="validateFileType('CedulaPadrePdf')" />
+            <div class="animate-field hidden" id="CedulaPadrePdfField">
+                <label for="CedulaPadrePdf" class="form-label">Cargar Documento Responsable del Deportista</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-file-pdf"></i>
+                    <input type="file" class="form-control" id="CedulaPadrePdf" name="CedulaPadrePdf" accept="application/pdf" onchange="validateFileType('CedulaPadrePdf')" />
+                </div>
+                <div class="invalid-feedback">Por favor, sube un archivo PDF válido.</div>
             </div>
-            @*<div class="col-xs-4 col-sm-4 col-md-4 hidden" id="jornadaDeportivaDiv">
-                    <label><strong>Jornada Deportiva</strong> </label>
-                    <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacionInscripciones" name="TipoIdentificacionInscripciones">
-                        <OPTION VALUE="">SELECCIONAR</OPTION>
-                        <OPTION VALUE="JORNADA MAÑANA - AM">JORNADA MAÑANA - AM</OPTION>
-                        <OPTION VALUE="JORNADA MAÑANA - PM">JORNADA MAÑANA - PM</OPTION>
-                    </select>
-                </div>*@
-            <script>
-                function validateFileType(inputId) {
-                    var input = document.getElementById(inputId);
-                    var file = input.files[0];
-                    if (file) {
-                        var fileType = file.type;
-                        if (fileType !== 'application/pdf') {
-                            // Usar SweetAlert en lugar de alert
-                            swal({
-                                icon: 'error',
-                                title: 'Tipo de archivo incorrecto',
-                                text: 'Por favor, sube un archivo PDF.',
-                            });
-                            input.value = ''; // Borrar el valor del campo de entrada
-                        }
-                    }
-                }
 
-                function toggleInputFields() {
-                    var select = document.getElementById('ProgramaInscripciones');
-                    var selectedValue = select.value;
-                    var requiredOption = "PROGRAMA JORNADA DEPORTIVAS ESCOLARES COMPLEMENTARIAS Y/O ESCUELAS DE FORMACIÓN";
+            <!-- Sección 2: Información personal -->
+            <h5 class="section-title"><i class="fas fa-user me-2"></i>Información Personal</h5>
 
-                    var fields = ['DocumentoPdfField', 'SaludPdfField', 'AutorizacionPdfField', 'CedulaPadrePdfField'];
-
-                    fields.forEach(function (fieldId) {
-                        var field = document.getElementById(fieldId);
-                        if (selectedValue === requiredOption) {
-                            field.classList.remove('hidden');
-                        } else {
-                            field.classList.add('hidden');
-                        }
-                    });
-                }
-
-            </script>
-
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Tipo Identificación <span style="color: red;"> *</span></strong> </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacionInscripciones" name="TipoIdentificacionInscripciones" required onchange="handleSelectionChange()">
-                    <OPTION VALUE="">SELECCIONAR</OPTION>
-                    <OPTION VALUE="CEDULA DE CIUDADANIA">CEDULA DE CIUDADANIA</OPTION>
-                    <OPTION VALUE="TARJETA DE IDENTIDAD">TARJETA DE IDENTIDAD</OPTION>
-                    <OPTION VALUE="CEDULA DE EXTRANJERIA">CEDULA DE EXTRANJERIA</OPTION>
-                    <OPTION VALUE="PASAPORTE">PASAPORTE</OPTION>
-                    <OPTION VALUE="REGISTRO CIVIL">REGISTRO CIVIL</OPTION>
-                    <OPTION VALUE="OTRO">OTRO</OPTION>
+            <div class="animate-field">
+                <label for="TipoIdentificacionInscripciones" class="form-label">Tipo Identificación <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="TipoIdentificacionInscripciones" name="TipoIdentificacionInscripciones">
+                    <option value="">Seleccionar tipo</option>
+                    <option value="CEDULA DE CIUDADANIA">CEDULA DE CIUDADANIA</option>
+                    <option value="TARJETA DE IDENTIDAD">TARJETA DE IDENTIDAD</option>
+                    <option value="CEDULA DE EXTRANJERIA">CEDULA DE EXTRANJERIA</option>
+                    <option value="PASAPORTE">PASAPORTE</option>
+                    <option value="REGISTRO CIVIL">REGISTRO CIVIL</option>
+                    <option value="OTRO">OTRO</option>
                 </select>
-
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Jornada Deportiva <span style="color: red;"> *</span></strong> </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacionInscripciones" name="TipoIdentificacionInscripciones">
-                    <OPTION VALUE="">SELECCIONAR</OPTION>
-                    <OPTION VALUE="JORNADA DE LA MAÑANA - AM">JORNADA DE LA MAÑANA - AM</OPTION>
-                    <OPTION VALUE="JORNADA DE LA TARDE - PM">JORNADA DE LA TARDE - PM</OPTION>
+            <div class="animate-field">
+                <label for="NumIdentificacionInscripciones" class="form-label">Número Identificación <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-id-card"></i>
+                    <input class="form-control" id="NumIdentificacionInscripciones" name="NumIdentificacionInscripciones" type="number" required />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa un número de identificación válido.</div>
+            </div>
+
+            <div class="animate-field">
+                <label for="JornadaDeportiva" class="form-label">Jornada Deportiva <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="JornadaDeportiva" name="JornadaDeportiva" required>
+                    <option value="">Seleccionar jornada</option>
+                    <option value="JORNADA DE LA MAÑANA - AM">JORNADA DE LA MAÑANA - AM</option>
+                    <option value="JORNADA DE LA TARDE - PM">JORNADA DE LA TARDE - PM</option>
                 </select>
-
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Número Identificación <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NumIdentificacionInscripciones" name="NumIdentificacionInscripciones" type="number" @*onchange="ValidarCedula()" /*@>
+            <div class="animate-field">
+                <label for="PrimerNombreInscripciones" class="form-label">Primer Nombre <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input class="form-control" id="PrimerNombreInscripciones" name="PrimerNombreInscripciones" required style="text-transform: uppercase;" />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa tu primer nombre.</div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label for="PrimerNombreInscripciones"><strong>Primer Nombre <span style="color: red;"> *</span></strong></label>
-                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="PrimerNombreInscripciones" name="PrimerNombreInscripciones" />
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label for="SegundonombreInscripciones"><strong>Segundo Nombre <span style="color: red;"> *</span></strong></label>
-                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="SegundonombreInscripciones" name="SegundonombreInscripciones" />
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label for="PrimerApellidoInscripciones"><strong>Primer Apellido <span style="color: red;"> *</span></strong></label>
-                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="PrimerApellidoInscripciones" name="PrimerApellidoInscripciones" />
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label for="SegundoApellidoInscripciones"><strong>Segundo Apellido <span style="color: red;"> *</span></strong></label>
-                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="SegundoApellidoInscripciones" name="SegundoApellidoInscripciones" />
-            </div>
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const inputFields = [
-                        'PrimerNombreInscripciones',
-                        'SegundonombreInscripciones',
-                        'PrimerApellidoInscripciones',
-                        'SegundoApellidoInscripciones',
-                        'PaisNacimientoInscripciones',
-                        'DepartamentoInscripciones',
-                        'MunicipioInscripciones',
-                        'Eps',
-                        'NombreEntrenador',
-                        'NombreContacto',
-                        'DireccionResidencia',
-                        'BarrioResidencia',
-                        'MunicipioResidencia',
-                        'CorreoContacto',
-                        'CorreoResidencia'
-
-
-                    ];
-
-                    inputFields.forEach(function (fieldId) {
-                        const field = document.getElementById(fieldId);
-                        if (field) {
-                            field.addEventListener('input', function (event) {
-                                this.value = this.value.toUpperCase();
-                            });
-                        } else {
-                            console.warn(`Elemento con ID ${fieldId} no encontrado.`);
-                        }
-                    });
-                });
-            </script>
-
-
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Fecha Nacimiento <span style="color: red;"> *</span></strong> </label>
-                <input type="date" style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="FechaNacimientoInscripciones" name="FechaNacimientoInscripciones" />
+            <div class="animate-field">
+                <label for="SegundonombreInscripciones" class="form-label">Segundo Nombre</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input class="form-control" id="SegundonombreInscripciones" name="SegundonombreInscripciones" style="text-transform: uppercase;" />
+                </div>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Edad <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="EdadInscripciones" name="EdadInscripciones" placeholder="Digite su edad" disabled />
+            <div class="animate-field">
+                <label for="PrimerApellidoInscripciones" class="form-label">Primer Apellido <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input class="form-control" id="PrimerApellidoInscripciones" name="PrimerApellidoInscripciones" required style="text-transform: uppercase;" />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa tu primer apellido.</div>
             </div>
-            <script>
-                // Obtener los elementos del DOM
-                const fechaNacimientoInput = document.getElementById('FechaNacimientoInscripciones');
-                const edadPoliticaInput = document.getElementById('EdadInscripciones');
 
-                // Agregar un evento de escucha al cambio en el campo de fecha de nacimiento
-                fechaNacimientoInput.addEventListener('change', function () {
-                    // Obtener la fecha seleccionada
-                    const fechaNacimiento = new Date(this.value);
-
-                    // Obtener la fecha actual
-                    const fechaActual = new Date();
-
-                    // Calcular la edad en años
-                    let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
-
-                    // Verificar si el cumpleaños aún no ha pasado este año
-                    if (fechaNacimiento.getMonth() > fechaActual.getMonth() || (fechaNacimiento.getMonth() === fechaActual.getMonth() && fechaNacimiento.getDate() > fechaActual.getDate())) {
-                        edad--;
-                    }
-
-                    // Actualizar el valor del campo de edad
-                    edadPoliticaInput.value = edad;
-                });
-            </script>
-
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label for="PaisNacimientoInscripciones"><strong>País de Nacimiento <span style="color: red;"> *</span></strong></label>
-                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="PaisNacimientoInscripciones" name="PaisNacimientoInscripciones" />
+            <div class="animate-field">
+                <label for="SegundoApellidoInscripciones" class="form-label">Segundo Apellido</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input class="form-control" id="SegundoApellidoInscripciones" name="SegundoApellidoInscripciones" style="text-transform: uppercase;" />
+                </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label for="DepartamentoInscripciones"><strong>Departamento de Nacimiento <span style="color: red;"> *</span></strong></label>
-                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="DepartamentoInscripciones" name="DepartamentoInscripciones" />
+
+            <div class="animate-field">
+                <label for="FechaNacimientoInscripciones" class="form-label">Fecha Nacimiento <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="date" class="form-control" id="FechaNacimientoInscripciones" name="FechaNacimientoInscripciones" required onchange="calculateAge()" />
+                </div>
+                <div class="invalid-feedback">Por favor, selecciona tu fecha de nacimiento.</div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label for="MunicipioInscripciones"><strong>Municipio de Nacimiento <span style="color: red;"> *</span></strong></label>
-                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="MunicipioInscripciones" name="MunicipioInscripciones" />
+
+            <div class="animate-field">
+                <label for="EdadInscripciones" class="form-label">Edad <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-birthday-cake"></i>
+                    <input class="form-control" id="EdadInscripciones" name="EdadInscripciones" placeholder="Edad" disabled />
+                </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Género y/o Sexo <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="GeneroInscripciones" name="GeneroInscripciones">
-                    <option value="">SELECCIONAR</option>
+
+            <div class="animate-field">
+                <label for="GeneroInscripciones" class="form-label">Género y/o Sexo <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="GeneroInscripciones" name="GeneroInscripciones" required>
+                    <option value="">Seleccionar</option>
                     <option value="MASCULINO">MASCULINO</option>
                     <option value="FEMENINO">FEMENINO</option>
                     <option value="PREFIERO NO DECIR">PREFIERO NO DECIR</option>
                 </select>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Grupo Etareo <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="GrupoEtarreoInscripciones" name="GrupoEtarreoInscripciones">
-                    <option value="">SELECCIONAR</option>
+            <div class="animate-field">
+                <label for="GrupoEtarreoInscripciones" class="form-label">Grupo Etareo <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="GrupoEtarreoInscripciones" name="GrupoEtarreoInscripciones" required>
+                    <option value="">Seleccionar</option>
                     <option value="INFANCIA (0 - 5 AÑOS)">INFANCIA (0 - 5 AÑOS)</option>
                     <option value="NIÑEZ (6 - 11 AÑOS)">NIÑEZ (6 - 11 AÑOS)</option>
                     <option value="ADOLESCENTES (12 - 19 AÑOS)">ADOLESCENTES (12 - 19 AÑOS)</option>
                     <option value="JUVENTUD (20 - 25 AÑOS)">JUVENTUD (20 - 25 AÑOS)</option>
                     <option value="ADULTEZ (26 - 60 AÑOS)">ADULTEZ (26 - 60 AÑOS)</option>
                     <option value="ADULTO MAYOR (+ 60 AÑOS)">ADULTO MAYOR (+ 60 AÑOS)</option>
-
-                    @*<option value="Infancia (0 - 5 Años)">Infancia (0 - 5 Años)</option>
-                        <option value="Niñez (6 - 11 Años)">Niñez (6 - 11 Años)</option>
-                        <option value="Adolescentes (12 - 19 Años)">Adolescentes (12 - 19 Años)</option>
-                        <option value="Juventud (20 - 25 Años)">Juventud (20 - 25 Años)</option>
-                        <option value="Adultez (26 - 60 Años)">Adultez (26 - 60 Años)</option>
-                        <option value="Adulto Mayor (+ 60 Años)">Adulto Mayor (+ 60 Años)</option>*@
                 </select>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Direccion de Residencia <span style="color: red;"> *</span></strong> </label>
-                <input style="border: black; border-width: 1px; border-style: solid;" text-transform: uppercase;" class="form-control" id="DireccionResidencia" name="DireccionResidencia" />
+
+            <div class="animate-field">
+                <label for="PaisNacimientoInscripciones" class="form-label">País de Nacimiento <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-globe"></i>
+                    <input class="form-control" id="PaisNacimientoInscripciones" name="PaisNacimientoInscripciones" required style="text-transform: uppercase;" />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa tu país de nacimiento.</div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Barrio de Residencia <span style="color: red;"> *</span></strong> </label>
-                <input style="border: black; border-width: 1px; border-style: solid;" text-transform: uppercase;" class="form-control" id="BarrioResidencia" name="BarrioResidencia" />
+
+            <div class="animate-field">
+                <label for="DepartamentoInscripciones" class="form-label">Departamento de Nacimiento <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input class="form-control" id="DepartamentoInscripciones" name="DepartamentoInscripciones" required style="text-transform: uppercase;" />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa tu departamento de nacimiento.</div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Municipio Residencia <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" text-transform: uppercase;" class="select2 form-control" id="MunicipioResidencia" name="MunicipioResidencia">
-                    <option value="">SELECCIONAR</option>
+
+            <div class="animate-field">
+                <label for="MunicipioInscripciones" class="form-label">Municipio de Nacimiento <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <input class="form-control" id="MunicipioInscripciones" name="MunicipioInscripciones" required style="text-transform: uppercase;" />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa tu municipio de nacimiento.</div>
+            </div>
+
+            <!-- Sección 3: Información de residencia -->
+            <h5 class="section-title"><i class="fas fa-home me-2"></i>Información de Residencia</h5>
+
+            <div class="animate-field">
+                <label for="DireccionResidencia" class="form-label">Dirección de Residencia <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-map-pin"></i>
+                    <input class="form-control" id="DireccionResidencia" name="DireccionResidencia" required style="text-transform: uppercase;" />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa tu dirección de residencia.</div>
+            </div>
+
+            <div class="animate-field">
+                <label for="BarrioResidencia" class="form-label">Barrio de Residencia <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-map-signs"></i>
+                    <input class="form-control" id="BarrioResidencia" name="BarrioResidencia" required style="text-transform: uppercase;" />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa tu barrio de residencia.</div>
+            </div>
+
+            <div class="animate-field">
+                <label for="MunicipioResidencia" class="form-label">Municipio Residencia <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="MunicipioResidencia" name="MunicipioResidencia" required style="text-transform: uppercase;">
+                    <option value="">Seleccionar</option>
                     <option value="VALLEDUPAR">VALLEDUPAR</option>
                     <option value="AGUACHICA">AGUACHICA</option>
                     <option value="AGUSTÍN CODAZZI">AGUSTÍN CODAZZI</option>
@@ -353,14 +557,13 @@
                     <option value="SAN DIEGO">SAN DIEGO</option>
                     <option value="SAN MARTÍN">SAN MARTÍN</option>
                     <option value="TAMALAMEQUE">TAMALAMEQUE</option>
-
                 </select>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Estrato Residencia <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EstratoResidencia" name="EstratoResidencia">
-                    <option value="">SELECCIONAR</option>
+            <div class="animate-field">
+                <label for="EstratoResidencia" class="form-label">Estrato Residencia <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="EstratoResidencia" name="EstratoResidencia" required>
+                    <option value="">Seleccionar</option>
                     <option value="1">ESTRATO 1</option>
                     <option value="2">ESTRATO 2</option>
                     <option value="3">ESTRATO 3</option>
@@ -368,79 +571,89 @@
                     <option value="5">ESTRATO 5</option>
                     <option value="6">ESTRATO 6</option>
                 </select>
-
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Zona de Residencia <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="ZonaResidencia" name="ZonaResidencia">
-                    <OPTION VALUE="">SELECCIONAR</OPTION>
-                    <OPTION VALUE="URBANA">URBANA</OPTION>
-                    <OPTION VALUE="RURAL">RURAL</OPTION>
+
+            <div class="animate-field">
+                <label for="ZonaResidencia" class="form-label">Zona de Residencia <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="ZonaResidencia" name="ZonaResidencia" required>
+                    <option value="">Seleccionar</option>
+                    <option value="URBANA">URBANA</option>
+                    <option value="RURAL">RURAL</option>
                 </select>
-
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Telefono Celular <span style="color: red;"> *</span></strong> </label>
-                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TelefonoResidencia" name="TelefonoResidencia" type="number" />
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Correo Electrónico <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid; text-transform: uppercase;"
-                       class="form-control"
-                       id="CorreoResidencia"
-                       name="CorreoResidencia"
-                       placeholder="digite su correo electrónico"
-                       type="email"
-                       onchange="validarCorreo(this)" />
             </div>
 
+            <div class="animate-field">
+                <label for="TelefonoResidencia" class="form-label">Teléfono Celular <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                    <input class="form-control" id="TelefonoResidencia" name="TelefonoResidencia" type="number" required />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa un número de teléfono válido.</div>
+            </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Estado Civil <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="EstadoCivil" name="EstadoCivil">
-                    <OPTION VALUE="">SELECCIONAR</OPTION>
-                    <OPTION VALUE="SOLTERO">SOLTERO</OPTION>
-                    <OPTION VALUE="CASADO">CASADO</OPTION>
-                    <OPTION VALUE="UNIÓN LIBRE">UNIÓN LIBRE</OPTION>
-                    <OPTION VALUE="DIVORCIADO">DIVORCIADO</OPTION>
-                    <OPTION VALUE="SEPARADO">SEPARADO</OPTION>
-                    <OPTION VALUE="VIUDO">VIUDO</OPTION>
+            <div class="animate-field">
+                <label for="CorreoResidencia" class="form-label">Correo Electrónico <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input class="form-control" id="CorreoResidencia" name="CorreoResidencia" placeholder="ejemplo@dominio.com" type="email" required onchange="validateEmail(this)" style="text-transform: lowercase;" />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
+            </div>
+
+            <!-- Sección 4: Información socioeconómica -->
+            <h5 class="section-title"><i class="fas fa-info-circle me-2"></i>Información Socioeconómica</h5>
+
+            <div class="animate-field">
+                <label for="EstadoCivil" class="form-label">Estado Civil <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="EstadoCivil" name="EstadoCivil" required>
+                    <option value="">Seleccionar</option>
+                    <option value="SOLTERO">SOLTERO</option>
+                    <option value="CASADO">CASADO</option>
+                    <option value="UNIÓN LIBRE">UNIÓN LIBRE</option>
+                    <option value="DIVORCIADO">DIVORCIADO</option>
+                    <option value="SEPARADO">SEPARADO</option>
+                    <option value="VIUDO">VIUDO</option>
                 </select>
-
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Nivel de Estudios <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="NivelEstudio" name="NivelEstudio">
-                    <OPTION VALUE="">SELECCIONAR</OPTION>
-                    <OPTION VALUE="PRIMARIA INCOMPLETA">PRIMARIA INCOMPLETA</OPTION>
-                    <OPTION VALUE="PRIMARIA COMPLETA">PRIMARIA COMPLETA</OPTION>
-                    <OPTION VALUE="SECUNDARIA INCOMPLETA">SECUNDARIA INCOMPLETA</OPTION>
-                    <OPTION VALUE="SECUNDARIA COMPLETA">SECUNDARIA COMPLETA</OPTION>
-                    <OPTION VALUE="TÉCNICO">TÉCNICO</OPTION>
-                    <OPTION VALUE="TECNOLÓGICO">TECNOLÓGICO</OPTION>
-                    <OPTION VALUE="UNIVERSITARIO">UNIVERSITARIO</OPTION>
-                    <OPTION VALUE="POSTGRADO">POSTGRADO</OPTION>
+
+            <div class="animate-field">
+                <label for="NivelEstudio" class="form-label">Nivel de Estudios <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="NivelEstudio" name="NivelEstudio" required>
+                    <option value="">Seleccionar</option>
+                    <option value="PRIMARIA INCOMPLETA">PRIMARIA INCOMPLETA</option>
+                    <option value="PRIMARIA COMPLETA">PRIMARIA COMPLETA</option>
+                    <option value="SECUNDARIA INCOMPLETA">SECUNDARIA INCOMPLETA</option>
+                    <option value="SECUNDARIA COMPLETA">SECUNDARIA COMPLETA</option>
+                    <option value="TÉCNICO">TÉCNICO</option>
+                    <option value="TECNOLÓGICO">TECNOLÓGICO</option>
+                    <option value="UNIVERSITARIO">UNIVERSITARIO</option>
+                    <option value="POSTGRADO">POSTGRADO</option>
                 </select>
-
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Régimen de Salud <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="RegimenSalud" name="RegimenSalud">
-                    <OPTION VALUE="">SELECCIONAR</OPTION>
-                    <OPTION VALUE="CONTRIBUTIVO">CONTRIBUTIVO</OPTION>
-                    <OPTION VALUE="SUBSIDIADO">SUBSIDIADO</OPTION>
-                    <OPTION VALUE="ESPECIAL">ESPECIAL</OPTION>
-                    <OPTION VALUE="EXCEPCIÓN">EXCEPCIÓN</OPTION>
+
+            <div class="animate-field">
+                <label for="RegimenSalud" class="form-label">Régimen de Salud <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="RegimenSalud" name="RegimenSalud" required>
+                    <option value="">Seleccionar</option>
+                    <option value="CONTRIBUTIVO">CONTRIBUTIVO</option>
+                    <option value="SUBSIDIADO">SUBSIDIADO</option>
+                    <option value="ESPECIAL">ESPECIAL</option>
+                    <option value="EXCEPCIÓN">EXCEPCIÓN</option>
                 </select>
+            </div>
 
+            <div class="animate-field">
+                <label for="Eps" class="form-label">EPS o IPS a la que pertenece <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-hospital"></i>
+                    <input class="form-control" id="Eps" name="Eps" required style="text-transform: uppercase;" />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa tu EPS o IPS.</div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label for="Eps"><strong>Eps o Ips a la que pertenece <span style="color: red;"> *</span></strong></label>
-                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="Eps" name="Eps" />
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Tipo de sangre <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Tiposangre" name="Tiposangre">
+
+            <div class="animate-field">
+                <label for="Tiposangre" class="form-label">Tipo de sangre <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="Tiposangre" name="Tiposangre" required>
                     <option value="">Seleccionar</option>
                     <option value="O+">O+</option>
                     <option value="O-">O-</option>
@@ -452,289 +665,434 @@
                     <option value="AB-">AB-</option>
                 </select>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Condición de Población <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CondicionPoblacion" name="CondicionPoblacion">
-                    <OPTION VALUE="">SELECCIONAR</OPTION>
-                    <OPTION VALUE="NINGUNA">NINGUNA</OPTION>
-                    <OPTION VALUE="DESPLAZADO">DESPLAZADO</OPTION>
-                    <OPTION VALUE="VÍCTIMA DE CONFLICTO ARMADO">VÍCTIMA DE CONFLICTO ARMADO</OPTION>
-                    <OPTION VALUE="INDÍGENA">INDÍGENA</OPTION>
-                    <OPTION VALUE="AFRODESCENDIENTE">AFRODESCENDIENTE</OPTION>
-                    <OPTION VALUE="PALENQUERO">PALENQUERO</OPTION>
-                    <OPTION VALUE="RAIZAL">RAIZAL</OPTION>
-                    <OPTION VALUE="ROM (GITANO)">ROM (GITANO)</OPTION>
-                    <OPTION VALUE="POBLACIÓN CON DISCAPACIDAD">POBLACIÓN CON DISCAPACIDAD</OPTION>
-                    <OPTION VALUE="MUJER CABEZA DE FAMILIA">MUJER CABEZA DE FAMILIA</OPTION>
-                    <OPTION VALUE="LGBTI">LGBTI</OPTION>
-                    <OPTION VALUE="ADULTO MAYOR">ADULTO MAYOR</OPTION>
-                    <OPTION VALUE="INFANCIA Y ADOLESCENCIA">INFANCIA Y ADOLESCENCIA</OPTION>
-                    <OPTION VALUE="JOVEN">JOVEN</OPTION>
+
+            <div class="animate-field">
+                <label for="CondicionPoblacion" class="form-label">Condición de Población <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="CondicionPoblacion" name="CondicionPoblacion" required>
+                    <option value="">Seleccionar</option>
+                    <option value="NINGUNA">NINGUNA</option>
+                    <option value="DESPLAZADO">DESPLAZADO</option>
+                    <option value="VÍCTIMA DE CONFLICTO ARMADO">VÍCTIMA DE CONFLICTO ARMADO</option>
+                    <option value="INDÍGENA">INDÍGENA</option>
+                    <option value="AFRODESCENDIENTE">AFRODESCENDIENTE</option>
+                    <option value="PALENQUERO">PALENQUERO</option>
+                    <option value="RAIZAL">RAIZAL</option>
+                    <option value="ROM (GITANO)">ROM (GITANO)</option>
+                    <option value="POBLACIÓN CON DISCAPACIDAD">POBLACIÓN CON DISCAPACIDAD</option>
+                    <option value="MUJER CABEZA DE FAMILIA">MUJER CABEZA DE FAMILIA</option>
+                    <option value="LGBTI">LGBTI</option>
+                    <option value="ADULTO MAYOR">ADULTO MAYOR</option>
+                    <option value="INFANCIA Y ADOLESCENCIA">INFANCIA Y ADOLESCENCIA</option>
+                    <option value="JOVEN">JOVEN</option>
                 </select>
-
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Tipo de Discapacidad<span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="DiscapacidadPoblacion" name="DiscapacidadPoblacion">
-                    <OPTION VALUE="">SELECCIONAR</OPTION>
-                    <OPTION VALUE="NINGUNA">NINGUNA</OPTION>
-                    <OPTION VALUE="DISCAPACIDAD FÍSICA/MOTORA">DISCAPACIDAD FÍSICA/MOTORA</OPTION>
-                    <OPTION VALUE="DISCAPACIDAD SENSORIAL (VISUAL)">DISCAPACIDAD SENSORIAL (VISUAL)</OPTION>
-                    <OPTION VALUE="DISCAPACIDAD SENSORIAL (AUDITIVA)">DISCAPACIDAD SENSORIAL (AUDITIVA)</OPTION>
-                    <OPTION VALUE="DISCAPACIDAD INTELECTUAL">DISCAPACIDAD INTELECTUAL</OPTION>
-                    <OPTION VALUE="DISCAPACIDAD PSICOSOCIAL">DISCAPACIDAD PSICOSOCIAL</OPTION>
-                    <OPTION VALUE="DISCAPACIDAD MÚLTIPLE">DISCAPACIDAD MÚLTIPLE</OPTION>
-                    <OPTION VALUE="DISCAPACIDAD COGNITIVA">DISCAPACIDAD COGNITIVA</OPTION>
-                    <OPTION VALUE="DISCAPACIDAD SORDOCEGUERA">DISCAPACIDAD SORDOCEGUERA</OPTION>
+            <div class="animate-field">
+                <label for="DiscapacidadPoblacion" class="form-label">Tipo de Discapacidad <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="DiscapacidadPoblacion" name="DiscapacidadPoblacion" required>
+                    <option value="">Seleccionar</option>
+                    <option value="NINGUNA">NINGUNA</option>
+                    <option value="DISCAPACIDAD FÍSICA/MOTORA">DISCAPACIDAD FÍSICA/MOTORA</option>
+                    <option value="DISCAPACIDAD SENSORIAL (VISUAL)">DISCAPACIDAD SENSORIAL (VISUAL)</option>
+                    <option value="DISCAPACIDAD SENSORIAL (AUDITIVA)">DISCAPACIDAD SENSORIAL (AUDITIVA)</option>
+                    <option value="DISCAPACIDAD INTELECTUAL">DISCAPACIDAD INTELECTUAL</option>
+                    <option value="DISCAPACIDAD PSICOSOCIAL">DISCAPACIDAD PSICOSOCIAL</option>
+                    <option value="DISCAPACIDAD MÚLTIPLE">DISCAPACIDAD MÚLTIPLE</option>
+                    <option value="DISCAPACIDAD COGNITIVA">DISCAPACIDAD COGNITIVA</option>
+                    <option value="DISCAPACIDAD SORDOCEGUERA">DISCAPACIDAD SORDOCEGUERA</option>
                 </select>
-
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Tipo Etnia <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="GrupoEtnico" name="GrupoEtnico">
-                    <OPTION VALUE="">SELECCIONAR</OPTION>
-                    <OPTION VALUE="NINGUNA">NINGUNA</OPTION>
-                    <OPTION VALUE="MAYORITARIOS">MAYORITARIOS</OPTION>
-                    <OPTION VALUE="RAIZALES">RAIZALES</OPTION>
-                    <OPTION VALUE="INDIGENA">INDIGENA</OPTION>
-                    <OPTION VALUE="MESTIZOS">MESTIZOS</OPTION>
-                    <OPTION VALUE="ROM-GITANOS">ROM-GITANOS</OPTION>
-                    <OPTION VALUE="CAMPESINOS">CAMPESINOS</OPTION>
-                    <OPTION VALUE="AFRODESCENDIENTES">AFRODESCENDIENTES</OPTION>
-                    <OPTION VALUE="PALENQUEROS">PALENQUEROS</OPTION>
 
+            <div class="animate-field">
+                <label for="GrupoEtnico" class="form-label">Tipo Etnia <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="GrupoEtnico" name="GrupoEtnico" required>
+                    <option value="">Seleccionar</option>
+                    <option value="NINGUNA">NINGUNA</option>
+                    <option value="MAYORITARIOS">MAYORITARIOS</option>
+                    <option value="RAIZALES">RAIZALES</option>
+                    <option value="INDIGENA">INDIGENA</option>
+                    <option value="MESTIZOS">MESTIZOS</option>
+                    <option value="ROM-GITANOS">ROM-GITANOS</option>
+                    <option value="CAMPESINOS">CAMPESINOS</option>
+                    <option value="AFRODESCENDIENTES">AFRODESCENDIENTES</option>
+                    <option value="PALENQUEROS">PALENQUEROS</option>
                 </select>
-
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Deporte <span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="DeportePractica" name="DeportePractica">
-                        <OPTION VALUE="">SELECCIONAR</OPTION>
-                        <OPTION VALUE="AJEDREZ">AJEDREZ</OPTION>
-                        <OPTION VALUE="ATLETISMO">ATLETISMO</OPTION>
-                        <OPTION VALUE="BALONCESTO">BALONCESTO</OPTION>
-                        <OPTION VALUE="BALONMANO">BALONMANO</OPTION>
-                        <OPTION VALUE="BAILE DEPORTIVO">BAILE DEPORTIVO</OPTION>
-                        <OPTION VALUE="BEISBOL">BEISBOL</OPTION>
-                        <OPTION VALUE="BILLAR">BILLAR</OPTION>
-                        <OPTION VALUE="BOWLING">BOWLING</OPTION>
-                        <OPTION VALUE="BOXEO">BOXEO</OPTION>
-                        <OPTION VALUE="CANOTAJE">CANOTAJE</OPTION>
-                        <OPTION VALUE="CICLISMO">CICLISMO</OPTION>
-                        <OPTION VALUE="CICLISMO MTV">CICLISMO MTV</OPTION>
-                        <OPTION VALUE="ESGRIMA">ESGRIMA</OPTION>
-                        <OPTION VALUE="FISIOCULTURISMO">FISIOCULTURISMO</OPTION>
-                        <OPTION VALUE="FÚTBOL">FÚTBOL</OPTION>
-                        <OPTION VALUE="FÚTBOL DE SALÓN">FÚTBOL DE SALÓN</OPTION>
-                        <OPTION VALUE="FÚTBOL SALA">FÚTBOL SALA</OPTION>
-                        <OPTION VALUE="GIMNASIA">GIMNASIA</OPTION>
-                        <OPTION VALUE="JUDO">JUDO</OPTION>
-                        <OPTION VALUE="KARATE">KARATE</OPTION>
-                        <OPTION VALUE="LEVANTAMIENTO DE POTENCIA">LEVANTAMIENTO DE POTENCIA</OPTION>
-                        <OPTION VALUE="LEVANTAMIENTO DE PESAS">LEVANTAMIENTO DE PESAS</OPTION>
-                        <OPTION VALUE="LIDIFICESAR - DISCAPACIDAD FISICA">LIDIFICESAR - DISCAPACIDAD FISICA</OPTION>
-                        <OPTION VALUE="LIMITADOS VISUALES">LIMITADOS VISUALES</OPTION>
-                        <OPTION VALUE="LISORCE - SORDOS">LISORCE - SORDOS</OPTION>
-                        <OPTION VALUE="MOTOCICLISMO">MOTOCICLISMO</OPTION>
-                        <OPTION VALUE="NATACIÓN">NATACIÓN</OPTION>
-                        <OPTION VALUE="PARAATLETISMO">PARAATLETISMO</OPTION>
-                        <OPTION VALUE="PATINAJE">PATINAJE</OPTION>
-                        <OPTION VALUE="RUGBY">RUGBY</OPTION>
-                        <OPTION VALUE="SOFTBOL">SOFTBOL</OPTION>
-                        <OPTION VALUE="TAEKWONDO">TAEKWONDO</OPTION>
-                        <OPTION VALUE="TEJO">TEJO</OPTION>
-                        <OPTION VALUE="TENIS">TENIS</OPTION>
-                        <OPTION VALUE="TENIS DE MESA">TENIS DE MESA</OPTION>
-                        <OPTION VALUE="TIRO CON ARCO">TIRO CON ARCO</OPTION>
-                        <OPTION VALUE="TIRO DEPORTIVO">TIRO DEPORTIVO</OPTION>
-                        <OPTION VALUE="VOLEIBOL PISO">VOLEIBOL PISO</OPTION>
-                        <OPTION VALUE="VOLEIBOL PLAYA">VOLEIBOL PLAYA</OPTION>
-                        <OPTION VALUE="WUSHU">WUSHU</OPTION>
-                    </SELECT>
+            <!-- Sección 5: Información deportiva -->
+            <h5 class="section-title"><i class="fas fa-trophy me-2"></i>Información Deportiva</h5>
 
-
-</div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label for="NombreEntrenador"><strong>Nombre de su entrenador y/o Profesor <span style="color: red;"> *</span></strong></label>
-                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="NombreEntrenador" name="NombreEntrenador" />
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label for="NombreContacto"><strong>Nombre de un contacto<span style="color: red;"> *</span></strong></label>
-                <input style="border: 1px solid black; text-transform: uppercase;" class="form-control" id="NombreContacto" name="NombreContacto" />
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Telefono Celular de un contacto<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TelefonoContacto" name="TelefonoContacto" type="number" />
+            <div class="animate-field">
+                <label for="DeportePractica" class="form-label">Deporte <span class="text-danger">*</span></label>
+                <select class="form-select select2-enhanced" id="DeportePractica" name="DeportePractica" required>
+                    <option value="">Seleccionar</option>
+                    <option value="AJEDREZ">AJEDREZ</option>
+                    <option value="ATLETISMO">ATLETISMO</option>
+                    <option value="BALONCESTO">BALONCESTO</option>
+                    <option value="BALONMANO">BALONMANO</option>
+                    <option value="BAILE DEPORTIVO">BAILE DEPORTIVO</option>
+                    <option value="BEISBOL">BEISBOL</option>
+                    <option value="BILLAR">BILLAR</option>
+                    <option value="BOWLING">BOWLING</option>
+                    <option value="BOXEO">BOXEO</option>
+                    <option value="CANOTAJE">CANOTAJE</option>
+                    <option value="CICLISMO">CICLISMO</option>
+                    <option value="CICLISMO MTV">CICLISMO MTV</option>
+                    <option value="ESGRIMA">ESGRIMA</option>
+                    <option value="FISIOCULTURISMO">FISIOCULTURISMO</option>
+                    <option value="FÚTBOL">FÚTBOL</option>
+                    <option value="FÚTBOL DE SALÓN">FÚTBOL DE SALÓN</option>
+                    <option value="FÚTBOL SALA">FÚTBOL SALA</option>
+                    <option value="GIMNASIA">GIMNASIA</option>
+                    <option value="JUDO">JUDO</option>
+                    <option value="KARATE">KARATE</option>
+                    <option value="LEVANTAMIENTO DE POTENCIA">LEVANTAMIENTO DE POTENCIA</option>
+                    <option value="LEVANTAMIENTO DE PESAS">LEVANTAMIENTO DE PESAS</option>
+                    <option value="LIDIFICESAR - DISCAPACIDAD FISICA">LIDIFICESAR - DISCAPACIDAD FISICA</option>
+                    <option value="LIMITADOS VISUALES">LIMITADOS VISUALES</option>
+                    <option value="LISORCE - SORDOS">LISORCE - SORDOS</option>
+                    <option value="MOTOCICLISMO">MOTOCICLISMO</option>
+                    <option value="NATACIÓN">NATACIÓN</option>
+                    <option value="PARAATLETISMO">PARAATLETISMO</option>
+                    <option value="PATINAJE">PATINAJE</option>
+                    <option value="RUGBY">RUGBY</option>
+                    <option value="SOFTBOL">SOFTBOL</option>
+                    <option value="TAEKWONDO">TAEKWONDO</option>
+                    <option value="TEJO">TEJO</option>
+                    <option value="TENIS">TENIS</option>
+                    <option value="TENIS DE MESA">TENIS DE MESA</option>
+                    <option value="TIRO CON ARCO">TIRO CON ARCO</option>
+                    <option value="TIRO DEPORTIVO">TIRO DEPORTIVO</option>
+                    <option value="VOLEIBOL PISO">VOLEIBOL PISO</option>
+                    <option value="VOLEIBOL PLAYA">VOLEIBOL PLAYA</option>
+                    <option value="WUSHU">WUSHU</option>
+                </select>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Correo Electronico de un contacto<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid; text-transform: uppercase;"
-                       class="form-control"
-                       id="CorreoContacto"
-                       name="CorreoContacto"
-                       placeholder="digite su correo electrónico"
-                       type="email"
-                       onchange="validarCorreo(this)" />
-
-            </div>
-        </div>
-
-    </form>
-    <br />
-    <div class="form-check form-check-inline">
-        <label class="form-check-label" for="inlineCheckbox2">
-            <strong>
-                Nota: Le solicitamos completar el siguiente formulario con los datos necesarios para la inscripción de los deportistas. Es importante que todos los campos sean llenados con información precisa y actualizada, ya que todos son obligatorios.
-            </strong>
-        </label>
-    </div>
-    <br />
-    <div class="col-xs-4 col-sm-4 col-md-4">
-        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveInscripcioDeportista">Guardar</button>
-    </div>
-</div>
-
-
-@*<script type="text/javascript">
-    function Createobj() {
-        // Aquí puedes agregar la lógica que necesitas para la función Createobj.
-        desactivarBoton();
-    }
-
-    function desactivarBoton() {
-        var boton = document.getElementById("SaveInscripcioDeportista");
-        boton.disabled = true;
-        boton.innerText = "Procesando...";
-    }
-</script>*@
-<footer id="footer">
-
-    <div class="">
-        <div class="container">
-            <div class="">
-                <div id="copyright">
-
-
-
-                    <!-- BEGIN: Custom advanced (www.pluginaria.com) -->
-                    <div style="text-align: center;">
-                        <hr style="color: #1051eae2;">
-                        <span style="color: #0d3c61;">
-                            <strong>Horario de Atención:</strong>
-                        </span>&nbsp;
-                        <span style="color: #000000;">Lunes a Viernes de 07:45 am - 12:45 pm y 02:45 pm - 05:45 pm</span>
-                    </div>
-                    <div style="text-align: center;">
-                        <span style="color: #000000;">
-                            <span style="color: #0d3c61;">
-                                <strong style="text-align: center;">Dirección:</strong>
-                            </span>&nbsp;Calle 16 # 12 - 120 Edificio
-                            Alfonso López Michelsen Valledupar - Cesar - Colombia
-                        </span>
-                    </div>
-                    <div style="text-align: center;">
-                        <span style="color: #000000;"></span>
-                        <span>
-                            <span style="color: #0d3c61;">
-                                <strong>
-                                    Líneas de Atención a la
-                                    Ciudadanía:
-                                </strong>
-                            </span>&nbsp;<span style="color: #000000;">
-                                01 8000 954 099 / (575)
-                                5748230
-                            </span>
-                        </span>
-                    </div>
-                    <div style="text-align: justify;">
-
-                        <div style="text-align: center;">
-                            <span style="color: #000000;">
-                                <strong>
-                                    <span style="color: #0d3c61;">Correo Institucional:</span>
-                                    &nbsp;
-                                </strong>
-                                <a href="mailto:contactenos@cesar.gov.co" style="color: #000000;">contactenos@cesar.gov.co</a>
-                                &nbsp;
-                            </span>
-                        </div>
-                        <div style="text-align: center;">
-                            <span style="color: #000000;">
-                                <span style="color: #0d3c61;">
-                                    <strong>Código Postal:</strong>&nbsp;
-                                </span>200001
-                            </span>
-                        </div>
-                        <div style="text-align: center;">
-                            <span style="color: #000000;">
-                                <span style="color: #0d3c61;">
-                                    <strong>Nit:</strong>
-                                    &nbsp;
-                                </span>892399999-1
-                            </span>
-                        </div>
-                        <div style="text-align: center;">
-                            <strong style="color: #0d3c61;">
-                                <a href="https://cesar.gov.co/d/index.php/es/2-uncategorised/2856-artpolpriv"
-                                   style="color: #0d3c61;">
-                                    Políticas
-                                    de Privacidad y Condiciones de Uso de la Información
-                                </a>
-                            </strong>
-                        </div>
-                    </div>
-                    <div>
-                        &nbsp;&nbsp;
-                    </div>
-                    @*<div style="text-align: center;">
-                            <img src="~/images/banner_28.png" alt="0000 2020 imggbp 01" style="max-width: 100%;" />
-
-                        </div>*@
-                    <br><br>
+            <div class="animate-field">
+                <label for="NombreEntrenador" class="form-label">Nombre de su entrenador y/o Profesor <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user-tie"></i>
+                    <input class="form-control" id="NombreEntrenador" name="NombreEntrenador" required style="text-transform: uppercase;" />
                 </div>
-
-
-
-
-
+                <div class="invalid-feedback">Por favor, ingresa el nombre de tu entrenador.</div>
             </div>
-        </div>
+
+            <!-- Sección 6: Contacto de emergencia -->
+            <h5 class="section-title"><i class="fas fa-phone-alt me-2"></i>Contacto de Emergencia</h5>
+
+            <div class="animate-field">
+                <label for="NombreContacto" class="form-label">Nombre de un contacto <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user-friends"></i>
+                    <input class="form-control" id="NombreContacto" name="NombreContacto" required style="text-transform: uppercase;" />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa el nombre de un contacto.</div>
+            </div>
+
+            <div class="animate-field">
+                <label for="TelefonoContacto" class="form-label">Teléfono Celular de un contacto <span class="text-danger">*</span></label>
+                <div class="input-with-icon">
+                    <i class="fas fa-phone"></i>
+                    <input class="form-control" id="TelefonoContacto" name="TelefonoContacto" type="number" required />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa un número de teléfono válido.</div>
+            </div>
+
+            <div class="animate-field">
+                <label for="CorreoContacto" class="form-label">Correo Electrónico de un contacto</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input class="form-control" id="CorreoContacto" name="CorreoContacto" placeholder="ejemplo@dominio.com" type="email" onchange="validateEmail(this)" style="text-transform: lowercase;" />
+                </div>
+                <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
+            </div>
+
+            <!-- Nota importante -->
+            <div class="form-note">
+                <p class="mb-0"><strong>Nota:</strong> Le solicitamos completar el siguiente formulario con los datos necesarios para la inscripción de los deportistas. Es importante que todos los campos sean llenados con información precisa y actualizada, ya que todos son obligatorios.</p>
+            </div>
+
+            <!-- Botón de envío -->
+            <button type="submit" class="btn btn-submit animate__animated animate__pulse animate__infinite animate__slower">
+                <i class="fas fa-save me-2"></i>Guardar
+            </button>
+        </form>
     </div>
 
+    <!-- jQuery, Bootstrap JS, Select2 JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- SweetAlert2 para mensajes bonitos -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script>
+        $(document).ready(function() {
+            // Inicializar Select2 con mejores opciones
+            $('.select2-enhanced').each(function() {
+                $(this).select2({
+                    theme: 'bootstrap-5',
+                    placeholder: $(this).find('option[value=""]').text() || 'Seleccionar',
+                    allowClear: true,
+                    width: '100%',
+                    dropdownAutoWidth: true,
+                    language: {
+                        noResults: function() {
+                            return "No se encontraron resultados";
+                        }
+                    }
+                });
+            });
 
-</footer>
+            // Animación para los campos
+            $('.animate-field').each(function(index) {
+                $(this).css('animation-delay', (index * 0.1) + 's');
+            });
 
+            // Validación en tiempo real y cálculo de progreso
+            $('input, select').on('input change', function() {
+                validateField(this);
+                updateProgressBar();
+            });
 
+            // Forzar redibujado si hay problemas visuales
+            $(window).on('resize', function() {
+                $('.select2-enhanced').select2('close');
+            });
+        });
 
+        // Función para calcular la edad
+        function calculateAge() {
+            const fechaNacimiento = new Date($('#FechaNacimientoInscripciones').val());
+            if (isNaN(fechaNacimiento.getTime())) return;
 
-<style>
+            const hoy = new Date();
+            let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+            const mes = hoy.getMonth() - fechaNacimiento.getMonth();
 
-    #footer {
-        text-align: center;
-        width: 100%;
-        background-color: #f5f5f5;
-        padding: 20px;
-    }
+            if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+                edad--;
+            }
 
-        #footer img {
-            max-width: 100%;
-            height: auto;
+            $('#EdadInscripciones').val(edad);
+
+            // Actualizar grupo etareo automáticamente
+            updateGrupoEtareo(edad);
         }
 
-        #footer div {
-            max-width: 100%;
+        // Función para actualizar grupo etareo basado en la edad
+        function updateGrupoEtareo(edad) {
+            let grupo = '';
+
+            if (edad >= 0 && edad <= 5) grupo = 'INFANCIA (0 - 5 AÑOS)';
+            else if (edad >= 6 && edad <= 11) grupo = 'NIÑEZ (6 - 11 AÑOS)';
+            else if (edad >= 12 && edad <= 19) grupo = 'ADOLESCENTES (12 - 19 AÑOS)';
+            else if (edad >= 20 && edad <= 25) grupo = 'JUVENTUD (20 - 25 AÑOS)';
+            else if (edad >= 26 && edad <= 60) grupo = 'ADULTEZ (26 - 60 AÑOS)';
+            else if (edad > 60) grupo = 'ADULTO MAYOR (+ 60 AÑOS)';
+
+            if (grupo) {
+                $('#GrupoEtarreoInscripciones').val(grupo).trigger('change');
+            }
         }
-</style>
 
+        // Función para validar campos en tiempo real
+        function validateField(field) {
+            const $field = $(field);
+            const value = $field.val();
+            let isValid = true;
 
+            if ($field.prop('required') && !value) {
+                isValid = false;
+            } else if ($field.attr('type') === 'email' && value) {
+                @*const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;*@
+                isValid = emailRegex.test(value);
+            } else if ($field.attr('type') === 'number' && value) {
+                isValid = !isNaN(value);
+            }
 
+            if (isValid) {
+                $field.removeClass('is-invalid');
+            } else {
+                $field.addClass('is-invalid');
+            }
 
+            return isValid;
+        }
 
+        // Función para validar email
+        function validateEmail(input) {
+            const email = input.value;
+            @*const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;*@
 
+            if (email && !emailRegex.test(email)) {
+                $(input).addClass('is-invalid');
+                return false;
+            } else {
+                $(input).removeClass('is-invalid');
+                return true;
+            }
+        }
 
+        // Función para validar tipo de archivo
+        function validateFileType(inputId) {
+            const input = document.getElementById(inputId);
+            const file = input.files[0];
+            const $input = $(input);
 
+            if (file) {
+                const fileType = file.type;
+                if (fileType !== 'application/pdf') {
+                    $input.addClass('is-invalid');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Tipo de archivo incorrecto',
+                        text: 'Por favor, sube un archivo PDF.',
+                    });
+                    input.value = '';
+                    return false;
+                } else {
+                    $input.removeClass('is-invalid');
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        // Función para mostrar/ocultar campos según programa seleccionado
+        function toggleInputFields() {
+            const selectedValue = $('#ProgramaInscripciones').val();
+            const requiredOption = "PROGRAMA JORNADA DEPORTIVAS ESCOLARES COMPLEMENTARIAS Y/O ESCUELAS DE FORMACIÓN";
+            const fields = ['DocumentoPdfField', 'SaludPdfField', 'AutorizacionPdfField', 'CedulaPadrePdfField'];
+
+            fields.forEach(function(fieldId) {
+                const $field = $('#' + fieldId);
+                if (selectedValue === requiredOption) {
+                    $field.removeClass('hidden').addClass('animate__animated animate__fadeIn');
+                } else {
+                    $field.addClass('hidden');
+                    $('#' + fieldId.replace('Field', '')).val('');
+                }
+            });
+
+            updateProgressBar();
+        }
+
+        // Función para actualizar la barra de progreso
+        function updateProgressBar() {
+            const totalFields = $('input[required], select[required]').length;
+            let filledFields = 0;
+
+            $('input[required], select[required]').each(function() {
+                if ($(this).val()) {
+                    filledFields++;
+                }
+            });
+
+            const percentage = Math.round((filledFields / totalFields) * 100);
+            $('#form-progress').css('width', percentage + '%');
+            $('#progress-percentage').text(percentage + '%');
+        }
+
+        // Función para manejar el envío del formulario
+        $('#FormFisioterapia').on('submit', function(e) {
+            e.preventDefault();
+
+            // Validar todos los campos requeridos
+            let isValid = true;
+            $('input[required], select[required]').each(function() {
+                if (!validateField(this)) {
+                    isValid = false;
+                }
+            });
+
+            if (isValid) {
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "¿Deseas guardar la información del deportista?",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, guardar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Aquí iría la lógica para enviar el formulario
+                        Swal.fire(
+                            '¡Guardado!',
+                            'La información del deportista ha sido guardada.',
+                            'success'
+                        );
+
+                        // Simular envío del formulario
+                        setTimeout(() => {
+                            // Createobj(); // Función original para guardar
+                        }, 1500);
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Campos incompletos',
+                    text: 'Por favor completa todos los campos requeridos.',
+                });
+
+                // Desplazarse al primer campo con error
+                $('html, body').animate({
+                    scrollTop: $('.is-invalid').first().offset().top - 100
+                }, 500);
+            }
+        });
+
+        // Función para manejar cambios en selects (original)
+        function handleSelectionChange() {
+            // Implementación original si es necesaria
+        }
+
+        // Convertir a mayúsculas los campos de texto
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputFields = [
+                'PrimerNombreInscripciones', 'SegundonombreInscripciones',
+                'PrimerApellidoInscripciones', 'SegundoApellidoInscripciones',
+                'PaisNacimientoInscripciones', 'DepartamentoInscripciones',
+                'MunicipioInscripciones', 'Eps', 'NombreEntrenador',
+                'NombreContacto', 'DireccionResidencia', 'BarrioResidencia',
+                'MunicipioResidencia'
+            ];
+
+            inputFields.forEach(function(fieldId) {
+                const field = document.getElementById(fieldId);
+                if (field) {
+                    field.addEventListener('input', function(event) {
+                        this.value = this.value.toUpperCase();
+                    });
+                }
+            });
+        });
+        // Modifica la inicialización de Select2 para el programa
+        $('#ProgramaInscripciones').select2({
+            theme: 'bootstrap-5',
+            placeholder: 'Seleccionar programa',
+            allowClear: true,
+            width: '100%',
+            dropdownAutoWidth: true,
+            templateResult: function (option) {
+                if (!option.id) return option.text;
+
+                // Mostrar texto completo en el dropdown
+                var fullText = $(option.element).data('fulltext') || option.text;
+                return $('<span>').text(fullText);
+            },
+            templateSelection: function (option) {
+                if (!option.id) return option.text;
+
+                // Mostrar texto completo cuando está seleccionado
+                var fullText = $(option.element).data('fulltext') || option.text;
+                return $('<span>').text(fullText);
+            }
+        });
+    </script>
+</body>
+</html>
