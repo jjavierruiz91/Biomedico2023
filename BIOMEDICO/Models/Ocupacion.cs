@@ -28,7 +28,7 @@ namespace BIOMEDICO.Models
         public string TallaSudadera { get; set; }
         public Nullable<int> NumeroHijos { get; set; }
         public Nullable<int> IdDeportista { get; set; }
-    
-        public virtual Deportistas Deportistas { get; set; }
+
+        public virtual Deportistas Deportistas { get; set; } = new Deportistas();
     }
 }

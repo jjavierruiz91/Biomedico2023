@@ -25,7 +25,7 @@ namespace BIOMEDICO.Models
         public string PruebaCovid19 { get; set; }
         public string AnexosMedicinaDeportiva { get; set; }
         public Nullable<int> IdMedicina { get; set; }
-    
-        public virtual MedicinaDelDeporte MedicinaDelDeporte { get; set; }
+
+        public virtual MedicinaDelDeporte MedicinaDelDeporte { get; set; } = new MedicinaDelDeporte();
     }
 }

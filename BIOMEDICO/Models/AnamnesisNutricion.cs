@@ -45,6 +45,6 @@ namespace BIOMEDICO.Models
         public string TobilloPerimetroNutrii { get; set; }
         public Nullable<int> IdNutricion { get; set; }
     
-        public virtual Nutricion Nutricion { get; set; }
+        public virtual Nutricion Nutricion { get; set; } = new Nutricion();
     }
 }

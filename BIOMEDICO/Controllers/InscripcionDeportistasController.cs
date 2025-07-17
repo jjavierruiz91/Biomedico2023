@@ -126,77 +126,28 @@ namespace BIOMEDICO.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public JsonResult Agregar()
+        public JsonResult Agregar(ObjInscripcionDeportistas a)
         {
             Respuesta Retorno = new Respuesta();
 
             try
             {
-                ObjInscripcionDeportistas a = JsonConvert.DeserializeObject<ObjInscripcionDeportistas>(Request.Form["persona"]);
-                var files = Request.Files;
-                var documentoBenefFile = files["cedulaBeneficiarioFile"];
-                var saludFile = files["saludFile"];
-                var autorizacionFile = files["autorizacionFile"];
-                var cedulaPadreFile = files["cedulaPadreFile"];
-                DocumentosEnBytes documentosEnBytes = new DocumentosEnBytes();                
-
-                if (documentoBenefFile != null && documentoBenefFile.InputStream.CanSeek)
-                {
-                    documentoBenefFile.InputStream.Seek(0, SeekOrigin.Begin);
-
-                    using (MemoryStream memoryStream = new MemoryStream())
-                    {                       
-                        documentoBenefFile.InputStream.CopyTo(memoryStream);
-                        documentosEnBytes.documentoBenefBytes = memoryStream.ToArray();
-                    }
-                }               
-
-                if (saludFile != null && saludFile.InputStream.CanSeek)
-                {
-                    saludFile.InputStream.Seek(0, SeekOrigin.Begin);
-
-                    using (MemoryStream memoryStream = new MemoryStream())
-                    {
-                        saludFile.InputStream.CopyTo(memoryStream);
-                        documentosEnBytes.saludFileBytes = memoryStream.ToArray();
-                    }
-                }
-               
-                if (autorizacionFile != null && autorizacionFile.InputStream.CanSeek)
-                {
-                    autorizacionFile.InputStream.Seek(0, SeekOrigin.Begin);
-                    using (MemoryStream memoryStream = new MemoryStream())
-                    {
-                        autorizacionFile.InputStream.CopyTo(memoryStream);
-                        documentosEnBytes.autorizacionFileBytes = memoryStream.ToArray();
-                    }
-                }
-               
-                if (cedulaPadreFile != null && cedulaPadreFile.InputStream.CanSeek)
-                {
-                    cedulaPadreFile.InputStream.Seek(0, SeekOrigin.Begin);
-                    using (MemoryStream memoryStream = new MemoryStream())
-                    {
-                        cedulaPadreFile.InputStream.CopyTo(memoryStream);
-                        documentosEnBytes.cedulaPadreFileBytes = memoryStream.ToArray();
-                    }
-                }
-
+                
                
 
                 using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
                 {
                     // Verificar si el número de identificación ya existe
-                    var existeCedula = db.InscripcionesDeportistas.Any(i => i.NumIdentificacionInscripciones == a.InscripcionDeportistasDeport.NumIdentificacionInscripciones);
+                    //var existeCedula = db.InscripcionesDeportistas.Any(i => i.NumIdentificacionInscripciones == a.InscripcionDeportistasDeport.NumIdentificacionInscripciones);
 
-                    if (existeCedula)
-                    {
-                        Retorno.Error = true;
-                        Retorno.mensaje = "El deportista ya fue registrado con exito.!";
-                        Retorno.refrescar = true;  // Añadir propiedad para refrescar
-                        return Json(Retorno, JsonRequestBehavior.AllowGet);
-                    }
-
+                    //if (existeCedula)
+                    //{
+                    //    Retorno.Error = true;
+                    //    Retorno.mensaje = "El deportista ya fue registrado con exito.!";
+                    //    Retorno.refrescar = true;  // Añadir propiedad para refrescar
+                    //    return Json(Retorno, JsonRequestBehavior.AllowGet);
+                    //}
+                    a.InscripcionDeportistasDeport.FechaRegistro = DateTime.Now;
                     db.InscripcionesDeportistas.Add(a.InscripcionDeportistasDeport);
                     db.SaveChanges();
 
@@ -430,3 +381,4 @@ namespace BIOMEDICO.Controllers
     }
 
 }
+

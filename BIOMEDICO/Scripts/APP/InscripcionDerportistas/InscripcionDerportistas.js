@@ -350,6 +350,7 @@ function Atras() {
 //                MunicipioInscripciones: $('#MunicipioInscripciones').val(),
 //                GeneroInscripciones: $('#GeneroInscripciones').val(),
 //                GrupoEtarreoInscripciones: $('#GrupoEtarreoInscripciones').val(),
+               
 //                DireccionResidencia: $('#DireccionResidencia').val(),
 //                BarrioResidencia: $('#BarrioResidencia').val(),
 //                MunicipioResidencia: $('#MunicipioResidencia').val(),
@@ -383,14 +384,8 @@ function Atras() {
 //}
 
 async function Createobj() {
-    var boton = document.getElementById("SaveInscripcioDeportista");
-    boton.disabled = true;
-
-    // Reactivar el botón después de 5 segundos (5000 milisegundos)
-    setTimeout(function () {
-        boton.disabled = false;
-    }, 3000);
-
+    document.getElementById("SaveInscripcioDeportista").disabled = true;
+    
     if (VerDetalles == "SI") {
         Atras();
     } else {
@@ -433,6 +428,7 @@ async function Createobj() {
                 Eps: $('#Eps').val(),
                 Tiposangre: $('#Tiposangre').val(),
                 CondicionPoblacion: $('#CondicionPoblacion').val(),
+
                 DiscapacidadPoblacion: $('#DiscapacidadPoblacion').val(),
                 GrupoEtnico: $('#GrupoEtnico').val(),
                 DeportePractica: $('#DeportePractica').val(),
@@ -510,15 +506,160 @@ async function getBase64(file) {
         }
     });
 }
-//function Createobj() {
-//    var boton = document.getElementById("SaveInscripcioDeportista");
-//    boton.disabled = true;
 
-//    // Reactivar el botón después de 5 segundos (5000 milisegundos)
-//    setTimeout(function () {
-//        boton.disabled = false;
-//    }, 5000);
+function calculateAge() {
+    const birthDate = new Date($('#FechaNacimientoInscripciones').val());
+    if (isNaN(birthDate.getTime())) return;
 
-//    // Aquí puedes agregar el resto de la lógica que debe ejecutar la función Createobj
-//    // ...
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    $('#EdadInscripciones').val(age + ' años');
+}
+
+// Asignar evento para calcular edad
+$('#FechaNacimientoInscripciones').change(calculateAge);
+
+// Función para validar email
+//function validateEmail(input) {
+//    const email = input.value;
+
+//    if (!re.test(email)) {
+//        input.setCustomValidity('Por favor ingresa un correo electrónico válido');
+//        return false;
+//    } else {
+//        input.setCustomValidity('');
+//        return true;
+//    }
 //}
+
+$(document).ready(function () {
+        // Inicializar Select2
+        $('.select2-enhanced').select2({
+            width: '100%',
+            theme: 'bootstrap-5'
+        });
+
+    // Función para calcular la edad
+    
+    // Función para validar tipo de archivo
+    function validateFileType(inputId) {
+            const fileInput = document.getElementById(inputId);
+    const filePath = fileInput.value;
+    const allowedExtensions = /(\.pdf)$/i;
+
+    if (!allowedExtensions.exec(filePath)) {
+        fileInput.value = '';
+    alert('Por favor, sube solo archivos PDF');
+    return false;
+            }
+    return true;
+        }
+
+    
+
+    // Función para mostrar/ocultar campos según el programa seleccionado
+    function toggleInputFields() {
+            const selectedValue = $('#ProgramaInscripciones').val();
+
+    // Definir secciones, sus campos y sus títulos (índices basados en el orden de .section-title)
+    const sections = {
+        personal: {
+        fields: ['#TipoIdentificacionInscripcionesField', '#NumIdentificacionInscripcionesField', '#PrimerNombreInscripcionesField', '#SegundonombreInscripcionesField', '#PrimerApellidoInscripcionesField', '#SegundoApellidoInscripcionesField', '#FechaNacimientoInscripcionesField', '#EdadInscripcionesField', '#GeneroInscripcionesField', '#GrupoEtarreoInscripcionesField', '#PaisNacimientoInscripcionesField', '#DepartamentoInscripcionesField', '#MunicipioInscripcionesField'],
+    title: $('.section-title').eq(0) // Información Personal
+                },
+    residencia: {
+        fields: ['#DireccionResidenciaField', '#BarrioResidenciaField', '#MunicipioResidenciaField', '#EstratoResidenciaField', '#ZonaResidenciaField', '#TelefonoResidenciaField', '#CorreoResidenciaField'],
+    title: $('.section-title').eq(1) // Información de Residencia
+                },
+    socioeconomicos: {
+        fields: ['#EstadoCivilField', '#NivelEstudioField', '#RegimenSaludField', '#EpsField', '#TiposangreField', '#CondicionPoblacionField', '#DiscapacidadPoblacionField', '#GrupoEtnicoField'],
+    title: $('.section-title').eq(2) // Información Socioeconómica
+                },
+    deportivos: {
+        fields: ['#DeportePracticaField', '#NombreEntrenadorField'],
+    title: $('.section-title').eq(3) // Información Deportiva
+                },
+    contactoEmergencia: {
+        fields: ['#NombreContactoField', '#TelefonoContactoField', '#CorreoContactoField'],
+    title: $('.section-title').eq(4) // Contacto de Emergencia
+                },
+    documentos: {
+        fields: ['#DocumentoPdfField', '#SaludPdfField', '#AutorizacionPdfField', '#CedulaPadrePdfField'],
+    title: $('.section-title').eq(5) // Documentos PDF (asumido)
+                }
+            };
+
+    // Ocultar todos los campos primero (excepto la primera sección)
+    $('.animate-field:not(:first)').addClass('hidden');
+    $('.section-title').not(':first').addClass('hidden');
+    $('#DocumentosPdfSection').addClass('hidden');
+
+    // Mostrar campos si hay un programa seleccionado
+    if (selectedValue) {
+        // Mostrar todos los títulos de secciones por defecto
+        $('.section-title').removeClass('hidden');
+
+    // Mostrar todos los campos por defecto
+    $('#TipoIdentificacionInscripcionesField, #NumIdentificacionInscripcionesField, #PrimerNombreInscripcionesField, #SegundonombreInscripcionesField, #PrimerApellidoInscripcionesField, #SegundoApellidoInscripcionesField, #FechaNacimientoInscripcionesField, #EdadInscripcionesField, #GeneroInscripcionesField, #GrupoEtarreoInscripcionesField, #PaisNacimientoInscripcionesField, #DepartamentoInscripcionesField, #MunicipioInscripcionesField, #DireccionResidenciaField, #BarrioResidenciaField, #MunicipioResidenciaField, #EstratoResidenciaField, #ZonaResidenciaField, #TelefonoResidenciaField, #CorreoResidenciaField, #EstadoCivilField, #NivelEstudioField, #RegimenSaludField, #EpsField, #TiposangreField, #CondicionPoblacionField, #DiscapacidadPoblacionField, #GrupoEtnicoField, #DeportePracticaField, #NombreEntrenadorField, #NombreContactoField, #TelefonoContactoField, #CorreoContactoField').removeClass('hidden');
+
+    // Ocultar sección de documentos para todos los programas
+    $('#DocumentosPdfSection, #DocumentoPdfField, #SaludPdfField, #AutorizacionPdfField, #CedulaPadrePdfField').addClass('hidden');
+
+    // Ocultar campos específicos según el programa
+    if (selectedValue === "PROGRAMA DEPORTE SOCIAL COMUNITARIO") {
+        $('#DeportePracticaField,#NombreEntrenadorField, #NombreContactoField, #TelefonoContactoField, #CorreoContactoField').addClass('hidden');
+                } else if (selectedValue === "PROGRAMA DEPORTISTAS ALTO RENDIMIENTO - SELECCIONES DEPARTAMENTALES") {
+        $('#TelefonoResidenciaField, #CorreoResidenciaField, #EstadoCivilField, #NivelEstudioField, #RegimenSaludField, #EpsField, #TiposangreField, #CondicionPoblacionField, #DiscapacidadPoblacionField, #GrupoEtnicoField, #DeportePracticaField, #NombreEntrenadorField, #NombreContactoField, #TelefonoContactoField, #CorreoContactoField').addClass('hidden');
+                } else if (selectedValue === "PROGRAMA HÁBITOS Y ESTILOS DE VIDA SALUDABLES") {
+        $('#DireccionResidenciaField, #BarrioResidenciaField, #MunicipioResidenciaField, #EstratoResidenciaField, #ZonaResidenciaField, #TelefonoResidenciaField, #CorreoResidenciaField, #EstadoCivilField, #NivelEstudioField, #RegimenSaludField, #EpsField, #TiposangreField, #CondicionPoblacionField, #DiscapacidadPoblacionField, #GrupoEtnicoField, #DeportePracticaField').addClass('hidden');
+                } else if (selectedValue === "PROGRAMA JORNADA DEPORTIVAS ESCOLARES COMPLEMENTARIAS Y/O ESCUELAS DE FORMACIÓN") {
+        $('#NombreEntrenadorField, #NombreContactoField, #TelefonoContactoField, #CorreoContactoField').addClass('hidden');
+                } else if (selectedValue === "PROGRAMA RECREACIÓN") {
+        $('#TelefonoContactoField, #CorreoContactoField').addClass('hidden');
+                } else if (selectedValue === "PROGRAMA VACACIONAL") {
+        $('#CondicionPoblacionField, #DiscapacidadPoblacionField, #GrupoEtnicoField, #DeportePracticaField, #NombreEntrenadorField, #NombreContactoField, #TelefonoContactoField, #CorreoContactoField').addClass('hidden');
+                } else if (selectedValue === "PROGRAMA JUEGOS INTERCOLEGIADOS") {
+        $('#CorreoContactoField').addClass('hidden');                }
+
+                // Verificar y ocultar títulos de secciones si todos sus campos están ocultos
+                Object.keys(sections).forEach(section => {
+                    const {fields, title} = sections[section];
+                    const allHidden = fields.every(field => $(field).hasClass('hidden'));
+    if (allHidden) {
+        title.addClass('hidden');
+                    }
+                });
+            }
+        }
+
+    // Asignar el evento change al select
+    $('#ProgramaInscripciones').change(toggleInputFields);
+
+    // Ejecutar al cargar la página si ya hay un valor seleccionado
+    if ($('#ProgramaInscripciones').val()) {
+        toggleInputFields();
+        }
+
+    // Asignar el evento change al select
+    $('#ProgramaInscripciones').change(toggleInputFields);
+
+    // Ejecutar al cargar la página si ya hay un valor seleccionado
+    if ($('#ProgramaInscripciones').val()) {
+        toggleInputFields();
+        }
+
+
+    // Asignar el evento change al select
+    $('#ProgramaInscripciones').change(toggleInputFields);
+
+    // Ejecutar al cargar la página si ya hay un valor seleccionado
+    if ($('#ProgramaInscripciones').val()) {
+        toggleInputFields();
+        }
+    });

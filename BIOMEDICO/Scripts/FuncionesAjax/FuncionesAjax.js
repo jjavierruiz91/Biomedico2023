@@ -95,17 +95,64 @@ function Save_Data(callbacksussces, Url, ObjetoGuardar, TituloMensaje, Recargar,
     });
 }
 
-function Save_Data_FormData(callbacksussces, Url, ObjetoGuardar, TituloMensaje, Recargar, callbackerror) {
+//function Save_Data_FormData(callbacksussces, Url, ObjetoGuardar, TituloMensaje, Recargar, callbackerror) {
+//    var formURL = SetUrlForQueryLocal(Url);
+//    console.log("URL: " + formURL);  // Verificar URL
+//    console.log("Datos enviados: " + JSON.stringify(ObjetoGuardar));  // Verificar datos enviados
+//    $.ajax({
+//        url: formURL,
+//        type: "POST",
+//        dataType: "json",
+//        data: ObjetoGuardar,
+//        contentType: false,
+//        processData: false,
+//        success: function (data, textStatus, jqXHR) {
+//            if (!data.Error) {
+//                swal({
+//                    title: TituloMensaje,
+//                    text: data.mensaje,
+//                    type: "success",
+//                    confirmButtonClass: "btn-danger",
+//                    confirmButtonText: "Ok",
+//                    closeOnConfirm: false,
+//                    closeOnCancel: false
+//                },
+//                    function (isConfirm) {
+//                        if (isConfirm) {
+//                            swal.close()
+//                            callbacksussces(data)
+//                        } else {
+//                            swal.close()
+//                        }
+//                    });
+//            } else {
+//                swal({
+//                    title: "¡Atencion!",
+//                    text: data.mensaje,
+//                    type: "error",
+//                    closeOnConfirm: true,
+//                });
+//            }
+//        },
+//        error: function (jqXHR, textStatus, errorThrown) {
+//            console.log("Error en la solicitud AJAX:", textStatus, errorThrown);
+//            if (callbackerror) {
+//                callbackerror(jqXHR, textStatus, errorThrown);
+//            }
+//        }
+//    });
+//}
+function Save_Data(callbacksussces, Url, ObjetoGuardar, TituloMensaje, Recargar, callbackerror) {
     var formURL = SetUrlForQueryLocal(Url);
     console.log("URL: " + formURL);  // Verificar URL
     console.log("Datos enviados: " + JSON.stringify(ObjetoGuardar));  // Verificar datos enviados
+
     $.ajax({
         url: formURL,
         type: "POST",
         dataType: "json",
-        data: ObjetoGuardar,
-        contentType: false,
-        processData: false,
+        data: JSON.stringify(ObjetoGuardar), // 👈 SERIALIZAR EL OBJETO
+        contentType: "application/json",     // 👈 ENVIAR COMO JSON
         success: function (data, textStatus, jqXHR) {
             if (!data.Error) {
                 swal({
@@ -127,7 +174,7 @@ function Save_Data_FormData(callbacksussces, Url, ObjetoGuardar, TituloMensaje, 
                     });
             } else {
                 swal({
-                    title: "¡Atencion!",
+                    title: "¡Atención!",
                     text: data.mensaje,
                     type: "error",
                     closeOnConfirm: true,

@@ -32,7 +32,7 @@ namespace BIOMEDICO.Models
         public string CelularPadre { get; set; }
         public string OcupacionPadre { get; set; }
         public Nullable<int> IdDeportista { get; set; }
-    
-        public virtual Deportistas Deportistas { get; set; }
+
+        public virtual Deportistas Deportistas { get; set; } = new Deportistas();
     }
 }
