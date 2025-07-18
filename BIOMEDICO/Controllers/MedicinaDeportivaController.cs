@@ -29,8 +29,6 @@ namespace BIOMEDICO.Controllers
             public ExamenFisicoMedicinaDelDeporte ExamenDeport { get; set; }
 
 
-
-
         }
 
         public struct Respuesta

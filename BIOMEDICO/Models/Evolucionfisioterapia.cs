@@ -58,7 +58,7 @@ namespace BIOMEDICO.Models
         public string ObservacionesGlobal { get; set; }
         public Nullable<System.DateTime> FechaTratamiento { get; set; }
         public Nullable<int> IdFisioterapia { get; set; }
-    
-        public virtual Fisioterapia Fisioterapia { get; set; }
+
+        public virtual Fisioterapia Fisioterapia { get; set; } = new Fisioterapia();
     }
 }
