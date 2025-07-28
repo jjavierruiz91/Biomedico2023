@@ -400,10 +400,10 @@ async function Createobj() {
 
 
         if (IsUpdate) {
-            Save_Data(ActualizarVista, '/Deportista/Actualizar', JSON.stringify( ObjDeportista), 'Actualizacion');
+            Save_Data(ActualizarVista, '/Deportista/Actualizar', ObjDeportista, 'Actualizacion');
         }
         else {
-            Save_Data(ActualizarVista, '/Deportista/Agregar', JSON.stringify(ObjDeportista), 'Guardado');//debes mandar como json todo, no te funciono porque solo lo pusisyte en el update y no en el add
+            Save_Data(ActualizarVista, '/Deportista/Agregar', ObjDeportista, 'Guardado');//debes mandar como json todo, no te funciono porque solo lo pusisyte en el update y no en el add
 
            // LimpiarFormulario() entonces todos los guardar se deben de actualiza a JSON?
         }

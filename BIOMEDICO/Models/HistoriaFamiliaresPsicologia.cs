@@ -23,7 +23,7 @@ namespace BIOMEDICO.Models
         public string RelacionMadre { get; set; }
         public string RelacionHermanos { get; set; }
         public Nullable<int> IdDatosDemograficos { get; set; }
-    
-        public virtual DemograficoPsicologia DemograficoPsicologia { get; set; }
+
+        public virtual DemograficoPsicologia DemograficoPsicologia { get; set; } = new DemograficoPsicologia();
     }
 }

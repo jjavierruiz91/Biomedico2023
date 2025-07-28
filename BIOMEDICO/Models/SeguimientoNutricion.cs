@@ -33,7 +33,7 @@ namespace BIOMEDICO.Models
         public string FirmaDoctorNutri { get; set; }
         public Nullable<int> IdNutricion { get; set; }
         public Nullable<int> IdMedicina { get; set; }
-    
-        public virtual Nutricion Nutricion { get; set; }
+
+        public virtual Nutricion Nutricion { get; set; } = new Nutricion();
     }
 }
